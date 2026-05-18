@@ -60,148 +60,16 @@ const oppositeLang = lang === 'ru' ? 'en' : 'ru';
 </div>
 
 <script>
-  // Dynamic language picker without page reload
-  // @ts-nocheck
-  let activeMenu = null;
-  let currentLang = '{lang}' || 'ru';
-
-  // Use global translations from window.translations (set by Layout.astro)
-  function getTranslations() {
-    return window.translations || {};
-  }
-
-  function getCurrentLanguage() {
-    const translations = getTranslations();
-    try {
-      // First check if language is already set globally
-      if (window.currentLang && translations[window.currentLang]) {
-        return window.currentLang;
-      }
-
-      // Check URL for lang query parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlLang = urlParams.get('lang');
-      if (urlLang && translations[urlLang]) {
-        return urlLang;
-      }
-
-      const stored = localStorage.getItem('user-lang');
-      if (stored && translations[stored]) return stored;
-
-      // Detect browser language
-      const browserLang = navigator.language;
-      const preferredLang = browserLang.toLowerCase().startsWith('en') ? 'en' : 'ru';
-      return translations[preferredLang] ? preferredLang : 'ru';
-    } catch (e) {
-      return 'ru';
-    }
-  }
-
-  window.setLanguage = function(lang) {
-    const translations = getTranslations();
-    console.log('setLanguage called with:', lang, 'currentLang:', currentLang);
-    if (translations[lang] && lang !== currentLang) {
-      currentLang = lang;
-      localStorage.setItem('user-lang', lang);
-
-      // Update global variables
-      window.currentLang = lang;
-
-      console.log('Updated window.currentLang to:', window.currentLang);
-
-      // Update display
-      const display = document.getElementById('current-lang-display');
-      if (display) display.textContent = lang;
-
-      // Update document language
-      document.documentElement.lang = lang;
-
-      // Update all translatable elements
-      updatePageTranslations();
-
-      // Update URL without reload
-      updateURL(lang);
-
-      // Update button states
-      updateLanguageButtons();
-    } else {
-      console.log('setLanguage blocked - translations[lang]:', translations[lang], 'lang !== currentLang:', lang !== currentLang);
-    }
-  }
-
-  window.updatePageTranslations = function() {
-    const translations = getTranslations();
-    console.log('updatePageTranslations called with currentLang:', currentLang);
-    console.log('Available translations keys:', Object.keys(translations));
-    if (translations[currentLang]) {
-      console.log('Current language translations available:', Object.keys(translations[currentLang]));
-    }
-
-    // Update elements with data-i18n attribute
-    const elements = document.querySelectorAll('[data-i18n]');
-    console.log('Found elements with data-i18n:', elements.length);
-
-    elements.forEach((element) => {
-      const key = element.getAttribute('data-i18n');
-      if (key && translations[currentLang] && translations[currentLang][key]) {
-        const translatedText = translations[currentLang][key];
-        console.log(`Translating ${key} to:`, translatedText);
-
-        // Handle different element types
-        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-          element.placeholder = translatedText;
-        } else if (element.tagName === 'TITLE') {
-          element.textContent = translatedText;
-        } else {
-          element.textContent = translatedText;
-        }
-      } else {
-        console.log(`Failed to translate ${key} - currentLang:`, currentLang, 'has translation:', !!(translations[currentLang] && translations[currentLang][key]));
-      }
-    });
-
-    // Update elements with data-i18n-html attribute (for HTML content)
-    const htmlElements = document.querySelectorAll('[data-i18n-html]');
-    htmlElements.forEach((element) => {
-      const key = element.getAttribute('data-i18n-html');
-      if (key && translations[currentLang][key]) {
-        element.innerHTML = translations[currentLang][key];
-      }
-    });
-
-    // Update elements with data-i18n-placeholder attribute
-    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
-    placeholderElements.forEach((element) => {
-      const key = element.getAttribute('data-i18n-placeholder');
-      if (key && translations[currentLang][key]) {
-        (element as HTMLInputElement | HTMLTextAreaElement).placeholder = translations[currentLang][key];
-      }
-    });
-  }
-
-  function updateURL(lang: 'ru' | 'en') {
-    const currentPath = window.location.pathname;
-    const search = window.location.search;
-    const hash = window.location.hash;
-
-    // Create new URL with lang query parameter
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-
-    const newURL = url.pathname + url.search + hash;
-
-    // Update URL without reload
-    if (newURL !== window.location.pathname + window.location.search + hash) {
-      history.pushState({}, '', newURL);
-    }
-  }
+  // Dynamic language picker using centralized i18n client
+  // @ts-ignore
+  let currentLang = document.documentElement.lang || 'ru';
 
   function updateLanguageButtons() {
     // Update active state in dropdown
     const buttons = document.querySelectorAll('.lang-option');
     buttons.forEach((button) => {
       const buttonLang = button.getAttribute('data-lang');
-      if (buttonLang === currentLang) {
+      if (buttonLang === window.currentLang) {
         button.classList.add('bg-slate-100', 'dark:bg-slate-700', 'text-purple-600', 'dark:text-purple-400', 'font-semibold');
         button.classList.remove('text-slate-700', 'dark:text-slate-300');
       } else {
@@ -209,6 +77,10 @@ const oppositeLang = lang === 'ru' ? 'en' : 'ru';
         button.classList.add('text-slate-700', 'dark:text-slate-300');
       }
     });
+    
+    // Update current lang display
+    const display = document.getElementById('current-lang-display');
+    if (display) display.textContent = window.currentLang;
   }
 
   function handleOutsideClick(e: Event) {
@@ -230,16 +102,8 @@ const oppositeLang = lang === 'ru' ? 'en' : 'ru';
 
     if (!btn || !dropdown || !container) return;
 
-    // Initialize current language
-    currentLang = getCurrentLanguage() as 'ru' | 'en';
-    // Update global language variable
-    window.currentLang = currentLang;
-    const display = document.getElementById('current-lang-display');
-    if (display) display.textContent = currentLang;
-
-    // Update initial state
+    // Initial state
     updateLanguageButtons();
-    updatePageTranslations();
 
     function toggleMenu(show: boolean) {
       if (btn && dropdown) {
@@ -262,50 +126,27 @@ const oppositeLang = lang === 'ru' ? 'en' : 'ru';
       toggleMenu(!isExpanded);
     };
 
-    // Clean up existing listeners
-    const newBtn = btn.cloneNode(true);
-    if (btn.parentNode) {
-      btn.parentNode.replaceChild(newBtn, btn);
-    }
-
-    newBtn.addEventListener('click', handleMenuToggle);
-    newBtn.addEventListener('touchend', handleMenuToggle);
+    // Use event delegation or re-add listeners carefully
+    btn.onclick = handleMenuToggle;
 
     // Handle language selection
     const langButtons = document.querySelectorAll('.lang-option');
     langButtons.forEach((button) => {
-      const newButton = button.cloneNode(true);
-      if (button.parentNode) {
-        button.parentNode.replaceChild(newButton, button);
-      }
-
-      newButton.addEventListener('click', (e: Event) => {
-        const target = e.target as HTMLElement;
-        const targetLang = target.getAttribute('data-lang') as 'ru' | 'en';
-        if (targetLang) {
+      (button as HTMLElement).onclick = (e: Event) => {
+        const target = e.currentTarget as HTMLElement;
+        const targetLang = target.getAttribute('data-lang') as any;
+        if (targetLang && window.setLanguage) {
           window.setLanguage(targetLang);
-          toggleMenu(false); // Close menu
+          updateLanguageButtons();
+          toggleMenu(false);
         }
-      });
-
-      newButton.addEventListener('touchend', (e: Event) => {
-        const target = e.target as HTMLElement;
-        const targetLang = target.getAttribute('data-lang') as 'ru' | 'en';
-        if (targetLang) {
-          window.setLanguage(targetLang);
-          toggleMenu(false); // Close menu
-        }
-      });
+      };
     });
 
-    // Global click handler
+    // Global click handler (ensure it's not added multiple times)
+    document.removeEventListener('click', handleOutsideClick);
     document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('touchend', handleOutsideClick);
   }
-
-  // Make translations globally available
-  window.translations = getTranslations();
-  window.currentLang = currentLang;
 
   // Initialize on load
   if (document.readyState === 'loading') {

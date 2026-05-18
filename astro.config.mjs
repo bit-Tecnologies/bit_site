@@ -77,6 +77,8 @@ export default defineConfig({
     assets: 'assets'
   },
   image: {
-    domains: ['cybernattor.github.io']
+    domains: ['cybernattor.github.io'],
+    // @ts-ignore - formats is valid in Astro
+    formats: ['avif', 'webp'],
   },
   });

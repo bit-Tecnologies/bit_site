@@ -76,6 +76,11 @@ export const ui = {
     'footer.company_info': 'Компания',
     'footer.legal': 'Юридическая информация',
     'footer.all_rights_reserved': 'Все права защищены.',
+
+    'stats.size': 'МБ размер',
+    'stats.trackers': 'Трекеров',
+    'stats.opensource': 'Открытый код',
+    'stats.license': 'Лицензия',
   },
   en: {
     'nav.about': 'About Us',
@@ -147,5 +152,10 @@ export const ui = {
     'footer.company_info': 'Company',
     'footer.legal': 'Legal',
     'footer.all_rights_reserved': 'All rights reserved.',
+
+    'stats.size': 'MB Size',
+    'stats.trackers': 'Trackers',
+    'stats.opensource': 'Open Source',
+    'stats.license': 'License',
   },
 } as const;

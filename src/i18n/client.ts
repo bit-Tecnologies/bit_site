@@ -4,6 +4,15 @@ import { ui, defaultLang, languages } from './ui';
 export type Language = keyof typeof ui;
 export type TranslationKey = keyof typeof ui[typeof defaultLang];
 
+declare global {
+  interface Window {
+    translations: typeof ui;
+    currentLang: Language;
+    setLanguage: (lang: Language) => void;
+    updatePageTranslations: () => void;
+  }
+}
+
 class I18nClient {
   private currentLang: Language = defaultLang;
   private listeners: Set<() => void> = new Set();
@@ -21,6 +30,10 @@ class I18nClient {
         this.currentLang = preferredLang in ui ? preferredLang : defaultLang;
         localStorage.setItem('user-lang', this.currentLang);
       }
+      
+      // Sync with global window object
+      window.currentLang = this.currentLang;
+      window.translations = ui;
     }
   }
 
@@ -31,14 +44,18 @@ class I18nClient {
   setLanguage(lang: Language) {
     if (lang in ui && lang !== this.currentLang) {
       this.currentLang = lang;
+      window.currentLang = lang;
       localStorage.setItem('user-lang', lang);
       this.notifyListeners();
       this.updateDocumentLanguage();
+      updatePageTranslations();
     }
   }
 
-  translate(key: TranslationKey): string {
-    return ui[this.currentLang]?.[key] || ui[defaultLang][key] || key;
+  translate(key: string): string {
+    const lang = this.currentLang;
+    // @ts-ignore - dynamic key access
+    return ui[lang]?.[key] || ui[defaultLang][key] || key;
   }
 
   // Subscribe to language changes
@@ -54,12 +71,6 @@ class I18nClient {
   private updateDocumentLanguage() {
     if (typeof document !== 'undefined') {
       document.documentElement.lang = this.currentLang;
-
-      // Update meta tags
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        // This would need to be handled per page
-      }
 
       // Update hreflang links
       const canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -105,36 +116,19 @@ class I18nClient {
 // Global instance
 export const i18nClient = new I18nClient();
 
-// Simple state management for vanilla JS
-let stateUpdateTrigger = 0;
-
-// React-like hook for components (vanilla JS version)
-export function useTranslation() {
-  const unsubscribe = i18nClient.subscribe(() => {
-    stateUpdateTrigger++;
-  });
-
-  return {
-    t: (key: TranslationKey) => i18nClient.translate(key),
-    lang: i18nClient.getCurrentLang(),
-    setLanguage: (lang: Language) => i18nClient.setLanguage(lang),
-    languages: i18nClient.getLanguages(),
-    unsubscribe
-  };
-}
-
-// Helper function for vanilla JS
-export function translateText(key: TranslationKey): string {
-  return i18nClient.translate(key);
-}
-
-// Helper to update all elements with data-i18n attribute
+// Helper to update all elements with data-i18n attributes
 export function updatePageTranslations() {
+  if (typeof document === 'undefined') return;
+
+  const currentLang = i18nClient.getCurrentLang();
+  const translations = ui[currentLang] || ui[defaultLang];
+
+  // Update elements with data-i18n attribute
   const elements = document.querySelectorAll('[data-i18n]');
   elements.forEach(element => {
-    const key = element.getAttribute('data-i18n') as TranslationKey;
-    if (key) {
-      const translatedText = translateText(key);
+    const key = element.getAttribute('data-i18n');
+    if (key && translations[key as keyof typeof translations]) {
+      const translatedText = translations[key as keyof typeof translations];
 
       // Handle different element types
       if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
@@ -146,14 +140,50 @@ export function updatePageTranslations() {
       }
     }
   });
+
+  // Update elements with data-i18n-html attribute
+  const htmlElements = document.querySelectorAll('[data-i18n-html]');
+  htmlElements.forEach(element => {
+    const key = element.getAttribute('data-i18n-html');
+    if (key && translations[key as keyof typeof translations]) {
+      element.innerHTML = translations[key as keyof typeof translations];
+    }
+  });
+
+  // Update elements with data-i18n-placeholder attribute
+  const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+  placeholderElements.forEach(element => {
+    const key = element.getAttribute('data-i18n-placeholder');
+    if (key && translations[key as keyof typeof translations]) {
+      (element as HTMLInputElement | HTMLTextAreaElement).placeholder = translations[key as keyof typeof translations];
+    }
+  });
+}
+
+// React-like hook for components (vanilla JS version)
+export function useTranslation() {
+  return {
+    t: (key: string) => i18nClient.translate(key),
+    lang: i18nClient.getCurrentLang(),
+    setLanguage: (lang: Language) => i18nClient.setLanguage(lang),
+    languages: i18nClient.getLanguages(),
+    updatePageTranslations
+  };
 }
 
 // Initialize on page load
 if (typeof window !== 'undefined') {
-  // Update translations on initial load
-  document.addEventListener('DOMContentLoaded', updatePageTranslations);
+  window.setLanguage = (lang: Language) => i18nClient.setLanguage(lang);
+  window.updatePageTranslations = updatePageTranslations;
 
   // Update after Astro view transitions
   document.addEventListener('astro:after-swap', updatePageTranslations);
+  
+  // Initial update if needed
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    updatePageTranslations();
+  } else {
+    document.addEventListener('DOMContentLoaded', updatePageTranslations);
+  }
 }
 
