@@ -2,53 +2,59 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import VitePWA from '@vite-pwa/astro';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // Уберем site URL пока сайт не развернут
-  // site: 'https://cybernattor.github.io',
-  integrations: [tailwind(), VitePWA({
-    registerType: 'autoUpdate',
-    workbox: {
-      globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif}'],
-      runtimeCaching: [
-        {
-          urlPattern: /^https:\/\/api\.example\.com\/.*$/,
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'api-cache',
-            expiration: {
-              maxEntries: 10,
-              maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+  site: 'https://bit-tecnologies.pages.dev',
+  
+  integrations: [
+    tailwind(), 
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/api\.example\.com\/.*$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+              },
             },
           },
-        },
-      ],
-    },
-    manifest: {
-      name: 'bit Tecnologies',
-      short_name: 'bit',
-      description: 'bit Tecnologies - Professional Web Development',
-      theme_color: '#000000',
-      background_color: '#ffffff',
-      display: 'standalone',
-      orientation: 'portrait',
-      scope: '/',
-      start_url: '/',
-      icons: [
-        {
-          src: '/pwa-192x192.png',
-          sizes: '192x192',
-          type: 'image/png'
-        },
-        {
-          src: '/pwa-512x512.png',
-          sizes: '512x512',
-          type: 'image/png'
-        }
-      ]
-    }
-  })],
+        ],
+      },
+      manifest: {
+        name: 'bit Tecnologies',
+        short_name: 'bit',
+        description: 'bit Tecnologies - Professional Web Development',
+        theme_color: '#000000',
+        background_color: '#ffffff',
+        display: 'standalone',
+        orientation: 'portrait',
+        scope: '/',
+        start_url: '/',
+        icons: [
+          {
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ]
+      }
+    }), 
+    sitemap() // Теперь плагин на своём месте внутри массива
+  ],
+  
   i18n: {
     defaultLocale: "ru",
     locales: ["ru", "en"],
@@ -56,7 +62,9 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
+  
   output: "static",
+  
   vite: {
     build: {
       minify: 'terser',
@@ -68,17 +76,18 @@ export default defineConfig({
         }
       },
       chunkSizeWarningLimit: 1000,
-      // Optimize assets
       assetsInlineLimit: 4096
     }
   },
+  
   build: {
     format: 'directory',
     assets: 'assets'
   },
+  
   image: {
     domains: ['cybernattor.github.io'],
     // @ts-ignore - formats is valid in Astro
     formats: ['avif', 'webp'],
   },
-  });
+});
