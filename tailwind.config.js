@@ -5,9 +5,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        'display': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
-        'mono': ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace'],
+        'sans': ['Manrope', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        'display': ['Sora', 'Manrope', 'system-ui', 'sans-serif'],
+        'mono': ['IBM Plex Mono', 'Consolas', 'Monaco', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
