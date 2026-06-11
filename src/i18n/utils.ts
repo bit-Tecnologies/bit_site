@@ -1,6 +1,9 @@
 import { ui, defaultLang } from './ui';
 
 export function getLangFromUrl(url: URL) {
+  const queryLang = url.searchParams.get('lang');
+  if (queryLang && queryLang in ui) return queryLang as keyof typeof ui;
+
   const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as keyof typeof ui;
   return defaultLang;
@@ -13,13 +16,17 @@ export function useTranslations(lang: keyof typeof ui) {
 }
 
 export function translatePath(url: URL) {
-  const urlLang = url.searchParams.get('lang') || defaultLang;
-  const lang = urlLang in ui ? urlLang as keyof typeof ui : defaultLang;
+  const lang = getLangFromUrl(url);
 
   return function translatePath(path: string, targetLang?: string) {
     const l = targetLang || lang;
-    // Return path with query parameter for language
-    const separator = path.includes('?') ? '&' : '?';
-    return `${path}${separator}lang=${l}`;
+    const [pathAndQuery, hash = ''] = path.split('#');
+    const [pathname, query = ''] = pathAndQuery.split('?');
+    const params = new URLSearchParams(query);
+    params.delete('lang');
+    const queryString = params.toString();
+    const cleanPath = pathname.replace(/^\/(ru|en)(?=\/|$)/, '') || '/';
+    const localizedPath = l === defaultLang ? cleanPath : `/${l}${cleanPath === '/' ? '/' : cleanPath}`;
+    return `${localizedPath}${queryString ? `?${queryString}` : ''}${hash ? `#${hash}` : ''}`;
   }
 }

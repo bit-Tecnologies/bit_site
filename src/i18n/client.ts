@@ -20,8 +20,13 @@ class I18nClient {
   constructor() {
     // Initialize language from localStorage or browser settings
     if (typeof window !== 'undefined') {
+      const queryLang = new URLSearchParams(window.location.search).get('lang') as Language | null;
       const storedLang = localStorage.getItem('user-lang') as Language;
-      if (storedLang && storedLang in ui) {
+
+      if (queryLang && queryLang in ui) {
+        this.currentLang = queryLang;
+        localStorage.setItem('user-lang', this.currentLang);
+      } else if (storedLang && storedLang in ui) {
         this.currentLang = storedLang;
       } else {
         // Detect browser language
@@ -42,14 +47,22 @@ class I18nClient {
   }
 
   setLanguage(lang: Language) {
-    if (lang in ui && lang !== this.currentLang) {
-      this.currentLang = lang;
-      window.currentLang = lang;
-      localStorage.setItem('user-lang', lang);
-      this.notifyListeners();
-      this.updateDocumentLanguage();
-      updatePageTranslations();
+    if (!(lang in ui)) return;
+
+    this.currentLang = lang;
+    window.currentLang = lang;
+    localStorage.setItem('user-lang', lang);
+
+    const targetUrl = this.getUrlForLanguage(lang);
+    if (targetUrl !== window.location.href) {
+      window.location.href = targetUrl;
+      return;
     }
+
+    this.notifyListeners();
+    this.updateDocumentLanguage();
+    updatePageTranslations();
+    window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
   }
 
   translate(key: string): string {
@@ -80,6 +93,14 @@ class I18nClient {
         canonicalLink.setAttribute('href', `${window.location.origin}${cleanPath}`);
       }
     }
+  }
+
+  private getUrlForLanguage(lang: Language): string {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('lang');
+    const cleanPath = url.pathname.replace(/^\/(ru|en)(?=\/|$)/, '') || '/';
+    url.pathname = lang === defaultLang ? cleanPath : `/${lang}${cleanPath === '/' ? '/' : cleanPath}`;
+    return url.href;
   }
 
   getCleanPath(pathname: string): string {
@@ -186,4 +207,3 @@ if (typeof window !== 'undefined') {
     document.addEventListener('DOMContentLoaded', updatePageTranslations);
   }
 }
-
