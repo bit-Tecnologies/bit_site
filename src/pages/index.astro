@@ -13,6 +13,8 @@ const translate = translatePath(Astro.url);
 
 const release = await fetchLatestRelease('bit-Tecnologies/bit_hub', lang).catch(() => null);
 const downloadUrl = release?.url || translate('/bit-hub');
+const hubReleaseVersion = release?.version || t('hero.hub_release_fallback');
+const hubDownloadTitle = `${t('hero.hub_release_label')}: ${hubReleaseVersion}`;
 
 const title = 'bit Tecnologies — Экосистема удобных приложений';
 const description = 'bit Tecnologies разрабатывает нативные, быстрые и приватные приложения для Android. Никакой телеметрии и рекламы.';
@@ -100,22 +102,21 @@ const productCards = [
 						{t('hero.subtitle')}
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-						<Button href={downloadUrl} variant="primary" download>
-							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+						<Button href={downloadUrl} variant="primary" class="group relative w-full gap-2 overflow-hidden sm:w-auto sm:min-w-[22rem] sm:justify-between [&>*]:relative [&>*]:z-10" download ariaLabel={`${t('hero.download_hub')}. ${hubDownloadTitle}`}>
+							<span class="flex min-w-0 items-center gap-2">
+								<svg class="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14l-4-4h3V9h2v4h3l-4 4z"/>
-							</svg>
-							<span>{t('hero.download_hub')}</span>
+								</svg>
+								<span class="truncate">{t('hero.download_hub')}</span>
+							</span>
+							<span class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/20 bg-white/12 px-2.5 py-1 text-[0.68rem] font-extrabold leading-none text-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] backdrop-blur-xl transition duration-200 group-hover:bg-white/18 group-focus-visible:bg-white/18 dark:border-slate-950/10 dark:bg-slate-950/12 dark:text-slate-950/80">
+								<span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.9)]"></span>
+								<span class="font-mono">{hubReleaseVersion}</span>
+							</span>
 						</Button>
 						<Button href="#apps" variant="outline">
 							<span>{t('hero.apps_catalog')}</span>
 						</Button>
-					</div>
-					<div class="mt-5 flex max-w-fit items-center gap-3 rounded-2xl border border-white/75 bg-white/52 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl dark:border-white/12 dark:bg-white/8">
-						<Image src={favicon} alt="" class="h-9 w-9 rounded-xl" />
-						<div class="min-w-0">
-							<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('hero.hub_release_label')}</p>
-							<p class="truncate font-mono text-sm font-extrabold text-slate-900 dark:text-white">{release?.version || t('hero.hub_release_fallback')}</p>
-						</div>
 					</div>
 					<div class="mt-5 flex flex-wrap gap-3 text-sm font-bold text-slate-600 dark:text-slate-300">
 						<span class="liquid-chip">{t('hero.no_trackers')}</span>
