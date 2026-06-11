@@ -4,10 +4,10 @@ name = "bit-site"
 
 [setup]
 script = '''
-Установка зависимостей
+Установка зависимостей:
 npm install
 
-Запуск dev сервера
+Запуск dev сервера:
 npm run dev
 '''
 
@@ -19,4 +19,4 @@ command = "npm install"
 [[actions]]
 name = "Запустить dev сервер"
 icon = "run"
-command = "npm run dev"
+command = "npx astro dev --host"
