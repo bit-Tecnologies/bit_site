@@ -1,15 +1,20 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import VitePWA from '@vite-pwa/astro';
 import sitemap from '@astrojs/sitemap';
+
+/** @type {any} Astro and @tailwindcss/vite currently resolve different Vite type copies here. */
+const tailwindPlugin = tailwindcss();
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://bit-tecnologies.pages.dev',
-  
+  devToolbar: {
+    enabled: false,
+  },
+
   integrations: [
-    tailwind(), 
     VitePWA({
       registerType: 'autoUpdate',
       workbox: {
@@ -51,10 +56,10 @@ export default defineConfig({
           }
         ]
       }
-    }), 
-    sitemap() // Теперь плагин на своём месте внутри массива
+    }),
+    sitemap()
   ],
-  
+
   i18n: {
     defaultLocale: "ru",
     locales: ["ru", "en"],
@@ -62,10 +67,11 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
-  
+
   output: "static",
-  
+
   vite: {
+    plugins: [tailwindPlugin],
     build: {
       minify: 'terser',
       terserOptions: {
@@ -79,12 +85,12 @@ export default defineConfig({
       assetsInlineLimit: 4096
     }
   },
-  
+
   build: {
     format: 'directory',
     assets: 'assets'
   },
-  
+
   image: {
     domains: ['cybernattor.github.io'],
     // @ts-ignore - formats is valid in Astro

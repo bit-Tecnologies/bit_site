@@ -6,7 +6,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 ---
-<footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 mt-auto transition-colors duration-300">
+<footer class="border-t border-white/70 dark:border-white/10 bg-[#ecefe7]/80 dark:bg-[#080a0d]/90 mt-auto transition-colors duration-300">
   <div class="container mx-auto px-4 py-6 sm:py-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
       <div>
@@ -42,6 +42,12 @@ const translate = translatePath(Astro.url);
               <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
             </svg>
             <span>{t('nav.privacy')}</span>
+          </a>
+          <a href="https://keepandroidopen.org/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-emerald-700 transition-colors hover:border-emerald-500/40 hover:bg-emerald-500/15 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200">
+            <svg class="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m7-7H5" />
+            </svg>
+            <span>Keep Android Open</span>
           </a>
         </div>
       </div>

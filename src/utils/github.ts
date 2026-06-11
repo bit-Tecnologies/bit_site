@@ -81,9 +81,10 @@ export async function fetchLatestRelease(repo: string, lang: string = 'ru'): Pro
     };
   } catch (e) {
     if (e instanceof Error && e.name === 'AbortError') {
-      console.error(`Timeout fetching GitHub release for ${repo}`);
+      console.warn(`Timeout fetching GitHub release for ${repo}; using fallback release data.`);
     } else {
-      console.error(`Error fetching GitHub release for ${repo}:`, e);
+      const message = e instanceof Error ? e.message : String(e);
+      console.warn(`Could not fetch GitHub release for ${repo}; using fallback release data. ${message}`);
     }
     return null;
   }

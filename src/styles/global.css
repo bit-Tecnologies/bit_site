@@ -1,6 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Manrope', 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Sora', 'Manrope', 'system-ui', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Consolas', 'Monaco', monospace;
+
+  --animate-fade-in: fadeIn 0.6s ease-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+  --animate-slide-down: slideDown 0.5s ease-out;
+  --animate-scale-in: scaleIn 0.5s ease-out;
+  --animate-spin-slow: spinSlow 20s linear infinite;
+  --animate-bounce-subtle: bounceSubtle 2s ease-in-out infinite;
+  --animate-gradient: gradientShift 4s ease infinite;
+  --animate-pulse-soft: pulseSoft 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out infinite 3s;
+
+  --background-size-200: 200% 200%;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes slideDown {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes scaleIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes bounceSubtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes pulseSoft {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
 
 @layer base {
   html {
@@ -34,6 +89,182 @@
 }
 
 @layer utilities {
+  .liquid-canvas {
+    background:
+      linear-gradient(115deg, rgba(255, 255, 255, 0.92), rgba(234, 247, 240, 0.74) 42%, rgba(228, 239, 255, 0.72)),
+      repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.045) 0 1px, transparent 1px 72px),
+      repeating-linear-gradient(0deg, rgba(15, 23, 42, 0.04) 0 1px, transparent 1px 72px);
+  }
+
+  .dark .liquid-canvas {
+    background:
+      linear-gradient(115deg, rgba(7, 10, 14, 0.98), rgba(12, 27, 30, 0.94) 48%, rgba(14, 21, 35, 0.94)),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 72px),
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 72px);
+  }
+
+  .liquid-nav {
+    border-radius: 1.45rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.42));
+    box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(28px) saturate(1.5);
+    -webkit-backdrop-filter: blur(28px) saturate(1.5);
+  }
+
+  .dark .liquid-nav {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: linear-gradient(135deg, rgba(20, 26, 34, 0.72), rgba(12, 14, 18, 0.52));
+    box-shadow: 0 18px 70px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  .liquid-surface,
+  .liquid-card,
+  .liquid-panel,
+  .liquid-strip,
+  .liquid-device,
+  .liquid-cta {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38));
+    box-shadow: 0 22px 70px rgba(15, 23, 42, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(30px) saturate(1.55);
+    -webkit-backdrop-filter: blur(30px) saturate(1.55);
+  }
+
+  .liquid-card,
+  .liquid-panel,
+  .liquid-strip,
+  .liquid-device,
+  .liquid-cta {
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+
+  .liquid-panel,
+  .liquid-strip,
+  .liquid-cta {
+    border-radius: 2.25rem;
+  }
+
+  .dark .liquid-surface,
+  .dark .liquid-card,
+  .dark .liquid-panel,
+  .dark .liquid-strip,
+  .dark .liquid-device,
+  .dark .liquid-cta {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.045));
+    box-shadow: 0 22px 80px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.13);
+  }
+
+  .liquid-card::before,
+  .liquid-panel::before,
+  .liquid-device::before,
+  .liquid-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(120deg, rgba(255, 255, 255, 0.6), transparent 38%),
+      linear-gradient(280deg, rgba(45, 212, 191, 0.12), transparent 36%);
+    opacity: 0.8;
+  }
+
+  .liquid-card > *,
+  .liquid-panel > *,
+  .liquid-device > *,
+  .liquid-cta > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .liquid-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liquid-button::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.26), transparent 42%, rgba(255, 255, 255, 0.1));
+    pointer-events: none;
+  }
+
+  .liquid-chip {
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.52);
+    padding: 0.55rem 0.85rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .dark .liquid-chip {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .liquid-device {
+    transform: rotate(-1deg);
+  }
+
+  .liquid-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.52);
+    padding: 0.85rem 1rem;
+    color: rgb(71, 85, 105);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .liquid-row strong {
+    color: rgb(15, 23, 42);
+    font-family: "IBM Plex Mono", Consolas, Monaco, monospace;
+    font-size: 0.85rem;
+  }
+
+  .dark .liquid-row {
+    background: rgba(255, 255, 255, 0.075);
+    color: rgb(203, 213, 225);
+  }
+
+  .dark .liquid-row strong {
+    color: white;
+  }
+
+  .liquid-preview {
+    border-radius: 1.6rem;
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.06), transparent),
+      rgba(255, 255, 255, 0.48);
+    padding: 1rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  }
+
+  .dark .liquid-preview {
+    background:
+      linear-gradient(135deg, rgba(52, 211, 153, 0.08), transparent),
+      rgba(255, 255, 255, 0.06);
+  }
+
+  .liquid-icon {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.15rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
   .text-gradient {
     background: linear-gradient(135deg, #3b82f6, #06b6d4, #10b981);
     background-size: 200% 200%;

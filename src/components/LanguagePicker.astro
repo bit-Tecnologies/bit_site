@@ -3,10 +3,6 @@ import { getLangFromUrl, translatePath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const currentPath = Astro.url.pathname;
-
-// A simple utility to get the opposite language
-const oppositeLang = lang === 'ru' ? 'en' : 'ru';
-const oppositeUrl = translatePath(Astro.url)(currentPath, oppositeLang);
 ---
 
 <div class="relative inline-block text-left dropdown-mobile-fix" id="lang-picker-container" style="z-index: 9999;">

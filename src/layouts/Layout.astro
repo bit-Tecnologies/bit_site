@@ -3,8 +3,8 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import favicon from '../../public/favicon.svg';
-import { getLangFromUrl } from '../i18n/utils';
 import { ui, defaultLang } from '../i18n/ui';
+import '../styles/global.css';
 
 export interface Props {
 	title: string;
@@ -21,7 +21,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'http://localhost
 
 // Build alternate language URLs with query parameters
 const currentPath = Astro.url.pathname;
-const currentSearch = Astro.url.search;
 const hash = Astro.url.hash;
 
 // Create URLs for language switching
@@ -89,9 +88,8 @@ const jsonLd = schema || defaultSchema;
 		<!-- Preconnect to external domains -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<!-- Preload critical resources -->
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+		<!-- Font stylesheet -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" />
 		<!-- DNS prefetch for external resources -->
 		<link rel="dns-prefetch" href="https://cybernattor.github.io" />
 
@@ -140,7 +138,7 @@ const jsonLd = schema || defaultSchema;
       document.addEventListener('astro:after-swap', applyTheme);
     </script>
 	</head>
-	<body class="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-[Inter,sans-serif] antialiased transition-colors duration-300">
+	<body class="bg-[#f6f7f3] dark:bg-[#0b0d10] text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
 		<!-- Skip link for keyboard navigation -->
 		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
 			Перейти к основному содержимому
@@ -209,33 +207,10 @@ const jsonLd = schema || defaultSchema;
 			setupRevealObserver();
 			setupCursorGlow();
 
-			// Load Keep Android Open banner on initial page load
-			const initialScript = document.createElement('script');
-			initialScript.src = 'https://keepandroidopen.org/banner.js?size=mini';
-			initialScript.id = 'kao-banner-script';
-			document.body.insertBefore(initialScript, document.body.firstChild);
-
 			// Re-setup after View Transitions
 			document.addEventListener('astro:after-swap', () => {
 				setupRevealObserver();
 				setupCursorGlow();
-
-				// Clean up any existing banners and scripts
-				const existingScript = document.getElementById('kao-banner-script');
-				if (existingScript) {
-					existingScript.remove();
-				}
-
-				// Remove all existing banners
-				document.querySelectorAll('.kao-banner').forEach(banner => banner.remove());
-
-				// Load banner after a small delay to ensure DOM is ready
-				setTimeout(() => {
-					const newScript = document.createElement('script');
-					newScript.src = 'https://keepandroidopen.org/banner.js?size=mini';
-					newScript.id = 'kao-banner-script';
-					document.body.insertBefore(newScript, document.body.firstChild);
-				}, 100);
 			});
 		</script>
 	</body>

@@ -1,12 +1,7 @@
 ---
-import { getLangFromUrl, translatePath } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const currentPath = Astro.url.pathname;
-const translate = translatePath(Astro.url);
-
-// Get opposite language for fallback
-const oppositeLang = lang === 'ru' ? 'en' : 'ru';
 ---
 
 <div class="relative inline-block text-left dropdown-mobile-fix" id="dynamic-lang-picker-container" style="z-index: 9999;">
@@ -61,9 +56,6 @@ const oppositeLang = lang === 'ru' ? 'en' : 'ru';
 
 <script>
   // Dynamic language picker using centralized i18n client
-  // @ts-ignore
-  let currentLang = document.documentElement.lang || 'ru';
-
   function updateLanguageButtons() {
     // Update active state in dropdown
     const buttons = document.querySelectorAll('.lang-option');
@@ -95,7 +87,7 @@ const oppositeLang = lang === 'ru' ? 'en' : 'ru';
     }
   }
 
-  window.setupDynamicLangPicker = function() {
+  function setupDynamicLangPicker() {
     const container = document.getElementById('dynamic-lang-picker-container');
     const btn = document.getElementById('dynamic-lang-menu-button');
     const dropdown = document.getElementById('dynamic-lang-dropdown');
@@ -148,13 +140,15 @@ const oppositeLang = lang === 'ru' ? 'en' : 'ru';
     document.addEventListener('click', handleOutsideClick);
   }
 
+  (window as unknown as Window & { setupDynamicLangPicker: () => void }).setupDynamicLangPicker = setupDynamicLangPicker;
+
   // Initialize on load
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', window.setupDynamicLangPicker);
+    document.addEventListener('DOMContentLoaded', setupDynamicLangPicker);
   } else {
-    window.setupDynamicLangPicker();
+    setupDynamicLangPicker();
   }
 
   // Re-setup after Astro view transitions
-  document.addEventListener('astro:after-swap', window.setupDynamicLangPicker);
+  document.addEventListener('astro:after-swap', setupDynamicLangPicker);
 </script>

@@ -15,15 +15,16 @@
     "clean": "rm -rf dist .astro"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/vite": "^4.0.0",
     "@vite-pwa/astro": "^1.2.0",
-    "astro": "^5.16.9",
-    "tailwindcss": "^3.4.19",
-    "terser": "^5.34.1"
+    "astro": "^6.4.4",
+    "tailwindcss": "^4.0.0",
+    "terser": "^5.34.1",
+    "vite": "^6.0.0"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@astrojs/sitemap": "^3.7.3",
-    "typescript": "^5.9.3"
+    "@astrojs/check": "^0.9.2",
+    "@astrojs/sitemap": "^3.2.1",
+    "typescript": "^5.7.3"
   }
 }
