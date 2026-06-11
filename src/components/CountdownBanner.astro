@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 
 // Generate unique ID for this banner instance
-const bannerId = `banner-${Math.random().toString(36).substr(2, 9)}`;
+const bannerId = `banner-${Math.random().toString(36).slice(2, 11)}`;
 ---
 
 <div
@@ -137,71 +137,75 @@ const bannerId = `banner-${Math.random().toString(36).substr(2, 9)}`;
   }
 </style>
 
-<script define:vars={{ bannerId }} is:inline>
+<script>
   // Countdown logic
   function initCountdown() {
-    const banner = document.getElementById(bannerId);
-    if (!banner) return;
+    const banners = document.querySelectorAll<HTMLElement>('.countdown-banner:not([data-countdown-ready="true"])');
 
-    const targetDate = new Date(banner.dataset.targetDate || '2026-09-01T00:00:00').getTime();
-    const timerElement = banner.querySelector('.countdown-timer');
-    const closeButton = banner.querySelector('.banner-close');
+    banners.forEach((banner) => {
+      banner.dataset.countdownReady = 'true';
+      const targetDate = new Date(banner.dataset.targetDate || '2026-09-01T00:00:00').getTime();
+      const timerElement = banner.querySelector<HTMLElement>('.countdown-timer');
+      const closeButton = banner.querySelector('.banner-close');
+      if (!timerElement) return;
+      const timer = timerElement;
 
-    // Check if previously dismissed
-    const storageKey = `banner-hidden-${bannerId}`;
-    const dismissDays = 30;
+      // Check if previously dismissed
+      const storageKey = `banner-hidden-${banner.id}`;
+      const dismissDays = 30;
 
-    if (banner.dataset.showClose === 'on') {
-      try {
-        const dismissed = localStorage.getItem(storageKey);
-        if (dismissed) {
-          const elapsed = Date.now() - Number(dismissed);
-          if (elapsed < dismissDays * 24 * 60 * 60 * 1000) {
-            banner.style.display = 'none';
-            return;
-          }
-          localStorage.removeItem(storageKey);
-        }
-      } catch (e) {}
-    }
-
-    // Close button handler
-    if (closeButton) {
-      closeButton.addEventListener('click', () => {
-        banner.style.display = 'none';
+      if (banner.dataset.showClose === 'on') {
         try {
-          localStorage.setItem(storageKey, String(Date.now()));
+          const dismissed = localStorage.getItem(storageKey);
+          if (dismissed) {
+            const elapsed = Date.now() - Number(dismissed);
+            if (elapsed < dismissDays * 24 * 60 * 60 * 1000) {
+              banner.style.display = 'none';
+              return;
+            }
+            localStorage.removeItem(storageKey);
+          }
         } catch (e) {}
-      });
-    }
-
-    // Countdown update function
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        timerElement.textContent = 'Expired';
-        return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Close button handler
+      if (closeButton) {
+        closeButton.addEventListener('click', () => {
+          banner.style.display = 'none';
+          try {
+            localStorage.setItem(storageKey, String(Date.now()));
+          } catch (e) {}
+        });
+      }
 
-      const parts = [];
-      if (days > 0) parts.push(`${days}d`);
-      if (parts.length > 0 || hours > 0) parts.push(`${hours}h`);
-      if (parts.length > 0 || minutes > 0) parts.push(`${minutes}m`);
-      parts.push(`${seconds}s`);
+      // Countdown update function
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-      timerElement.textContent = parts.join(' ');
-    }
+        if (distance < 0) {
+          timer.textContent = 'Expired';
+          return;
+        }
 
-    // Start countdown
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const parts = [];
+        if (days > 0) parts.push(`${days}d`);
+        if (parts.length > 0 || hours > 0) parts.push(`${hours}h`);
+        if (parts.length > 0 || minutes > 0) parts.push(`${minutes}m`);
+        parts.push(`${seconds}s`);
+
+        timer.textContent = parts.join(' ');
+      }
+
+      // Start countdown
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    });
   }
 
   // Initialize when DOM is ready

@@ -4,9 +4,15 @@ import tailwindcss from '@tailwindcss/vite';
 import VitePWA from '@vite-pwa/astro';
 import sitemap from '@astrojs/sitemap';
 
+/** @type {any} Astro and @tailwindcss/vite currently resolve different Vite type copies here. */
+const tailwindPlugin = tailwindcss();
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://bit-tecnologies.pages.dev',
+  devToolbar: {
+    enabled: false,
+  },
 
   integrations: [
     VitePWA({
@@ -65,7 +71,7 @@ export default defineConfig({
   output: "static",
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindPlugin],
     build: {
       minify: 'terser',
       terserOptions: {
