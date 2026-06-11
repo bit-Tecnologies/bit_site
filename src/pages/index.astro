@@ -36,7 +36,7 @@ const productCards = [
 		name: t('app.bithub'),
 		status: { label: 'Beta', color: 'emerald' as const },
 		description: t('app.bithub_desc'),
-		requirements: 'Android 10+',
+		requirements: 'Android 6.0+',
 		size: release?.size || '~100 МБ',
 		iconImage: '/favicon.svg',
 	},
@@ -45,7 +45,7 @@ const productCards = [
 		name: t('app.bitdelta'),
 		status: { label: 'Beta', color: 'emerald' as const },
 		description: t('app.bitdelta_desc'),
-		requirements: 'Android 12+',
+		requirements: 'Android 7.0+',
 		size: '~5 МБ',
 		iconBgColor: 'from-violet-500 via-fuchsia-500 to-rose-500',
 		icon: 'delta',
@@ -55,7 +55,7 @@ const productCards = [
 		name: t('app.bitrecord'),
 		status: { label: t('app.in_development'), color: 'blue' as const },
 		description: t('app.bitrecord_desc'),
-		requirements: 'Android 11+',
+		requirements: 'Android 7.0+',
 		size: '~3 МБ',
 		iconBgColor: 'from-rose-500 via-orange-500 to-amber-400',
 		icon: 'record',
@@ -63,9 +63,9 @@ const productCards = [
 	{
 		href: translate('/bit-together'),
 		name: t('app.bittogether'),
-		status: { label: t('app.in_development'), color: 'blue' as const },
+		status: { label: t('app.planning'), color: 'yellow' as const },
 		description: t('app.bittogether_desc'),
-		requirements: 'Android 10+',
+		requirements: 'TBA',
 		size: 'TBA',
 		iconBgColor: 'from-cyan-500 via-sky-500 to-blue-600',
 		icon: 'together',
@@ -75,7 +75,7 @@ const productCards = [
 		name: t('app.bitlauncher'),
 		status: { label: t('app.in_development'), color: 'blue' as const },
 		description: t('app.bitlauncher_desc'),
-		requirements: 'Android 10+',
+		requirements: 'Android 7.0+',
 		size: 'TBA',
 		iconBgColor: 'from-emerald-500 via-teal-500 to-sky-500',
 		icon: 'launcher',
@@ -152,7 +152,7 @@ const productCards = [
 							<div class="liquid-preview">
 								<div class="flex items-center justify-between">
 									<span class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Стек приложений</span>
-									<span class="font-mono text-xs text-slate-400">05 модулей</span>
+									<span class="font-mono text-xs text-slate-400">05 приложений</span>
 								</div>
 								<div class="mt-4 grid grid-cols-5 gap-2">
 									{productCards.map((product) => (
@@ -168,13 +168,13 @@ const productCards = [
 													<>
 														{product.icon === 'delta' && <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.19L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z"/></svg>}
 														{product.icon === 'record' && <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>}
-														{product.icon === 'together' && <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16,11C17.66,11 18.99,9.66 18.99,8C18.99,6.34 17.66,5 16,5C14.34,5 13,6.34 13,8C13,9.66 14.34,11 16,11M8,11C9.66,11 10.99,9.66 10.99,8C10.99,6.34 9.66,5 8,5C6.34,5 5,6.34 5,8C5,9.66 6.34,11 8,11M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M16,13C15.71,13 15.38,13.02 15.03,13.05C16.19,13.89 17,15.02 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13Z"/></svg>}
+														{product.icon === 'together' && <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6V9M6,6H18V8H6V6M6,12H14V14H6V12Z"/></svg>}
 														{product.icon === 'launcher' && <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A5,5 0 0,0 7,7C7,8.76 7.91,10.31 9.28,11.2C8.47,12.73 8,14.69 8,17H10C10,14.83 10.45,13.04 11.2,11.79C11.46,11.92 11.73,12 12,12C12.27,12 12.54,11.92 12.8,11.79C13.55,13.04 14,14.83 14,17H16C16,14.69 15.53,12.73 14.72,11.2C16.09,10.31 17,8.76 17,7A5,5 0 0,0 12,2M12,4A3,3 0 0,1 15,7A3,3 0 0,1 12,10A3,3 0 0,1 9,7A3,3 0 0,1 12,4M6,18L4,22H8L10,18H6M14,18L16,22H20L18,18H14Z"/></svg>}
 													</>
 												)}
 											</span>
 											<span class="w-full truncate text-[10px] font-extrabold leading-none text-slate-700 dark:text-slate-200">{product.name.replace('bit ', '')}</span>
-											<span class={`h-1.5 w-1.5 rounded-full ${product.status.color === 'emerald' ? 'bg-emerald-400' : 'bg-sky-400'} shadow-[0_0_12px_currentColor]`}></span>
+											<span class={`h-1.5 w-1.5 rounded-full ${product.status.color === 'emerald' ? 'bg-emerald-400' : product.status.color === 'yellow' ? 'bg-amber-400' : 'bg-sky-400'} shadow-[0_0_12px_currentColor]`}></span>
 										</a>
 									))}
 								</div>
@@ -263,12 +263,9 @@ const productCards = [
 					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.apps')}</h2>
 					<p class="mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">{t('home.apps_subtitle')}</p>
 				</div>
-				<Button href={downloadUrl} variant="outline" download>
-					<span>Скачать bit Hub</span>
-				</Button>
 			</div>
 
-			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
 				{productCards.map((product, index) => (
 					<div class={`reveal stagger-${Math.min(index + 1, 6)}`}>
 						<AppCard
@@ -283,7 +280,7 @@ const productCards = [
 						>
 							{product.icon === 'delta' && <svg slot="icon" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.19L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z"/></svg>}
 							{product.icon === 'record' && <svg slot="icon" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>}
-							{product.icon === 'together' && <svg slot="icon" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M16,11C17.66,11 18.99,9.66 18.99,8C18.99,6.34 17.66,5 16,5C14.34,5 13,6.34 13,8C13,9.66 14.34,11 16,11M8,11C9.66,11 10.99,9.66 10.99,8C10.99,6.34 9.66,5 8,5C6.34,5 5,6.34 5,8C5,9.66 6.34,11 8,11M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M16,13C15.71,13 15.38,13.02 15.03,13.05C16.19,13.89 17,15.02 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13Z"/></svg>}
+							{product.icon === 'together' && <svg slot="icon" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6V9M6,6H18V8H6V6M6,12H14V14H6V12Z"/></svg>}
 							{product.icon === 'launcher' && <svg slot="icon" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A5,5 0 0,0 7,7C7,8.76 7.91,10.31 9.28,11.2C8.47,12.73 8,14.69 8,17H10C10,14.83 10.45,13.04 11.2,11.79C11.46,11.92 11.73,12 12,12C12.27,12 12.54,11.92 12.8,11.79C13.55,13.04 14,14.83 14,17H16C16,14.69 15.53,12.73 14.72,11.2C16.09,10.31 17,8.76 17,7A5,5 0 0,0 12,2M12,4A3,3 0 0,1 15,7A3,3 0 0,1 12,10A3,3 0 0,1 9,7A3,3 0 0,1 12,4M6,18L4,22H8L10,18H6M14,18L16,22H20L18,18H14Z"/></svg>}
 						</AppCard>
 					</div>
@@ -298,23 +295,24 @@ const productCards = [
 				<div>
 					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-violet-300">Устройства</p>
 					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.compatibility')}</h2>
-					<p class="mt-4 text-lg text-slate-600 dark:text-slate-300">{t('home.compatibility_subtitle')}</p>
+					<p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Минимальные версии Android указаны отдельно для каждого приложения, без обобщения до одной версии на всю экосистему.</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
 					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-white/8 dark:ring-white/10">
-						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('home.requirements_title')}</h3>
+						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">Минимальный SDK</h3>
 						<ul class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
-							<li>Android 10 (API 29) и выше</li>
-							<li>2 ГБ ОЗУ рекомендуется</li>
-							<li>ARMv7 или ARM64</li>
+							<li class="flex items-center justify-between gap-4"><span>bit Hub</span><span class="font-mono">Android 6.0 / API 23</span></li>
+							<li class="flex items-center justify-between gap-4"><span>bit Record</span><span class="font-mono">Android 7.0 / API 24</span></li>
+							<li class="flex items-center justify-between gap-4"><span>bit Launcher</span><span class="font-mono">Android 7.0 / API 24</span></li>
+							<li class="flex items-center justify-between gap-4"><span>bit Delta</span><span class="font-mono">Android 7.0 / API 24</span></li>
 						</ul>
 					</div>
 					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-white/8 dark:ring-white/10">
-						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('home.testing_title')}</h3>
+						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">Общие требования</h3>
 						<ul class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
-							<li>Протестировано на Android 16</li>
-							<li>Поддержка бюджетных устройств</li>
-							<li>Оптимизация батареи</li>
+							<li>ARMv7 или ARM64</li>
+							<li>2 ГБ ОЗУ рекомендуется</li>
+							<li>Без рекламы и скрытой телеметрии</li>
 						</ul>
 					</div>
 				</div>
@@ -338,7 +336,7 @@ const productCards = [
 						<span>GitHub</span>
 					</Button>
 				</div>
-				<p class="mt-5 font-mono text-sm text-slate-500 dark:text-slate-400">Размер: {release?.size || '~100 МБ'} / Android 10+ / Open source</p>
+				<p class="mt-5 font-mono text-sm text-slate-500 dark:text-slate-400">Размер: {release?.size || '~100 МБ'} / Android 6.0+ / Open source</p>
 			</div>
 		</div>
 	</section>
