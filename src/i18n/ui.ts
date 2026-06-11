@@ -22,6 +22,9 @@ export const ui = {
     'hero.download_hub': 'Скачать bit Hub (APK)',
     'hero.about_company': 'О компании',
     'hero.apps_catalog': 'Каталог приложений',
+    'hero.hub_release_label': 'Текущая версия bit Hub',
+    'hero.hub_release_fallback': 'Beta channel',
+    'hero.no_trackers': '0 трекеров',
 
     'home.apps': 'Наши приложения',
     'home.apps_subtitle': 'Нативные Android приложения, созданные с акцентом на производительность и пользовательский опыт',
@@ -98,6 +101,9 @@ export const ui = {
     'hero.download_hub': 'Download bit Hub (APK)',
     'hero.about_company': 'About Us',
     'hero.apps_catalog': 'App Catalog',
+    'hero.hub_release_label': 'Current bit Hub version',
+    'hero.hub_release_fallback': 'Beta channel',
+    'hero.no_trackers': '0 trackers',
 
     'home.apps': 'Our Applications',
     'home.apps_subtitle': 'Native Android apps created with a focus on performance and user experience',

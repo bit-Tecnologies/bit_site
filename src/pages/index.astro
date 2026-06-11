@@ -110,11 +110,17 @@ const productCards = [
 							<span>{t('hero.apps_catalog')}</span>
 						</Button>
 					</div>
-					<div class="mt-7 flex flex-wrap gap-3 text-sm font-bold text-slate-600 dark:text-slate-300">
-						<span class="liquid-chip">0 трекеров</span>
+					<div class="mt-5 flex max-w-fit items-center gap-3 rounded-2xl border border-white/75 bg-white/52 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl dark:border-white/12 dark:bg-white/8">
+						<Image src={favicon} alt="" class="h-9 w-9 rounded-xl" />
+						<div class="min-w-0">
+							<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('hero.hub_release_label')}</p>
+							<p class="truncate font-mono text-sm font-extrabold text-slate-900 dark:text-white">{release?.version || t('hero.hub_release_fallback')}</p>
+						</div>
+					</div>
+					<div class="mt-5 flex flex-wrap gap-3 text-sm font-bold text-slate-600 dark:text-slate-300">
+						<span class="liquid-chip">{t('hero.no_trackers')}</span>
 						<span class="liquid-chip">Open source</span>
 						<span class="liquid-chip">MIT</span>
-						<span class="liquid-chip">{release?.version || 'Beta channel'}</span>
 					</div>
 				</div>
 
