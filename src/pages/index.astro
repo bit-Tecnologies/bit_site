@@ -13,6 +13,8 @@ const translate = translatePath(Astro.url);
 
 const release = await fetchLatestRelease('bit-Tecnologies/bit_hub', lang).catch(() => null);
 const downloadUrl = release?.url || translate('/bit-hub');
+const hubReleaseVersion = release?.version || t('hero.hub_release_fallback');
+const hubDownloadTitle = `${t('hero.hub_release_label')}: ${hubReleaseVersion}`;
 
 const title = 'bit Tecnologies — Экосистема удобных приложений';
 const description = 'bit Tecnologies разрабатывает нативные, быстрые и приватные приложения для Android. Никакой телеметрии и рекламы.';
@@ -89,7 +91,7 @@ const productCards = [
 		<div class="container mx-auto px-4 pb-16 md:pb-24">
 			<div class="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
 				<div class="reveal max-w-3xl">
-					<div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/55 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-600 shadow-sm backdrop-blur-2xl dark:border-white/10 dark:bg-white/8 dark:text-slate-300">
+					<div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/55 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-600 shadow-sm backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/55 dark:text-slate-300">
 						<span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.8)]"></span>
 						Экосистема Android-приложений
 					</div>
@@ -100,22 +102,21 @@ const productCards = [
 						{t('hero.subtitle')}
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-						<Button href={downloadUrl} variant="primary" download>
-							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+						<Button href={downloadUrl} variant="primary" class="group relative w-full gap-2 overflow-hidden sm:w-auto sm:min-w-[22rem] sm:justify-between [&>*]:relative [&>*]:z-10" download ariaLabel={`${t('hero.download_hub')}. ${hubDownloadTitle}`}>
+							<span class="flex min-w-0 items-center gap-2">
+								<svg class="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14l-4-4h3V9h2v4h3l-4 4z"/>
-							</svg>
-							<span>{t('hero.download_hub')}</span>
+								</svg>
+								<span class="truncate">{t('hero.download_hub')}</span>
+							</span>
+							<span class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-950/10 bg-slate-950/[0.06] px-2.5 py-1 text-[0.68rem] font-extrabold leading-none text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl transition duration-200 group-hover:bg-slate-950/10 group-focus-visible:bg-slate-950/10 dark:border-white/15 dark:bg-white/12 dark:text-white/85 dark:group-hover:bg-white/18">
+								<span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.9)]"></span>
+								<span class="font-mono">{hubReleaseVersion}</span>
+							</span>
 						</Button>
 						<Button href="#apps" variant="outline">
 							<span>{t('hero.apps_catalog')}</span>
 						</Button>
-					</div>
-					<div class="mt-5 flex max-w-fit items-center gap-3 rounded-2xl border border-white/75 bg-white/52 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-xl dark:border-white/12 dark:bg-white/8">
-						<Image src={favicon} alt="" class="h-9 w-9 rounded-xl" />
-						<div class="min-w-0">
-							<p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('hero.hub_release_label')}</p>
-							<p class="truncate font-mono text-sm font-extrabold text-slate-900 dark:text-white">{release?.version || t('hero.hub_release_fallback')}</p>
-						</div>
 					</div>
 					<div class="mt-5 flex flex-wrap gap-3 text-sm font-bold text-slate-600 dark:text-slate-300">
 						<span class="liquid-chip">{t('hero.no_trackers')}</span>
@@ -159,7 +160,7 @@ const productCards = [
 										<a
 											href={product.href}
 											aria-label={product.name}
-											class="group flex aspect-square min-w-0 flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/70 p-2 text-center shadow-sm ring-1 ring-white/70 backdrop-blur-xl transition duration-200 hover:-translate-y-1 hover:bg-white/85 hover:shadow-md dark:bg-white/10 dark:ring-white/10 dark:hover:bg-white/15"
+											class="group flex aspect-square min-w-0 flex-col items-center justify-center gap-1.5 rounded-2xl bg-white/70 p-2 text-center shadow-sm ring-1 ring-white/70 backdrop-blur-xl transition duration-200 hover:-translate-y-1 hover:bg-white/85 hover:shadow-md dark:bg-slate-950/55 dark:ring-white/10 dark:hover:bg-slate-900/70"
 										>
 											<span class={`flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br ${product.iconBgColor || 'from-emerald-500 via-teal-500 to-sky-500'} text-white shadow-lg shadow-slate-900/10`}>
 												{product.iconImage ? (
@@ -298,7 +299,7 @@ const productCards = [
 					<p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Минимальные версии Android указаны отдельно для каждого приложения, без обобщения до одной версии на всю экосистему.</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
-					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-white/8 dark:ring-white/10">
+					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-slate-950/55 dark:ring-white/10">
 						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">Минимальный SDK</h3>
 						<ul class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
 							<li class="flex items-center justify-between gap-4"><span>bit Hub</span><span class="font-mono">Android 6.0 / API 23</span></li>
@@ -307,7 +308,7 @@ const productCards = [
 							<li class="flex items-center justify-between gap-4"><span>bit Delta</span><span class="font-mono">Android 7.0 / API 24</span></li>
 						</ul>
 					</div>
-					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-white/8 dark:ring-white/10">
+					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-slate-950/55 dark:ring-white/10">
 						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">Общие требования</h3>
 						<ul class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
 							<li>ARMv7 или ARM64</li>

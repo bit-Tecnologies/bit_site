@@ -4,11 +4,10 @@ import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<div class="relative inline-block text-left dropdown-mobile-fix" id="dynamic-lang-picker-container" style="z-index: 9999;">
+<div class="dynamic-lang-picker-container relative inline-block text-left dropdown-mobile-fix" style="z-index: 9999;">
   <button
     type="button"
-    class="inline-flex items-center justify-center p-2.5 rounded-lg text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-200 min-h-[44px] min-w-[44px] shadow-sm no-select focus-visible"
-    id="dynamic-lang-menu-button"
+    class="dynamic-lang-menu-button inline-flex items-center justify-center p-2.5 rounded-lg text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 hover:bg-slate-50 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-200 min-h-[44px] min-w-[44px] shadow-sm no-select focus-visible"
     aria-expanded="false"
     aria-haspopup="true"
   >
@@ -17,16 +16,14 @@ const lang = getLangFromUrl(Astro.url);
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
       </svg>
-      <span class="uppercase" id="current-lang-display">{lang}</span>
+      <span class="current-lang-display uppercase">{lang}</span>
     </span>
   </button>
 
   <div
-    id="dynamic-lang-dropdown"
-    class="origin-top-right absolute right-0 mt-2 w-24 rounded-md shadow-lg bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 divide-y divide-slate-100 dark:divide-slate-700 opacity-0 invisible transition-all duration-200 z-[10000] transform scale-95 pointer-events-none"
+    class="dynamic-lang-dropdown origin-top-right absolute right-0 mt-2 w-24 rounded-md shadow-lg bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 divide-y divide-slate-100 dark:divide-slate-700 opacity-0 invisible transition-all duration-200 z-[10000] transform scale-95 pointer-events-none"
     role="menu"
     aria-orientation="vertical"
-    aria-labelledby="dynamic-lang-menu-button"
     tabindex="-1"
   >
     <div class="py-1" role="none">
@@ -36,7 +33,6 @@ const lang = getLangFromUrl(Astro.url);
         role="menuitem"
         tabindex="-1"
         data-lang="ru"
-        id="dynamic-lang-ru"
       >
         RU
       </button>
@@ -46,7 +42,6 @@ const lang = getLangFromUrl(Astro.url);
         role="menuitem"
         tabindex="-1"
         data-lang="en"
-        id="dynamic-lang-en"
       >
         EN
       </button>
@@ -71,71 +66,65 @@ const lang = getLangFromUrl(Astro.url);
     });
     
     // Update current lang display
-    const display = document.getElementById('current-lang-display');
-    if (display) display.textContent = window.currentLang;
+    const displays = document.querySelectorAll('.current-lang-display');
+    displays.forEach(display => {
+      display.textContent = window.currentLang;
+    });
   }
 
   function handleOutsideClick(e: Event) {
-    const container = document.getElementById('dynamic-lang-picker-container');
-    const dropdown = document.getElementById('dynamic-lang-dropdown');
-    const btn = document.getElementById('dynamic-lang-menu-button');
+    document.querySelectorAll<HTMLElement>('.dynamic-lang-picker-container').forEach((container) => {
+      const dropdown = container.querySelector('.dynamic-lang-dropdown');
+      const btn = container.querySelector('.dynamic-lang-menu-button');
+      if (!dropdown || !btn || container.contains(e.target as Node)) return;
 
-    if (container && dropdown && btn && !container.contains(e.target as Node)) {
       btn.setAttribute('aria-expanded', 'false');
       dropdown.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
       dropdown.classList.remove('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
-    }
+    });
   }
 
   function setupDynamicLangPicker() {
-    const container = document.getElementById('dynamic-lang-picker-container');
-    const btn = document.getElementById('dynamic-lang-menu-button');
-    const dropdown = document.getElementById('dynamic-lang-dropdown');
-
-    if (!btn || !dropdown || !container) return;
-
-    // Initial state
     updateLanguageButtons();
 
-    function toggleMenu(show: boolean) {
-      if (btn && dropdown) {
-        btn.setAttribute('aria-expanded', String(show));
+    document.querySelectorAll<HTMLElement>('.dynamic-lang-picker-container').forEach((container) => {
+      const btn = container.querySelector<HTMLButtonElement>('.dynamic-lang-menu-button');
+      const dropdown = container.querySelector<HTMLElement>('.dynamic-lang-dropdown');
+      if (!btn || !dropdown) return;
+      const menuButton = btn;
+      const dropdownMenu = dropdown;
+
+      function toggleMenu(show: boolean) {
+        menuButton.setAttribute('aria-expanded', String(show));
         if (show) {
-          dropdown.classList.remove('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
-          dropdown.classList.add('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
+          dropdownMenu.classList.remove('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+          dropdownMenu.classList.add('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
         } else {
-          dropdown.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
-          dropdown.classList.remove('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
+          dropdownMenu.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
+          dropdownMenu.classList.remove('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
         }
       }
-    }
 
-    // Handle menu toggle
-    const handleMenuToggle = (e: Event) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      toggleMenu(!isExpanded);
-    };
-
-    // Use event delegation or re-add listeners carefully
-    btn.onclick = handleMenuToggle;
-
-    // Handle language selection
-    const langButtons = document.querySelectorAll('.lang-option');
-    langButtons.forEach((button) => {
-      (button as HTMLElement).onclick = (e: Event) => {
-        const target = e.currentTarget as HTMLElement;
-        const targetLang = target.getAttribute('data-lang') as any;
-        if (targetLang && window.setLanguage) {
-          window.setLanguage(targetLang);
-          updateLanguageButtons();
-          toggleMenu(false);
-        }
+      menuButton.onclick = (e: MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+        toggleMenu(!isExpanded);
       };
+
+      container.querySelectorAll<HTMLElement>('.lang-option').forEach((button) => {
+        button.onclick = (e: MouseEvent) => {
+          const target = e.currentTarget as HTMLElement;
+          const targetLang = target.getAttribute('data-lang') as any;
+          if (targetLang && window.setLanguage) {
+            window.setLanguage(targetLang);
+            updateLanguageButtons();
+            toggleMenu(false);
+          }
+        };
+      });
     });
 
-    // Global click handler (ensure it's not added multiple times)
     document.removeEventListener('click', handleOutsideClick);
     document.addEventListener('click', handleOutsideClick);
   }
@@ -151,4 +140,5 @@ const lang = getLangFromUrl(Astro.url);
 
   // Re-setup after Astro view transitions
   document.addEventListener('astro:after-swap', setupDynamicLangPicker);
+  window.addEventListener('languagechange', updateLanguageButtons);
 </script>
