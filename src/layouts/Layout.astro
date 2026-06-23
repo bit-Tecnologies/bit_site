@@ -85,9 +85,11 @@ const jsonLd = schema || defaultSchema;
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={image} />
 
-		<!-- Preconnect to external domains -->
+		<!-- Preconnect to font origins -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- Preload font stylesheet for faster rendering -->
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" />
 		<!-- Font stylesheet -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" />
 		<!-- DNS prefetch for external resources -->

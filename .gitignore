@@ -56,8 +56,8 @@ manifest.json
 ehthumbs.db
 Thumbs.db
 
-# package managers
-package-lock.json
+# package managers (lockfiles SHOULD be committed for reproducible builds)
+# package-lock.json - committed intentionally
 yarn.lock
 pnpm-lock.yaml
 
@@ -77,4 +77,6 @@ junit.xml
 .claude/
 .codex/
 .kiro/
+.opencode/
+opencode.jsonc
 skills-lock.json

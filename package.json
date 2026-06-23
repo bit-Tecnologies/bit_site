@@ -12,7 +12,7 @@
     "lint": "astro check",
     "lint:fix": "astro check --fix",
     "type-check": "astro check",
-    "clean": "rm -rf dist .astro"
+    "clean": "npx rimraf dist .astro"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
