@@ -11,6 +11,10 @@
     "build:analyze": "npm run build && npx vite-bundle-analyzer dist/_astro/",
     "lint": "astro check",
     "lint:fix": "astro check --fix",
+    "lint:eslint": "eslint .",
+    "lint:eslint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "type-check": "astro check",
     "clean": "npx rimraf dist .astro"
   },
