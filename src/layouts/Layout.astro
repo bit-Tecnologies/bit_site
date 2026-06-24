@@ -59,7 +59,7 @@ const jsonLd = schema || defaultSchema;
 		<meta name="google-site-verification" content="NRxPEtJF7O-XeZhsTMAgjTgWa_F5IxHUSkRi4yZDH_8" />
 
 		<!-- JSON-LD Schema -->
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+		<script type="application/ld+json" is:inline>{JSON.stringify(jsonLd)}</script>
 
 		<!-- Open Graph Tags -->
 		<meta property="og:title" content={title} />
@@ -85,9 +85,11 @@ const jsonLd = schema || defaultSchema;
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={image} />
 
-		<!-- Preconnect to external domains -->
+		<!-- Preconnect to font origins -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- Preload font stylesheet for faster rendering -->
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" />
 		<!-- Font stylesheet -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" />
 		<!-- DNS prefetch for external resources -->
@@ -105,7 +107,7 @@ const jsonLd = schema || defaultSchema;
           } else {
             document.documentElement.classList.remove('dark')
           }
-        } catch (e) {
+        } catch {
           // Fallback to system preference if localStorage is not available
           if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
@@ -126,7 +128,7 @@ const jsonLd = schema || defaultSchema;
           } else {
             ev.newDocument.documentElement.classList.remove('dark');
           }
-        } catch (e) {
+        } catch {
           // Fallback to system preference
           if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             ev.newDocument.documentElement.classList.add('dark');

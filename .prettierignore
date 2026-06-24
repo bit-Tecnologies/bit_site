@@ -1,0 +1,11 @@
+dist/
+.astro/
+node_modules/
+*.log
+*.lock
+package-lock.json
+*.svg
+*.png
+*.jpg
+*.webp
+*.avif

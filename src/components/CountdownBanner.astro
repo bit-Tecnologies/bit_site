@@ -165,7 +165,7 @@ const bannerId = `banner-${Math.random().toString(36).slice(2, 11)}`;
             }
             localStorage.removeItem(storageKey);
           }
-        } catch (e) {}
+        } catch { /* ignore localStorage errors */ }
       }
 
       // Close button handler
@@ -174,7 +174,7 @@ const bannerId = `banner-${Math.random().toString(36).slice(2, 11)}`;
           banner.style.display = 'none';
           try {
             localStorage.setItem(storageKey, String(Date.now()));
-          } catch (e) {}
+          } catch { /* ignore localStorage errors */ }
         });
       }
 

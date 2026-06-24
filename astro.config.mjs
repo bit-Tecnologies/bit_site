@@ -13,6 +13,10 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport',
+  },
 
   integrations: [
     VitePWA({
@@ -21,13 +25,24 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif}'],
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/api\.example\.com\/.*$/,
+            urlPattern: /^https:\/\/api\.github\.com\/.*$/i,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'api-cache',
+              cacheName: 'github-api',
               expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 60, // 1 hour — GitHub API has rate limits
+              },
+            },
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|avif)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images',
+              expiration: {
+                maxEntries: 60,
+                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
               },
             },
           },

@@ -11,13 +11,25 @@
     "build:analyze": "npm run build && npx vite-bundle-analyzer dist/_astro/",
     "lint": "astro check",
     "lint:fix": "astro check --fix",
+    "lint:eslint": "eslint .",
+    "lint:eslint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "type-check": "astro check",
-    "clean": "rm -rf dist .astro"
+    "clean": "npx rimraf dist .astro"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.62.0",
+    "@typescript-eslint/parser": "^8.62.0",
     "@vite-pwa/astro": "^1.2.0",
     "astro": "^6.4.4",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "prettier": "^3.8.4",
+    "prettier-plugin-astro": "^0.14.1",
     "tailwindcss": "^4.0.0",
     "terser": "^5.34.1",
     "vite": "^6.0.0"

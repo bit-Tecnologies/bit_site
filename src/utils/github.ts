@@ -41,9 +41,9 @@ export async function fetchLatestRelease(repo: string, lang: string = 'ru'): Pro
     let apkAsset = null;
 
     for (const release of data) {
-      const foundAsset = release.assets?.find((asset: any) =>
+      const foundAsset = release.assets?.find((asset: Record<string, unknown>) =>
         asset && typeof asset === 'object' && asset.name && typeof asset.name === 'string' &&
-        asset.name.match(/^bithub-\d+-v\d+\.\d+\.\d+\.\d+-release\.apk$/)
+        (asset.name as string).match(/^bithub-\d+-v\d+\.\d+\.\d+\.\d+-release\.apk$/)
       );
 
       if (foundAsset) {

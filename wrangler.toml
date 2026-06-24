@@ -1,0 +1,22 @@
+# Cloudflare Pages configuration
+# https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "bit-tecnologies"
+
+pages_build_output_dir = "dist"
+
+[env.production]
+# These override the dashboard settings
+# Build command is set in Cloudflare Pages dashboard or CI/CD
+# Or uncomment for local wrangler deploys:
+# [env.production]
+# Build command is handled by wrangler pages deploy
+
+# ==========================================
+# Environment variables for Pages Functions
+# (only needed if you add server-side functions)
+# ==========================================
+# [vars]
+# SITE_URL = "https://bit-tecnologies.pages.dev"
+# ENABLE_ANALYTICS = "false"
+# ENABLE_SITEMAP = "true"

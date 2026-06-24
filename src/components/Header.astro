@@ -73,7 +73,7 @@ const translate = translatePath(Astro.url);
           menu.classList.remove('hidden');
           menu.classList.add('scale-y-0', 'opacity-0');
           // Force reflow
-          menu.offsetHeight;
+          void menu.offsetHeight;
           menu.classList.remove('scale-y-0', 'opacity-0');
           menu.classList.add('scale-y-100', 'opacity-100');
         } else {
