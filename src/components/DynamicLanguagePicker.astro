@@ -115,7 +115,7 @@ const lang = getLangFromUrl(Astro.url);
       container.querySelectorAll<HTMLElement>('.lang-option').forEach((button) => {
         button.onclick = (e: MouseEvent) => {
           const target = e.currentTarget as HTMLElement;
-          const targetLang = target.getAttribute('data-lang') as any;
+          const targetLang = target.getAttribute('data-lang') as 'ru' | 'en' | null;
           if (targetLang && window.setLanguage) {
             window.setLanguage(targetLang);
             updateLanguageButtons();

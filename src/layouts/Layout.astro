@@ -59,7 +59,7 @@ const jsonLd = schema || defaultSchema;
 		<meta name="google-site-verification" content="NRxPEtJF7O-XeZhsTMAgjTgWa_F5IxHUSkRi4yZDH_8" />
 
 		<!-- JSON-LD Schema -->
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+		<script type="application/ld+json" is:inline>{JSON.stringify(jsonLd)}</script>
 
 		<!-- Open Graph Tags -->
 		<meta property="og:title" content={title} />
@@ -107,7 +107,7 @@ const jsonLd = schema || defaultSchema;
           } else {
             document.documentElement.classList.remove('dark')
           }
-        } catch (e) {
+        } catch {
           // Fallback to system preference if localStorage is not available
           if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
@@ -128,7 +128,7 @@ const jsonLd = schema || defaultSchema;
           } else {
             ev.newDocument.documentElement.classList.remove('dark');
           }
-        } catch (e) {
+        } catch {
           // Fallback to system preference
           if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             ev.newDocument.documentElement.classList.add('dark');

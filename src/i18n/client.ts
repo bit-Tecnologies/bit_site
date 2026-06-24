@@ -67,7 +67,7 @@ class I18nClient {
 
   translate(key: string): string {
     const lang = this.currentLang;
-    // @ts-ignore - dynamic key access
+    // @ts-expect-error - dynamic key access
     return ui[lang]?.[key] || ui[defaultLang][key] || key;
   }
 
