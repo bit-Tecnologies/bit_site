@@ -10,8 +10,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 
-const title = 'bit Hub — Нативный клиент для GitHub релизов';
-const description = 'bit Hub дает вам доступ к открытым Android-приложениям без ограничений. Нативное приложение на Jetpack Compose.';
+const title = lang === 'en' ? 'bit Hub — Native App Store for Android' : 'bit Hub — Нативный клиент для GitHub релизов';
+const description = lang === 'en' ? 'bit Hub gives you access to open Android apps without restrictions. A native app built with Jetpack Compose.' : 'bit Hub дает вам доступ к открытым Android-приложениям без ограничений. Нативное приложение на Jetpack Compose.';
 const image = '/og-bit-hub.png';
 
 // Fetch release info at build time
@@ -94,9 +94,9 @@ const downloadUrl = release?.url || '#download';
 				</div>
 
 				<div class="glass-effect rounded-xl p-8 mb-8">
-					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display">Скриншоты готовятся</h2>
+					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display">{t('hub.screenshots_title')}</h2>
 					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
-						Пока не публикуем макеты вместо реального интерфейса. Добавим превью bit Hub после подготовки актуальных экранов приложения.
+						{t('hub.screenshots_desc')}
 					</p>
 				</div>
 
@@ -111,19 +111,19 @@ const downloadUrl = release?.url || '#download';
 									<svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
-									<span>Android 6.0 (API 23) и выше</span>
+									<span>{t('hub.req_android')}</span>
 								</li>
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
-									<span>ARMv7, ARM64, x86, x86_64</span>
+									<span>{t('hub.req_arch')}</span>
 								</li>
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
-									<span>2 ГБ ОЗУ (рекомендуется)</span>
+									<span>{t('hub.req_ram')}</span>
 								</li>
 							</ul>
 						</div>

@@ -16,8 +16,8 @@ const downloadUrl = release?.url || translate('/bit-hub');
 const hubReleaseVersion = release?.version || t('hero.hub_release_fallback');
 const hubDownloadTitle = `${t('hero.hub_release_label')}: ${hubReleaseVersion}`;
 
-const title = 'bit Tecnologies — Экосистема удобных приложений';
-const description = 'bit Tecnologies разрабатывает нативные, быстрые и приватные приложения для Android. Никакой телеметрии и рекламы.';
+const title = lang === 'en' ? 'bit Tecnologies — Ecosystem of Intuitive Apps' : 'bit Tecnologies — Экосистема удобных приложений';
+const description = lang === 'en' ? 'bit Tecnologies develops native, fast, and private apps for Android. No telemetry, no ads.' : 'bit Tecnologies разрабатывает нативные, быстрые и приватные приложения для Android. Никакой телеметрии и рекламы.';
 
 const schema = {
 	"@context": "https://schema.org",
@@ -93,7 +93,7 @@ const productCards = [
 				<div class="reveal max-w-3xl">
 					<div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/55 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-600 shadow-sm backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/55 dark:text-slate-300">
 						<span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.8)]"></span>
-						Экосистема Android-приложений
+						{t('hero.badge')}
 					</div>
 					<h1 class="max-w-4xl font-display text-5xl font-extrabold leading-[0.96] text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">
 						{t('hero.title')}
@@ -139,21 +139,21 @@ const productCards = [
 						</div>
 						<div class="grid gap-3 p-5">
 							<div class="liquid-row">
-								<span>Телеметрия</span>
-								<strong>Отключена</strong>
+								<span>{t('hero.device_telemetry')}</span>
+								<strong>{t('hero.device_telemetry_value')}</strong>
 							</div>
 							<div class="liquid-row">
-								<span>Реклама</span>
-								<strong>Нет</strong>
+								<span>{t('hero.device_ads')}</span>
+								<strong>{t('hero.device_ads_value')}</strong>
 							</div>
 							<div class="liquid-row">
-								<span>Размер релиза</span>
+								<span>{t('hero.device_release_size')}</span>
 								<strong>{release?.size || '~100 МБ'}</strong>
 							</div>
 							<div class="liquid-preview">
 								<div class="flex items-center justify-between">
-									<span class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Стек приложений</span>
-									<span class="font-mono text-xs text-slate-400">05 приложений</span>
+									<span class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{t('hero.device_stack')}</span>
+									<span class="font-mono text-xs text-slate-400">{productCards.length} {lang === 'en' ? 'apps' : 'приложений'}</span>
 								</div>
 								<div class="mt-4 grid grid-cols-5 gap-2">
 									{productCards.map((product) => (
@@ -216,10 +216,10 @@ const productCards = [
 				<div class="reveal-left">
 					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">{t('advantages.title')}</p>
 					<h2 class="font-display text-3xl font-extrabold leading-tight text-slate-950 dark:text-white sm:text-5xl">
-						Приватность выглядит спокойнее, когда она встроена в продукт.
+						{lang === 'en' ? 'Privacy feels better when it\'s built into the product.' : 'Приватность выглядит спокойнее, когда она встроена в продукт.'}
 					</h2>
 					<p class="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-300">
-						Сайт теперь держится на простых доказательствах: открытый код, ноль рекламы, нативная скорость и понятная экосистема приложений.
+						{lang === 'en' ? 'Our site stands on simple evidence: open source, zero ads, native speed, and a clear app ecosystem.' : 'Сайт теперь держится на простых доказательствах: открытый код, ноль рекламы, нативная скорость и понятная экосистема приложений.'}
 					</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
@@ -227,29 +227,29 @@ const productCards = [
 						<div class="liquid-icon bg-emerald-400/20 text-emerald-700 dark:text-emerald-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/></svg>
 						</div>
-						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">Полная приватность</h3>
-						<p class="mt-3 text-slate-600 dark:text-slate-300">Никакой телеметрии, аналитики или рекламных трекеров.</p>
+						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('advantages.card1_title')}</h3>
+						<p class="mt-3 text-slate-600 dark:text-slate-300">{t('advantages.card1_desc')}</p>
 					</div>
 					<div class="liquid-card p-6 reveal stagger-2">
 						<div class="liquid-icon bg-sky-400/20 text-sky-700 dark:text-sky-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13,2.03V4.05C17.39,4.59 20.5,8.58 19.96,12.97C19.5,16.61 16.64,19.5 13,19.93V21.93C18.5,21.38 22.5,16.5 21.95,11C21.5,6.25 17.73,2.5 13,2.03M11,2.06C9.05,2.25 7.19,3 5.67,4.26L7.1,5.74C8.22,4.84 9.57,4.26 11,4.06V2.06M4.26,5.67C3,7.19 2.25,9.04 2.05,11H4.05C4.24,9.58 4.8,8.23 5.69,7.1L4.26,5.67M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/></svg>
 						</div>
-						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">Нативная скорость</h3>
-						<p class="mt-3 text-slate-600 dark:text-slate-300">Kotlin и Jetpack Compose без лишней прослойки.</p>
+						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('advantages.card2_title')}</h3>
+						<p class="mt-3 text-slate-600 dark:text-slate-300">{t('advantages.card2_desc')}</p>
 					</div>
 					<div class="liquid-card p-6 reveal stagger-3">
 						<div class="liquid-icon bg-violet-400/20 text-violet-700 dark:text-violet-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg>
 						</div>
-						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">Открытый код</h3>
-						<p class="mt-3 text-slate-600 dark:text-slate-300">Код можно проверить, форкнуть и улучшить.</p>
+						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('advantages.card3_title')}</h3>
+						<p class="mt-3 text-slate-600 dark:text-slate-300">{t('advantages.card3_desc')}</p>
 					</div>
 					<div class="liquid-card p-6 reveal stagger-4">
 						<div class="liquid-icon bg-amber-400/20 text-amber-700 dark:text-amber-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"/></svg>
 						</div>
-						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">Ноль рекламы</h3>
-						<p class="mt-3 text-slate-600 dark:text-slate-300">Интерфейс остается чистым и не торгует вниманием.</p>
+						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('advantages.card4_title')}</h3>
+						<p class="mt-3 text-slate-600 dark:text-slate-300">{t('advantages.card4_desc')}</p>
 					</div>
 				</div>
 			</div>
@@ -260,7 +260,7 @@ const productCards = [
 		<div class="container mx-auto px-4">
 			<div class="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
 				<div>
-					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">Продукты</p>
+					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">{t('home.section_products')}</p>
 					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.apps')}</h2>
 					<p class="mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">{t('home.apps_subtitle')}</p>
 				</div>
@@ -294,13 +294,13 @@ const productCards = [
 		<div class="container mx-auto px-4">
 			<div class="liquid-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
 				<div>
-					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-violet-300">Устройства</p>
+					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-violet-300">{t('home.compatibility_label')}</p>
 					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.compatibility')}</h2>
-					<p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Минимальные версии Android указаны отдельно для каждого приложения, без обобщения до одной версии на всю экосистему.</p>
+					<p class="mt-4 text-lg text-slate-600 dark:text-slate-300">{t('home.compatibility_desc')}</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
 					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-slate-950/55 dark:ring-white/10">
-						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">Минимальный SDK</h3>
+						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('home.min_sdk')}</h3>
 						<ul class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
 							<li class="flex items-center justify-between gap-4"><span>bit Hub</span><span class="font-mono">Android 6.0 / API 23</span></li>
 							<li class="flex items-center justify-between gap-4"><span>bit Record</span><span class="font-mono">Android 7.0 / API 24</span></li>
@@ -309,11 +309,11 @@ const productCards = [
 						</ul>
 					</div>
 					<div class="rounded-[1.5rem] bg-white/55 p-5 ring-1 ring-white/70 backdrop-blur-2xl dark:bg-slate-950/55 dark:ring-white/10">
-						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">Общие требования</h3>
+						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('home.gen_requirements')}</h3>
 						<ul class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
-							<li>ARMv7 или ARM64</li>
-							<li>2 ГБ ОЗУ рекомендуется</li>
-							<li>Без рекламы и скрытой телеметрии</li>
+							<li>{t('home.req_arch')}</li>
+							<li>{t('home.req_ram')}</li>
+							<li>{t('home.req_no_trackers')}</li>
 						</ul>
 					</div>
 				</div>
@@ -325,19 +325,19 @@ const productCards = [
 		<div class="container mx-auto px-4">
 			<div class="liquid-cta mx-auto max-w-5xl p-7 text-center sm:p-10 md:p-14">
 				<Image src={favicon} alt="bit Hub" class="mx-auto mb-6 h-16 w-16 rounded-3xl shadow-xl shadow-emerald-500/15" />
-				<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">Готовы попробовать?</h2>
+				<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.cta_title')}</h2>
 				<p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-					Скачайте bit Hub и держите всю экосистему bit под рукой: без рекламы, без телеметрии, без лишнего шума.
+					{t('home.cta_desc_full')}
 				</p>
 				<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
 					<Button href={downloadUrl} variant="primary" download>
 						<span>{t('hero.download_hub')}</span>
 					</Button>
 					<Button href="https://github.com/bit-Tecnologies/bit-site" variant="outline" target="_blank" rel="noopener noreferrer">
-						<span>GitHub</span>
+						<span>{t('home.cta_github')}</span>
 					</Button>
 				</div>
-				<p class="mt-5 font-mono text-sm text-slate-500 dark:text-slate-400">Размер: {release?.size || '~100 МБ'} / Android 6.0+ / Open source</p>
+				<p class="mt-5 font-mono text-sm text-slate-500 dark:text-slate-400">{t('home.cta_file_info_full').replace('{size}', release?.size || '~100 МБ')}</p>
 			</div>
 		</div>
 	</section>
