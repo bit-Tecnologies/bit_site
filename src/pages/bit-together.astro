@@ -2,9 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
-const title = 'bit Together — Приватный мессенджер bit-экосистемы';
-const description = 'bit Together — планируемый приватный мессенджер для общения внутри bit-экосистемы.';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const title = t('together.meta_title');
+const description = t('together.meta_desc');
 
 const schema = {
 	"@context": "https://schema.org",
@@ -34,10 +38,10 @@ const schema = {
 						bit Together
 					</h1>
 					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">
-						Приватный мессенджер для общения внутри bit-экосистемы
+						{t('together.subtitle')}
 					</p>
 					<div class="flex items-center justify-center space-x-4 mb-6 transition-colors">
-						<span class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 text-sm rounded-full">Планирование</span>
+						<span class="inline-block px-3 py-1 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 text-sm rounded-full">{t('together.planning_badge')}</span>
 						<span class="text-slate-400 dark:text-slate-500">•</span>
 						<span class="text-slate-600 dark:text-slate-400">TBA</span>
 					</div>
@@ -45,41 +49,41 @@ const schema = {
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M18,16V12A6,6 0 0,0 12,6A6,6 0 0,0 6,12V16H4V18H20V16H18M12,22A2,2 0 0,0 14,20H10A2,2 0 0,0 12,22Z"/>
 						</svg>
-						<span>Скоро будет доступно</span>
+						<span>{t('together.coming_soon')}</span>
 					</div>
 				</div>
 
 				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">Что планируем</h2>
+					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">{t('together.features_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<FeatureCard title="Личные чаты" iconColor="text-cyan-600 dark:text-cyan-400" description="Быстрое общение один на один без рекламы и лишнего визуального шума.">
+						<FeatureCard title={t('together.feature1_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature1_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2Z"/></svg>
 						</FeatureCard>
-						<FeatureCard title="Обмен файлами" iconColor="text-cyan-600 dark:text-cyan-400" description="Передача ссылок, документов и медиа между пользователями и приложениями bit.">
+						<FeatureCard title={t('together.feature2_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature2_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.86L8.91,12.71C8.96,12.48 9,12.24 9,12C9,11.76 8.96,11.52 8.91,11.29L15.96,7.18C16.5,7.68 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.48 15.09,5.71L8.04,9.82C7.5,9.32 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.68 8.04,14.18L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19A2.92,2.92 0 0,0 18,21.92A2.92,2.92 0 0,0 20.92,19A2.92,2.92 0 0,0 18,16.08Z"/></svg>
 						</FeatureCard>
-						<FeatureCard title="Приватность по умолчанию" iconColor="text-cyan-600 dark:text-cyan-400" description="Без рекламы, скрытой аналитики и лишнего сбора данных о переписке.">
+						<FeatureCard title={t('together.feature3_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature3_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/></svg>
 						</FeatureCard>
-						<FeatureCard title="Нативный Android" iconColor="text-cyan-600 dark:text-cyan-400" description="Легкий интерфейс и быстрая работа на устройствах разных классов.">
+						<FeatureCard title={t('together.feature4_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature4_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M17,1H7A2,2 0 0,0 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3A2,2 0 0,0 17,1M12,22A1,1 0 0,1 11,21A1,1 0 0,1 12,20A1,1 0 0,1 13,21A1,1 0 0,1 12,22Z"/></svg>
 						</FeatureCard>
 					</div>
 				</div>
 
 				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display transition-colors">Скриншоты готовятся</h2>
+					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display transition-colors">{t('together.screenshots_title')}</h2>
 					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
-						bit Together пока на этапе планирования, поэтому не показываем условные макеты вместо реального интерфейса.
+						{t('together.screenshots_desc')}
 					</p>
 				</div>
 
 				<div class="text-center">
 					<Button href="/#apps" variant="outline" class="mr-4">
-						<span>Вернуться к продуктам</span>
+						<span>{t('nav.back_to_products')}</span>
 					</Button>
 					<Button href="/bit-hub" variant="outline">
-						<span>bit Hub</span>
+						<span>{t('nav.bithub')}</span>
 					</Button>
 				</div>
 			</div>

@@ -2,12 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import { translatePath } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 
-const title = 'О компании — bit Tecnologies';
-const description = 'Узнайте больше о bit Tecnologies. Наша миссия — создание качественных, нативных и приватных приложений для Android.';
+const title = t('about.meta_title');
+const description = t('about.meta_desc');
 const image = '/og-bit-hub.png';
 
 const schema = {
@@ -25,25 +27,25 @@ const schema = {
 				<div class="text-center mb-12">
 					<img src="/favicon.svg" alt="bit Tecnologies" class="w-20 h-20 mx-auto mb-6 drop-shadow-lg" style="view-transition-name: hero-logo;" />
 					<h1 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 bg-clip-text text-transparent font-display drop-shadow-sm">
-						О bit Tecnologies
+						{t('about.heading')}
 					</h1>
 					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed font-light">
-						Создаем нативные Android приложения с высокой производительностью и заботой о пользователях
+						{t('about.subtitle')}
 					</p>
 				</div>
 
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <FeatureCard
-            title="Наша миссия"
+            title={t('about.mission_title')}
             iconColor="text-blue-500"
-            description="Разрабатывать легкие, быстрые и безопасные Android приложения без лишних зависимостей и telemetry. Мы верим в право пользователей на приватность и контроль над своими данными."
+            description={t('about.mission_desc')}
           >
             <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
             </svg>
           </FeatureCard>
 
-          <FeatureCard title="Наши ценности" iconColor="text-emerald-500">
+          <FeatureCard title={t('about.values_title')} iconColor="text-emerald-500">
             <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9,11H7V13H9V11M13,11H11V13H13V11M17,11H15V13H17V11M19,4H18V2H16V4H8V2H6V4H5C3.89,4 3,4.9 3,6V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V6A2,2 0 0,0 19,4M19,20H5V9H19V20Z"/>
             </svg>
@@ -52,30 +54,30 @@ const schema = {
 								<svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
 									<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 								</svg>
-								<span>Нативная производительность</span>
+								<span>{t('about.value_performance')}</span>
 							</li>
 							<li class="flex items-center space-x-2">
 								<svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
 									<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 								</svg>
-								<span>Приватность по умолчанию</span>
+								<span>{t('about.value_privacy')}</span>
 							</li>
 							<li class="flex items-center space-x-2">
 								<svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
 									<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 								</svg>
-								<span>Открытый исходный код</span>
+								<span>{t('about.value_opensource')}</span>
 							</li>
 						</ul>
           </FeatureCard>
 				</div>
 
 				<div class="glass-effect rounded-xl p-8 mb-12 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display">Технологии и подход</h2>
+					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display">{t('about.tech_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <FeatureCard
-              title="Kotlin & Java"
-              description="Нативная разработка на официальных языках Android"
+              title={t('about.tech_kotlin')}
+              description={t('about.tech_kotlin_desc')}
               iconColor="text-white"
               iconBgColor="from-green-500 to-emerald-500"
             >
@@ -85,8 +87,8 @@ const schema = {
             </FeatureCard>
 
             <FeatureCard
-              title="Jetpack Compose"
-              description="Современный UI toolkit для декларативных интерфейсов"
+              title={t('about.tech_compose')}
+              description={t('about.tech_compose_desc')}
               iconColor="text-white"
               iconBgColor="from-blue-500 to-cyan-500"
             >
@@ -96,8 +98,8 @@ const schema = {
             </FeatureCard>
 
             <FeatureCard
-              title="Material Design 3"
-              description="Современный дизайн с адаптивной темизацией"
+              title={t('about.tech_material')}
+              description={t('about.tech_material_desc')}
               iconColor="text-white"
               iconBgColor="from-purple-500 to-pink-500"
             >
@@ -113,7 +115,7 @@ const schema = {
 						<svg class="w-5 h-5 drop-shadow" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
 						</svg>
-						<span>Вернуться на главную</span>
+						<span>{t('nav.home')}</span>
           </Button>
 				</div>
 			</div>

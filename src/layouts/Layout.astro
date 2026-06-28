@@ -3,7 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import favicon from '../../public/favicon.svg';
-import { getLangFromUrl, translatePath } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
 import '../styles/global.css';
 
 export interface Props {
@@ -16,6 +16,7 @@ export interface Props {
 const { title, description, image = "/og-bit-hub.svg", schema } = Astro.props;
 // Get language from localized path or query parameter
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'http://localhost:4321');
 
 // Build alternate language URLs with query parameters
@@ -142,8 +143,8 @@ const jsonLd = schema || defaultSchema;
 	</head>
 	<body class="bg-[#f6f7f3] dark:bg-[#0b0d10] text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
 		<!-- Skip link for keyboard navigation -->
-		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
-			Перейти к основному содержимому
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-i18n="layout.skip_link">
+			{t('layout.skip_link')}
 		</a>
 		<div class="min-h-screen flex flex-col">
 			<!-- Header Component -->

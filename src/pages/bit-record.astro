@@ -2,9 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
-const title = 'bit Record — Минималистичный рекордер экрана';
-const description = 'bit Record — простой и минималистичный сервис для записи экрана Android. Нативная производительность и приватность.';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const title = t('record.meta_title');
+const description = t('record.meta_desc');
 const image = '/og-bit-hub.png';
 
 const schema = {
@@ -36,10 +40,10 @@ const schema = {
 						bit Record
 					</h1>
 					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">
-						Простой, минималистичный сервис для записи экрана
+						{t('record.subtitle')}
 					</p>
 					<div class="flex items-center justify-center space-x-4 mb-6 transition-colors">
-						<span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 text-sm rounded-full">In Development</span>
+						<span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 text-sm rounded-full">{t('record.coming_soon')}</span>
 						<span class="text-slate-400 dark:text-slate-500">•</span>
 						<span class="text-slate-600 dark:text-slate-400">Android 7.0+</span>
 						<span class="text-slate-400 dark:text-slate-500">•</span>
@@ -49,45 +53,45 @@ const schema = {
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
 						</svg>
-						<span>В разработке</span>
+						<span>{t('record.coming_soon')}</span>
 					</div>
 				</div>
 
 				<!-- Features -->
 				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">Ключевые особенности</h2>
+					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">{t('record.features_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureCard 
-              title="Минималистичный интерфейс" 
+              title={t('record.feature1_title')} 
               iconColor="text-red-600 dark:text-red-400"
-              description="Простой и интуитивный дизайн без лишних элементов"
+              description={t('record.feature1_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
               </svg>
             </FeatureCard>
             <FeatureCard 
-              title="Нативная производительность" 
+              title={t('record.feature2_title')} 
               iconColor="text-red-600 dark:text-red-400"
-              description="Оптимизированная запись без лагов и падений FPS"
+              description={t('record.feature2_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
               </svg>
             </FeatureCard>
             <FeatureCard 
-              title="Приватность" 
+              title={t('record.feature3_title')} 
               iconColor="text-red-600 dark:text-red-400"
-              description="Никакой телеметрии или сбора данных пользователя"
+              description={t('record.feature3_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
               </svg>
             </FeatureCard>
             <FeatureCard 
-              title="Минимальный размер" 
+              title={t('record.feature4_title')} 
               iconColor="text-red-600 dark:text-red-400"
-              description="Компактное приложение без лишних зависимостей"
+              description={t('record.feature4_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
@@ -97,41 +101,41 @@ const schema = {
 				</div>
 
 				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display transition-colors">Скриншоты готовятся</h2>
+					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display transition-colors">{t('record.screenshots_title')}</h2>
 					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
-						Пока не показываем условные макеты bit Record. Добавим реальные экраны после готовности интерфейса.
+						{t('record.screenshots_desc')}
 					</p>
 				</div>
 
 				<!-- Technical Details -->
 				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">Технические детали</h2>
+					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">{t('record.tech_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div>
-							<h3 class="text-lg font-semibold text-slate-800 dark:text-white mb-3 font-display transition-colors">Системные требования</h3>
+							<h3 class="text-lg font-semibold text-slate-800 dark:text-white mb-3 font-display transition-colors">{t('record.sys_requirements')}</h3>
 							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
-									<span>Android 7.0 (API 24) и выше</span>
+									<span>{t('record.req_android')}</span>
 								</li>
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
-									<span>ARMv7, ARM64</span>
+									<span>{t('record.req_arch')}</span>
 								</li>
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
-									<span>2 ГБ ОЗУ (рекомендуется)</span>
+									<span>{t('record.req_ram')}</span>
 								</li>
 							</ul>
 						</div>
 						<div>
-							<h3 class="text-lg font-semibold text-slate-800 dark:text-white mb-3 font-display transition-colors">Технологический стек</h3>
+							<h3 class="text-lg font-semibold text-slate-800 dark:text-white mb-3 font-display transition-colors">{t('record.tech_stack')}</h3>
 							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-orange-500 dark:text-orange-400" fill="currentColor" viewBox="0 0 24 24">
@@ -162,14 +166,14 @@ const schema = {
 						<svg class="w-16 h-16 text-blue-500 dark:text-blue-400 mx-auto mb-4 transition-colors" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
 						</svg>
-						<h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-2 font-display transition-colors">В разработке</h3>
+						<h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-2 font-display transition-colors">{t('record.status_title')}</h3>
 						<p class="text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto font-light transition-colors">
-							bit Record находится в разработке. Мы работаем над созданием простого и эффективного рекордера экрана с фокусом на приватность и производительность.
+							{t('record.status_desc')}
 						</p>
 						<div class="flex items-center justify-center space-x-4 text-sm text-slate-500 dark:text-slate-400 transition-colors">
-							<span>Статус: In Development</span>
+							<span>{t('record.status_label')}</span>
 							<span>•</span>
-							<span>Релиз: 2026</span>
+							<span>{t('record.status_release')}</span>
 						</div>
 					</div>
 				</div>
@@ -180,13 +184,13 @@ const schema = {
 						<svg class="w-5 h-5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
 						</svg>
-						<span>Вернуться на главную</span>
+						<span>{t('nav.home')}</span>
           </Button>
           <Button href="/privacy" variant="outline">
 						<svg class="w-5 h-5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
 						</svg>
-						<span>Политика конфиденциальности</span>
+						<span>{t('nav.privacy')}</span>
           </Button>
 				</div>
 			</div>
