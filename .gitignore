@@ -32,6 +32,8 @@ coverage/
 .netlify/
 .cloudflare/
 .firebase/
+.wrangler/
+.dev.vars
 
 # PWA related
 sw.js
@@ -41,11 +43,7 @@ manifest.json
 
 # editor settings
 .idea/
-.vscode/settings.json
-.vscode/extensions.json
-*.swp
-*.swo
-*~
+.vscode/
 
 # OS files
 .DS_Store
