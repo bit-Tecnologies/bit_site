@@ -110,8 +110,8 @@
     border: 1px solid rgba(255, 255, 255, 0.72);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.42));
     box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(30px) saturate(1.5);
-    -webkit-backdrop-filter: blur(30px) saturate(1.5);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
   }
 
   .dark .liquid-nav {
@@ -130,8 +130,8 @@
     border: 1px solid rgba(255, 255, 255, 0.72);
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.38));
     box-shadow: 0 22px 70px rgba(15, 23, 42, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(30px) saturate(1.55);
-    -webkit-backdrop-filter: blur(30px) saturate(1.55);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
   }
 
   .liquid-card,
