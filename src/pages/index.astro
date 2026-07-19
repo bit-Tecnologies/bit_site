@@ -97,7 +97,7 @@ const productCards = [
 						{t('hero.subtitle')}
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-						<Button href={downloadUrl} variant="primary" class="group relative w-full gap-2 overflow-hidden sm:w-auto sm:min-w-[22rem] sm:justify-between [&>*]:relative [&>*]:z-10" download ariaLabel={`${t('hero.download_hub')}. ${hubDownloadTitle}`}>
+						<Button href={downloadUrl} variant="primary" class="group relative w-full gap-2 overflow-hidden sm:w-auto sm:min-w-[22rem] sm:justify-between [&>*]:relative [&>*]:z-10" download ariaLabel={`${t('hero.download_hub')}. ${hubDownloadTitle}`} data-release="url">
 							<span class="flex min-w-0 items-center gap-2">
 								<svg class="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14l-4-4h3V9h2v4h3l-4 4z"/>
@@ -106,7 +106,7 @@ const productCards = [
 							</span>
 							<span class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-950/10 bg-slate-950/[0.06] px-2.5 py-1 text-[0.68rem] font-extrabold leading-none text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl transition duration-200 group-hover:bg-slate-950/10 group-focus-visible:bg-slate-950/10 dark:border-white/15 dark:bg-white/12 dark:text-white/85 dark:group-hover:bg-white/18">
 								<span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.9)]"></span>
-								<span class="font-mono">{hubReleaseVersion}</span>
+								<span class="font-mono" data-release="version">{hubReleaseVersion}</span>
 							</span>
 						</Button>
 						<Button href="#apps" variant="outline">
@@ -143,7 +143,7 @@ const productCards = [
 							</div>
 							<div class="liquid-row">
 								<span>{t('hero.device_release_size')}</span>
-								<strong>{release?.size || '~100 МБ'}</strong>
+								<strong data-release="size">{release?.size || '~100 МБ'}</strong>
 							</div>
 							<div class="liquid-preview">
 								<div class="flex items-center justify-between">
@@ -198,7 +198,7 @@ const productCards = [
 					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.license')}</p>
 				</div>
 				<div class="p-4">
-					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">{release?.size || '~100'}</p>
+					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white" data-release="size">{release?.size || '~100'}</p>
 					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.size')}</p>
 				</div>
 			</div>
@@ -325,7 +325,7 @@ const productCards = [
 					{t('home.cta_desc_full')}
 				</p>
 				<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-					<Button href={downloadUrl} variant="primary" download>
+					<Button href={downloadUrl} variant="primary" download data-release="url">
 						<span>{t('hero.download_hub')}</span>
 					</Button>
 					<Button href="https://github.com/bit-Tecnologies/bit-site" variant="outline" target="_blank" rel="noopener noreferrer">

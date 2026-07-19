@@ -35,19 +35,19 @@ const downloadUrl = release?.url || '#download';
 						{t('hub.subtitle')}
 					</p>
 					<div class="flex items-center justify-center space-x-4 mb-6 transition-colors">
-						<span class="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm rounded-full transition-colors font-medium">{version}</span>
+						<span class="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm rounded-full transition-colors font-medium" data-release="version">{version}</span>
 						<span class="text-slate-400 dark:text-slate-500 transition-colors">•</span>
 						<span class="text-slate-600 dark:text-slate-400 transition-colors">Android 6.0+</span>
 						<span class="text-slate-400 dark:text-slate-500 transition-colors">•</span>
-						<span class="text-slate-600 dark:text-slate-400 transition-colors">{size}</span>
+						<span class="text-slate-600 dark:text-slate-400 transition-colors" data-release="size">{size}</span>
 					</div>
-          <Button href={downloadUrl} variant="primary" download>
+          <Button href={downloadUrl} variant="primary" download data-release="url">
 						<svg class="w-6 h-6 drop-shadow" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14l-4-4h3V9h2v4h3l-4 4z"/>
 						</svg>
 						<span>{t('app.download')} {t('hub.title')}</span>
           </Button>
-					<p class="text-sm text-slate-500 dark:text-slate-400 mt-3">{version}</p>
+					<p class="text-sm text-slate-500 dark:text-slate-400 mt-3" data-release="version">{version}</p>
 				</div>
 
 				<!-- Features -->

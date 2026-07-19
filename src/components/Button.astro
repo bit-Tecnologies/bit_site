@@ -9,9 +9,10 @@ export interface Props {
   rel?: string;
   title?: string;
   ariaLabel?: string;
+  [key: string]: unknown;
 }
 
-const { href, variant = 'primary', class: className = '', download = false, target, rel, title, ariaLabel } = Astro.props;
+const { href, variant = 'primary', class: className = '', download = false, target, rel, title, ariaLabel, ...rest } = Astro.props;
 
 const baseStyles = "inline-flex items-center justify-center space-x-2 px-4 sm:px-6 lg:px-7 py-2.5 sm:py-3 font-bold rounded-[1.15rem] transition-all duration-300 min-h-[44px] touch-manipulation";
 
@@ -31,6 +32,7 @@ const variants = {
   rel={rel}
   title={title}
   aria-label={ariaLabel}
+  {...rest}
 >
   <slot />
 </a>
