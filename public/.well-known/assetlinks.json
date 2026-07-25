@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.bit.bithub",
+      "sha256_cert_fingerprints": [
+        "56:7D:31:55:1B:4C:9F:F3:FA:AA:40:24:86:4C:28:D7:7A:91:69:AD:7E:C3:04:EF:CF:0A:84:28:C0:00:A3:B8",
+        "88:AE:DF:FA:96:11:09:AE:EF:E0:A1:CF:44:92:B5:6C:46:9D:98:A3:FF:F1:9B:E7:0D:F4:97:1D:E1:3C:66:5F"
+      ]
+    }
+  }
+]
