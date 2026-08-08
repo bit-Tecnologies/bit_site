@@ -48,31 +48,7 @@ export default defineConfig({
           },
         ],
       },
-      manifest: {
-        name: 'bit Tecnologies',
-        short_name: 'bit',
-        description: 'bit Tecnologies - Professional Web Development',
-        theme_color: '#000000',
-        background_color: '#ffffff',
-        display: 'standalone',
-        orientation: 'portrait',
-        scope: '/',
-        start_url: '/',
-        icons: [
-          {
-            src: '/pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: '/pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
     }),
-    sitemap()
   ],
 
   i18n: {
@@ -104,11 +80,5 @@ export default defineConfig({
   build: {
     format: 'directory',
     assets: 'assets'
-  },
-
-  image: {
-    domains: ['cybernattor.github.io'],
-    // @ts-ignore - formats is valid in Astro
-    formats: ['avif', 'webp'],
   },
 });
