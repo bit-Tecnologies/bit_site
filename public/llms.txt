@@ -1,0 +1,20 @@
+# bit Tecnologies
+
+> Native, fast, and private open-source apps for Android. No telemetry, no ads, no trackers. Everything is MIT-licensed.
+
+## Products
+
+- [bit Hub](https://bit-tecnologies.pages.dev/bit-hub/): An open-source Android app store with a focus on privacy and performance — an alternative to F-Droid built natively.
+- [bit Delta](https://bit-tecnologies.pages.dev/bit-delta/): Pedometer, activity, and health tracking app.
+- [bit Record](https://bit-tecnologies.pages.dev/bit-record/): A simple, minimalist screen recorder.
+- [bit Together](https://bit-tecnologies.pages.dev/bit-together/): A planned private messenger for communication inside the bit ecosystem.
+- [bit Launcher](https://bit-tecnologies.pages.dev/bit-launcher/): A fast, private Android launcher with a clean interface and native speed.
+
+## Company
+
+- [About bit Tecnologies](https://bit-tecnologies.pages.dev/about/): Mission, principles, and the team behind the ecosystem.
+- [Privacy Policy](https://bit-tecnologies.pages.dev/privacy/): Privacy commitment — no telemetry, no analytics, no tracking.
+
+## Source
+
+- [GitHub — bit Tecnologies](https://github.com/bit-Tecnologies): All repositories are open source under the MIT license.

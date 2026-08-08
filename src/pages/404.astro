@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translate = translatePath(Astro.url);
+
+const title = lang === 'en' ? '404 — Page Not Found | bit Tecnologies' : '404 — Страница не найдена | bit Tecnologies';
+const description = lang === 'en' ? 'This page does not exist.' : 'Эта страница не существует.';
+const image = '/og-bit-hub.png';
+---
+
+<Layout title={title} description={description} image={image}>
+	<section class="relative isolate overflow-hidden pb-24 pt-32 sm:pt-36 lg:pt-40">
+		<div class="liquid-canvas absolute inset-0 -z-10"></div>
+		<div class="container mx-auto px-4 text-center">
+			<p class="font-display text-8xl font-extrabold text-emerald-600/80 dark:text-emerald-400/80">404</p>
+			<h1 class="mt-6 font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">
+				{lang === 'en' ? 'Page not found' : 'Страница не найдена'}
+			</h1>
+			<p class="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
+				{lang === 'en' ? 'The link may be broken, or the page may have been moved. Go back home or browse the app catalog.' : 'Ссылка могла быть повреждена, или страница переехала. Вернитесь на главную или откройте каталог приложений.'}
+			</p>
+			<div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+				<Button href={translate('/')} variant="primary">
+					<span>{t('nav.home')}</span>
+				</Button>
+				<Button href={translate('/#apps')} variant="outline">
+					<span>{t('hero.apps_catalog')}</span>
+				</Button>
+			</div>
+		</div>
+	</section>
+</Layout>
