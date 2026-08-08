@@ -60,7 +60,7 @@ const jsonLd = schema || defaultSchema;
 		<meta name="google-site-verification" content="NRxPEtJF7O-XeZhsTMAgjTgWa_F5IxHUSkRi4yZDH_8" />
 
 		<!-- JSON-LD Schema -->
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
 		<!-- Open Graph Tags -->
 		<meta property="og:title" content={title} />
@@ -90,7 +90,7 @@ const jsonLd = schema || defaultSchema;
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<!-- Non-blocking font loading -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" media="print" onload="this.setAttribute('media','all')" />
 		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" /></noscript>
 
 		<ClientRouter />

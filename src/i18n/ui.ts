@@ -22,12 +22,9 @@ export const ui = {
     // === Hero ===
     'hero.title': 'bit Tecnologies',
     'hero.badge': 'Экосистема Android-приложений',
-    'hero.tagline': 'Экосистема удобных приложений',
     'hero.subtitle': 'Создаем нативные Android приложения с высокой производительностью и заботой о пользователях. Минимум зависимостей, максимум оптимизации.',
     'hero.download_hub': 'Скачать bit Hub (APK)',
-    'hero.about_company': 'О компании',
     'hero.apps_catalog': 'Каталог приложений',
-    'hero.hub_release_label': 'Текущая версия bit Hub',
     'hero.hub_release_fallback': 'Beta',
     'hero.hub_size_fallback': '~100 МБ',
     'hero.no_trackers': '0 трекеров',
@@ -62,10 +59,7 @@ export const ui = {
     // === Compatibility ===
     'home.compatibility': 'Совместимость',
     'home.compatibility_label': 'Устройства',
-    'home.compatibility_subtitle': 'Наши приложения оптимизированы для работы на широком спектре Android устройств',
     'home.compatibility_desc': 'Минимальные версии Android указаны отдельно для каждого приложения, без обобщения до одной версии на всю экосистему.',
-    'home.requirements_title': 'Минимальные требования',
-    'home.testing_title': 'Тестирование',
     'home.min_sdk': 'Минимальный SDK',
     'home.gen_requirements': 'Общие требования',
     'home.req_arch': 'ARMv7 или ARM64',
@@ -74,10 +68,8 @@ export const ui = {
 
     // === CTA Section ===
     'home.cta_title': 'Готовы попробовать?',
-    'home.cta_desc': 'Скачайте bit Hub прямо сейчас и оцените преимущества нативного Android-приложения',
     'home.cta_desc_full': 'Скачайте bit Hub и держите всю экосистему bit под рукой: без рекламы, без телеметрии, без лишнего шума.',
     'home.cta_github': 'GitHub',
-    'home.cta_file_info': 'Установка из неизвестных источников',
     'home.cta_file_info_full': 'Размер: {size} / Android 6.0+ / Open source',
 
     // === App Cards ===
@@ -94,7 +86,6 @@ export const ui = {
     'app.in_development': 'В разработке',
     'app.planning': 'Планирование',
     'app.download': 'Скачать',
-    'app.more': 'Подробнее',
     'app.beta': 'Бета',
     'app.delta_size': '~5 МБ',
     'app.record_size': '~3 МБ',
@@ -113,10 +104,6 @@ export const ui = {
     'hub.feature_updates_desc': 'Фоновая проверка и установка обновлений без участия пользователя',
     'hub.feature_fdroid': 'F-Droid репозитории',
     'hub.feature_fdroid_desc': 'Полная совместимость с существующими репозиториями F-Droid',
-    'hub.interface_title': 'Интерфейс приложения',
-    'hub.screen_main': 'Главный экран',
-    'hub.screen_settings': 'Настройки',
-    'hub.screen_updates': 'Обновления',
     'hub.screenshots_title': 'Скриншоты готовятся',
     'hub.screenshots_desc': 'Пока не публикуем макеты вместо реального интерфейса. Добавим превью bit Hub после подготовки актуальных экранов приложения.',
     'hub.tech_title': 'Технические детали',
@@ -133,7 +120,6 @@ export const ui = {
     'footer.company': 'Создаем качественные приложения для вашего удобства и безопасности.',
     'footer.products': 'Продукты',
     'footer.company_info': 'Компания',
-    'footer.legal': 'Юридическая информация',
     'footer.all_rights_reserved': 'Все права защищены.',
 
     // === Stats ===
@@ -313,12 +299,9 @@ export const ui = {
     // === Hero ===
     'hero.title': 'bit Tecnologies',
     'hero.badge': 'Android App Ecosystem',
-    'hero.tagline': 'Ecosystem of intuitive apps',
     'hero.subtitle': 'We create native Android apps with a focus on performance and privacy. Minimum dependencies, maximum optimization.',
     'hero.download_hub': 'Download bit Hub (APK)',
-    'hero.about_company': 'About Us',
     'hero.apps_catalog': 'App Catalog',
-    'hero.hub_release_label': 'Current bit Hub version',
     'hero.hub_release_fallback': 'Beta',
     'hero.hub_size_fallback': '~100 MB',
     'hero.no_trackers': '0 trackers',
@@ -353,10 +336,7 @@ export const ui = {
     // === Compatibility ===
     'home.compatibility': 'Compatibility',
     'home.compatibility_label': 'Devices',
-    'home.compatibility_subtitle': 'Our apps are optimized to work on a wide range of Android devices',
     'home.compatibility_desc': 'Minimum Android versions are specified individually for each application, without generalizing to a single version for the entire ecosystem.',
-    'home.requirements_title': 'Minimum Requirements',
-    'home.testing_title': 'Testing',
     'home.min_sdk': 'Minimum SDK',
     'home.gen_requirements': 'General Requirements',
     'home.req_arch': 'ARMv7 or ARM64',
@@ -365,10 +345,8 @@ export const ui = {
 
     // === CTA Section ===
     'home.cta_title': 'Ready to Try?',
-    'home.cta_desc': 'Download bit Hub now and experience the benefits of native Android applications',
     'home.cta_desc_full': 'Download bit Hub and keep the entire bit ecosystem at your fingertips: no ads, no telemetry, no unnecessary noise.',
     'home.cta_github': 'GitHub',
-    'home.cta_file_info': 'Allow installation from unknown sources',
     'home.cta_file_info_full': 'Size: {size} / Android 6.0+ / Open source',
 
     // === App Cards ===
@@ -385,7 +363,6 @@ export const ui = {
     'app.in_development': 'In Development',
     'app.planning': 'Planning',
     'app.download': 'Download',
-    'app.more': 'Details',
     'app.beta': 'Beta',
     'app.delta_size': '~5 MB',
     'app.record_size': '~3 MB',
@@ -404,10 +381,6 @@ export const ui = {
     'hub.feature_updates_desc': 'Background checks and installation of updates without user interaction',
     'hub.feature_fdroid': 'F-Droid Repositories',
     'hub.feature_fdroid_desc': 'Full compatibility with existing F-Droid repositories',
-    'hub.interface_title': 'App Interface',
-    'hub.screen_main': 'Main Screen',
-    'hub.screen_settings': 'Settings',
-    'hub.screen_updates': 'Updates',
     'hub.screenshots_title': 'Screenshots Coming Soon',
     'hub.screenshots_desc': 'We prefer not to show mockups instead of the real interface. We will add bit Hub previews once the actual app screens are ready.',
     'hub.tech_title': 'Technical Details',
@@ -424,7 +397,6 @@ export const ui = {
     'footer.company': 'Creating quality applications with your privacy and security in mind.',
     'footer.products': 'Products',
     'footer.company_info': 'Company',
-    'footer.legal': 'Legal',
     'footer.all_rights_reserved': 'All rights reserved.',
 
     // === Stats ===
