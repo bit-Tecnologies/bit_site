@@ -13,7 +13,8 @@ export interface Props {
 	schema?: Record<string, any>;
 }
 
-const { title, description, image = "/og-bit-hub.svg", schema } = Astro.props;
+const { title, description, image = "/og-bit-hub.png", schema } = Astro.props;
+const ogImage = image.startsWith('http') ? image : new URL(image, Astro.site || 'http://localhost:4321').href;
 // Get language from localized path or query parameter
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -56,7 +57,6 @@ const jsonLd = schema || defaultSchema;
 		<meta name="description" content={description} />
 		<meta name="robots" content="index, follow, max-snippet:150, max-image-preview:large" />
 		<meta name="author" content="bit Tecnologies" />
-		<meta name="keywords" content="bit Tecnologies, android, privacy, mobile apps, kotlin, jetpack compose" />
 		<meta name="google-site-verification" content="NRxPEtJF7O-XeZhsTMAgjTgWa_F5IxHUSkRi4yZDH_8" />
 
 		<!-- JSON-LD Schema -->
@@ -65,7 +65,7 @@ const jsonLd = schema || defaultSchema;
 		<!-- Open Graph Tags -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={image} />
+		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="bit Tecnologies Logo" />
@@ -84,7 +84,7 @@ const jsonLd = schema || defaultSchema;
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={image} />
+		<meta name="twitter:image" content={ogImage} />
 
 		<!-- Preconnect to font origins -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -99,6 +99,8 @@ const jsonLd = schema || defaultSchema;
     <script is:inline>
       (function(){try{var t=localStorage.getItem('color-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark')}})()
     </script>
+    <!-- JS availability guard: reveal animations only run when JS is present -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <!-- Apply dark mode during View Transitions -->
     <script is:inline>
       document.addEventListener('astro:before-swap',function(ev){try{var t=localStorage.getItem('color-theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);d?ev.newDocument.documentElement.classList.add('dark'):ev.newDocument.documentElement.classList.remove('dark')}catch(e){if(matchMedia('(prefers-color-scheme:dark)').matches)ev.newDocument.documentElement.classList.add('dark')}});
@@ -155,33 +157,12 @@ const jsonLd = schema || defaultSchema;
 				reveals.forEach(el => currentObserver!.observe(el));
 			}
 
-			// Cursor glow effect
-			function setupCursorGlow() {
-				document.querySelectorAll('.cursor-glow').forEach(el => {
-					el.addEventListener('mousemove', (e: Event) => {
-						const mouseEvent = e as MouseEvent;
-						const rect = (el as HTMLElement).getBoundingClientRect();
-						const x = mouseEvent.clientX - rect.left;
-						const y = mouseEvent.clientY - rect.top;
-						(el as HTMLElement).style.setProperty('--glow-x', `${x}px`);
-						(el as HTMLElement).style.setProperty('--glow-y', `${y}px`);
-						const before = (el as HTMLElement).querySelector('.glow-indicator') as HTMLElement;
-						if (before) {
-							before.style.left = `${x}px`;
-							before.style.top = `${y}px`;
-						}
-					});
-			});
-			}
-
 			// Setup on initial load
 			setupRevealObserver();
-			setupCursorGlow();
 
 			// Re-setup after View Transitions
 			document.addEventListener('astro:after-swap', () => {
 				setupRevealObserver();
-				setupCursorGlow();
 			});
 		</script>
 	</body>
