@@ -25,7 +25,7 @@ const translate = translatePath(Astro.url);
         <a href={translate('/#compatibility')} class="text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors duration-200 text-sm font-bold" data-i18n="nav.compatibility">{t('nav.compatibility')}</a>
         <a href={translate('/#download')} class="text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors duration-200 text-sm font-bold" data-i18n="nav.download">{t('nav.download')}</a>
         <DynamicLanguagePicker />
-        <ThemeToggle />
+        <ThemeToggle label={t('theme.toggle')} />
       </div>
       <!-- Mobile menu buttons -->
       <div class="md:hidden flex items-center space-x-2 mobile-menu-fixed">
@@ -33,7 +33,7 @@ const translate = translatePath(Astro.url);
           <DynamicLanguagePicker />
         </div>
         <div class="p-1 relative z-[61]">
-          <ThemeToggle />
+          <ThemeToggle label={t('theme.toggle')} />
         </div>
         <button class="text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors min-h-[44px] min-w-[44px] p-2 relative z-[61] no-select focus-visible" id="mobile-menu-btn" aria-label="Toggle menu">
           <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,7 +43,7 @@ const translate = translatePath(Astro.url);
       </div>
     </div>
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden liquid-card mt-3 px-4 py-3 transition-all duration-300 transform origin-top mobile-menu-animate">
+    <div id="mobile-menu" class="md:hidden hidden liquid-card mt-3 px-4 py-3 transition-[opacity,transform,visibility] duration-300 origin-top mobile-menu-animate">
       <div class="flex flex-col space-y-1 sm:space-y-2 pt-3 sm:pt-4">
         <a href={translate('/about')} class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 sm:py-3 text-sm sm:text-base block" data-i18n="nav.about">{t('nav.about')}</a>
         <a href={translate('/#compatibility')} class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 sm:py-3 text-sm sm:text-base block" data-i18n="nav.compatibility">{t('nav.compatibility')}</a>

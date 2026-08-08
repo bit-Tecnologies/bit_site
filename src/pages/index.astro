@@ -14,7 +14,6 @@ const translate = translatePath(Astro.url);
 const release = await fetchLatestRelease('bit-Tecnologies/bit_hub', lang).catch(() => null);
 const downloadUrl = release?.url || translate('/bit-hub');
 const hubReleaseVersion = release?.version || t('hero.hub_release_fallback');
-const hubDownloadTitle = `${t('hero.hub_release_label')}: ${hubReleaseVersion}`;
 
 const title = lang === 'en' ? 'bit Tecnologies — Ecosystem of Intuitive Apps' : 'bit Tecnologies — Экосистема удобных приложений';
 const description = lang === 'en' ? 'bit Tecnologies develops native, fast, and private apps for Android. No telemetry, no ads.' : 'bit Tecnologies разрабатывает нативные, быстрые и приватные приложения для Android. Никакой телеметрии и рекламы.';
@@ -31,19 +30,19 @@ const productCards = [
 	{
 		href: translate('/bit-hub'),
 		name: t('app.bithub'),
-		status: { label: 'Beta', color: 'emerald' as const },
+		status: { label: t('app.beta'), color: 'emerald' as const },
 		description: t('app.bithub_desc'),
 		requirements: 'Android 6.0+',
-		size: release?.size || '~100 МБ',
+		size: release?.size || t('hero.hub_size_fallback'),
 		iconImage: '/favicon.svg',
 	},
 	{
 		href: translate('/bit-delta'),
 		name: t('app.bitdelta'),
-		status: { label: 'Beta', color: 'emerald' as const },
+		status: { label: t('app.beta'), color: 'emerald' as const },
 		description: t('app.bitdelta_desc'),
 		requirements: 'Android 7.0+',
-		size: '~5 МБ',
+		size: t('app.delta_size'),
 		iconBgColor: 'from-violet-500 via-fuchsia-500 to-rose-500',
 		icon: 'delta',
 	},
@@ -53,7 +52,7 @@ const productCards = [
 		status: { label: t('app.in_development'), color: 'blue' as const },
 		description: t('app.bitrecord_desc'),
 		requirements: 'Android 7.0+',
-		size: '~3 МБ',
+		size: t('app.record_size'),
 		iconBgColor: 'from-rose-500 via-orange-500 to-amber-400',
 		icon: 'record',
 	},
@@ -90,14 +89,14 @@ const productCards = [
 						<span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.8)]"></span>
 						{t('hero.badge')}
 					</div>
-					<h1 class="max-w-4xl font-display text-5xl font-extrabold leading-[0.96] text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">
+					<h1 class="max-w-4xl font-display text-5xl font-extrabold leading-[0.96] text-slate-950 dark:text-white sm:text-6xl lg:text-7xl text-balance">
 						{t('hero.title')}
 					</h1>
 					<p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300 sm:text-xl">
 						{t('hero.subtitle')}
 					</p>
 					<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-						<Button href={downloadUrl} variant="primary" class="group relative w-full gap-2 overflow-hidden sm:w-auto sm:min-w-[22rem] sm:justify-between [&>*]:relative [&>*]:z-10" download ariaLabel={`${t('hero.download_hub')}. ${hubDownloadTitle}`} data-release="url">
+						<Button href={downloadUrl} variant="primary" class="group relative w-full gap-2 overflow-hidden sm:w-auto sm:min-w-[22rem] sm:justify-between [&>*]:relative [&>*]:z-10" download data-release="url">
 							<span class="flex min-w-0 items-center gap-2">
 								<svg class="h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14l-4-4h3V9h2v4h3l-4 4z"/>
@@ -106,7 +105,7 @@ const productCards = [
 							</span>
 							<span class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-950/10 bg-slate-950/[0.06] px-2.5 py-1 text-[0.68rem] font-extrabold leading-none text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl transition duration-200 group-hover:bg-slate-950/10 group-focus-visible:bg-slate-950/10 dark:border-white/15 dark:bg-white/12 dark:text-white/85 dark:group-hover:bg-white/18">
 								<span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.9)]"></span>
-								<span class="font-mono" data-release="version">{hubReleaseVersion}</span>
+								<span class="font-mono tabular-nums" data-release="version">{hubReleaseVersion}</span>
 							</span>
 						</Button>
 						<Button href="#apps" variant="outline">
@@ -115,7 +114,7 @@ const productCards = [
 					</div>
 					<div class="mt-5 flex flex-wrap gap-3 text-sm font-bold text-slate-600 dark:text-slate-300">
 						<span class="liquid-chip">{t('hero.no_trackers')}</span>
-						<span class="liquid-chip">Open source</span>
+						<span class="liquid-chip">{t('hero.open_source')}</span>
 						<span class="liquid-chip">MIT</span>
 					</div>
 				</div>
@@ -127,7 +126,7 @@ const productCards = [
 								<Image src={favicon} alt="bit Hub" class="h-11 w-11 rounded-2xl" />
 								<div>
 									<p class="font-display text-lg font-extrabold text-slate-950 dark:text-white">bit Hub</p>
-									<p class="font-mono text-xs text-slate-500 dark:text-slate-400">privacy build ready</p>
+									<p class="font-mono text-xs text-slate-500 dark:text-slate-400">{t('hero.device_ready')}</p>
 								</div>
 							</div>
 							<span class="rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-extrabold text-emerald-700 ring-1 ring-emerald-400/30 dark:text-emerald-200">Live</span>
@@ -143,12 +142,12 @@ const productCards = [
 							</div>
 							<div class="liquid-row">
 								<span>{t('hero.device_release_size')}</span>
-								<strong data-release="size">{release?.size || '~100 МБ'}</strong>
+								<strong data-release="size">{release?.size || t('hero.hub_size_fallback')}</strong>
 							</div>
 							<div class="liquid-preview">
 								<div class="flex items-center justify-between">
 									<span class="font-mono text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{t('hero.device_stack')}</span>
-									<span class="font-mono text-xs text-slate-400">{productCards.length} {lang === 'en' ? 'apps' : 'приложений'}</span>
+									<span class="font-mono text-xs text-slate-400">{productCards.length} {t('hero.device_apps')}</span>
 								</div>
 								<div class="mt-4 grid grid-cols-5 gap-2">
 									{productCards.map((product) => (
@@ -198,7 +197,7 @@ const productCards = [
 					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.license')}</p>
 				</div>
 				<div class="p-4">
-					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white" data-release="size">{release?.size || '~100'}</p>
+					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white tabular-nums" data-release="size">{release?.size || t('hero.hub_size_fallback')}</p>
 					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.size')}</p>
 				</div>
 			</div>
@@ -210,11 +209,11 @@ const productCards = [
 			<div class="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
 				<div class="reveal-left">
 					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-300">{t('advantages.title')}</p>
-					<h2 class="font-display text-3xl font-extrabold leading-tight text-slate-950 dark:text-white sm:text-5xl">
-						{lang === 'en' ? 'Privacy feels better when it\'s built into the product.' : 'Приватность выглядит спокойнее, когда она встроена в продукт.'}
+					<h2 class="font-display text-3xl font-extrabold leading-tight text-slate-950 dark:text-white sm:text-5xl text-balance">
+						{t('advantages.heading')}
 					</h2>
 					<p class="mt-5 text-lg leading-8 text-slate-600 dark:text-slate-300">
-						{lang === 'en' ? 'Our site stands on simple evidence: open source, zero ads, native speed, and a clear app ecosystem.' : 'Сайт теперь держится на простых доказательствах: открытый код, ноль рекламы, нативная скорость и понятная экосистема приложений.'}
+						{t('advantages.lead')}
 					</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
@@ -256,7 +255,7 @@ const productCards = [
 			<div class="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
 				<div>
 					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-sky-700 dark:text-sky-300">{t('home.section_products')}</p>
-					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.apps')}</h2>
+					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">{t('home.apps')}</h2>
 					<p class="mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-300">{t('home.apps_subtitle')}</p>
 				</div>
 			</div>
@@ -290,7 +289,7 @@ const productCards = [
 			<div class="liquid-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
 				<div>
 					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-violet-300">{t('home.compatibility_label')}</p>
-					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.compatibility')}</h2>
+					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">{t('home.compatibility')}</h2>
 					<p class="mt-4 text-lg text-slate-600 dark:text-slate-300">{t('home.compatibility_desc')}</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
@@ -320,7 +319,7 @@ const productCards = [
 		<div class="container mx-auto px-4">
 			<div class="liquid-cta mx-auto max-w-5xl p-7 text-center sm:p-10 md:p-14">
 				<Image src={favicon} alt="bit Hub" class="mx-auto mb-6 h-16 w-16 rounded-3xl shadow-xl shadow-emerald-500/15" />
-				<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl">{t('home.cta_title')}</h2>
+				<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">{t('home.cta_title')}</h2>
 				<p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
 					{t('home.cta_desc_full')}
 				</p>
@@ -332,7 +331,7 @@ const productCards = [
 						<span>{t('home.cta_github')}</span>
 					</Button>
 				</div>
-				<p class="mt-5 font-mono text-sm text-slate-500 dark:text-slate-400">{t('home.cta_file_info_full').replace('{size}', release?.size || '~100 МБ')}</p>
+				<p class="mt-5 font-mono text-sm text-slate-500 dark:text-slate-400">{t('home.cta_file_info_full').replace('{size}', release?.size || t('hero.hub_size_fallback'))}</p>
 			</div>
 		</div>
 	</section>

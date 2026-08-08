@@ -14,13 +14,13 @@ export interface Props {
 
 const { href, variant = 'primary', class: className = '', download = false, target, rel, title, ariaLabel, ...rest } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center space-x-2 px-4 sm:px-6 lg:px-7 py-2.5 sm:py-3 font-bold rounded-[1.15rem] transition-all duration-300 min-h-[44px] touch-manipulation";
+const baseStyles = "inline-flex items-center justify-center space-x-2 px-4 sm:px-6 lg:px-7 py-2.5 sm:py-3 font-bold rounded-[1.15rem] transition-[transform,background-color,box-shadow,color] duration-300 min-h-[44px] touch-manipulation";
 
 const variants = {
   primary: "liquid-button border border-white/75 bg-white/80 text-slate-950 shadow-[0_18px_50px_rgba(15,23,42,0.12)] backdrop-blur-2xl hover:-translate-y-0.5 hover:bg-white/90 active:translate-y-0 dark:border-white/10 dark:bg-slate-950 dark:text-white dark:shadow-[0_18px_55px_rgba(0,0,0,0.35)] dark:hover:bg-slate-900",
   secondary: "liquid-surface text-slate-950 dark:text-white hover:-translate-y-0.5 active:translate-y-0",
   outline: "liquid-surface text-slate-800 dark:text-slate-100 hover:-translate-y-0.5 active:translate-y-0",
-  ghost: "text-slate-700 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-white/10 hover:text-slate-950 dark:hover:text-white active:scale-95"
+  ghost: "text-slate-700 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-white/10 hover:text-slate-950 dark:hover:text-white active:scale-[0.96]"
 };
 ---
 

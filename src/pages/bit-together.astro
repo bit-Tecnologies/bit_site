@@ -2,10 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translate = translatePath(Astro.url);
 
 const title = t('together.meta_title');
 const description = t('together.meta_desc');
@@ -25,7 +26,7 @@ const schema = {
 ---
 
 <Layout title={title} description={description} schema={schema}>
-	<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 transition-colors duration-300">
+	<section class="relative overflow-hidden">
 		<div class="container mx-auto px-4 py-16 md:py-24">
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<div class="text-center mb-12">
@@ -34,7 +35,7 @@ const schema = {
 							<path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6V9M6,6H18V8H6V6M6,12H14V14H6V12Z"/>
 						</svg>
 					</div>
-					<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-600 to-blue-500 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent font-display drop-shadow-sm">
+					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance">
 						bit Together
 					</h1>
 					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">
@@ -53,8 +54,8 @@ const schema = {
 					</div>
 				</div>
 
-				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">{t('together.features_title')}</h2>
+				<div class="liquid-panel p-8 mb-8">
+					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('together.features_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<FeatureCard title={t('together.feature1_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature1_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2Z"/></svg>
@@ -71,18 +72,18 @@ const schema = {
 					</div>
 				</div>
 
-				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display transition-colors">{t('together.screenshots_title')}</h2>
+				<div class="liquid-panel p-8 mb-8">
+					<h2 class="font-display text-2xl font-extrabold mb-3 text-slate-950 dark:text-white text-center text-balance">{t('together.screenshots_title')}</h2>
 					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
 						{t('together.screenshots_desc')}
 					</p>
 				</div>
 
 				<div class="text-center">
-					<Button href="/#apps" variant="outline" class="mr-4">
+					<Button href={translate('/#apps')} variant="outline" class="mr-4">
 						<span>{t('nav.back_to_products')}</span>
 					</Button>
-					<Button href="/bit-hub" variant="outline">
+					<Button href={translate('/bit-hub')} variant="outline">
 						<span>{t('nav.bithub')}</span>
 					</Button>
 				</div>

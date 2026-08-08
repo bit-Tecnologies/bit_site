@@ -281,15 +281,6 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
   }
 
-  .text-gradient {
-    background: linear-gradient(135deg, #3b82f6, #06b6d4, #10b981);
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease infinite;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-
   .glass-effect {
     @apply bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
@@ -313,47 +304,49 @@
 
   /* ==========================================
      SCROLL REVEAL ANIMATIONS
+     (hidden state only when JS is available;
+     content stays visible without JS)
      ========================================== */
-  .reveal {
+  .js .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .reveal.visible {
+  .js .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .reveal-left {
+  .js .reveal-left {
     opacity: 0;
     transform: translateX(-60px);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .reveal-left.visible {
+  .js .reveal-left.visible {
     opacity: 1;
     transform: translateX(0);
   }
 
-  .reveal-right {
+  .js .reveal-right {
     opacity: 0;
     transform: translateX(60px);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .reveal-right.visible {
+  .js .reveal-right.visible {
     opacity: 1;
     transform: translateX(0);
   }
 
-  .reveal-scale {
+  .js .reveal-scale {
     opacity: 0;
     transform: scale(0.85);
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .reveal-scale.visible {
+  .js .reveal-scale.visible {
     opacity: 1;
     transform: scale(1);
   }
@@ -365,53 +358,6 @@
   .stagger-4 { transition-delay: 0.4s; }
   .stagger-5 { transition-delay: 0.5s; }
   .stagger-6 { transition-delay: 0.6s; }
-
-  /* ==========================================
-     CURSOR GLOW EFFECT
-     ========================================== */
-  .cursor-glow {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cursor-glow::before {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .cursor-glow:hover::before {
-    opacity: 1;
-  }
-
-  /* ==========================================
-     GRADIENT BORDERS
-     ========================================== */
-  .gradient-border {
-    position: relative;
-    border: none !important;
-  }
-
-  .gradient-border::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(16, 185, 129, 0.4), rgba(139, 92, 246, 0.4));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
-  }
 
   /* ==========================================
      FLOATING ANIMATION
@@ -457,25 +403,6 @@
     background-size: 200% 100%;
     animation: shimmer 3s linear infinite;
     -webkit-background-clip: text;
-  }
-
-  /* ==========================================
-     MESH GRADIENT BACKGROUND
-     ========================================== */
-  .mesh-gradient {
-    background:
-      radial-gradient(at 20% 20%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
-      radial-gradient(at 80% 10%, rgba(16, 185, 129, 0.06) 0px, transparent 50%),
-      radial-gradient(at 60% 80%, rgba(139, 92, 246, 0.06) 0px, transparent 50%),
-      radial-gradient(at 10% 70%, rgba(236, 72, 153, 0.05) 0px, transparent 50%);
-  }
-
-  .dark .mesh-gradient {
-    background:
-      radial-gradient(at 20% 20%, rgba(59, 130, 246, 0.12) 0px, transparent 50%),
-      radial-gradient(at 80% 10%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
-      radial-gradient(at 60% 80%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
-      radial-gradient(at 10% 70%, rgba(236, 72, 153, 0.06) 0px, transparent 50%);
   }
 
   /* ==========================================
@@ -587,7 +514,7 @@
   /* Improve mobile menu animation */
   .mobile-menu-animate {
     transform-origin: top center !important;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   /* Fix dropdown z-index on mobile */

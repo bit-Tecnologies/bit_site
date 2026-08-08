@@ -2,10 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const translate = translatePath(Astro.url);
 
 const title = t('record.meta_title');
 const description = t('record.meta_desc');
@@ -26,7 +27,7 @@ const schema = {
 ---
 
 <Layout title={title} description={description} schema={schema} image={image}>
-	<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 transition-colors duration-300">
+	<section class="relative overflow-hidden">
 		<div class="container mx-auto px-4 py-16 md:py-24">
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<!-- App Header -->
@@ -36,18 +37,18 @@ const schema = {
 							<path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
 						</svg>
 					</div>
-					<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-600 to-orange-500 dark:from-red-500 dark:to-orange-500 bg-clip-text text-transparent font-display drop-shadow-sm">
+					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance">
 						bit Record
 					</h1>
 					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">
 						{t('record.subtitle')}
 					</p>
 					<div class="flex items-center justify-center space-x-4 mb-6 transition-colors">
-						<span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-400 text-sm rounded-full">{t('record.coming_soon')}</span>
+						<span class="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm rounded-full">{t('record.coming_soon')}</span>
 						<span class="text-slate-400 dark:text-slate-500">•</span>
 						<span class="text-slate-600 dark:text-slate-400">Android 7.0+</span>
 						<span class="text-slate-400 dark:text-slate-500">•</span>
-						<span class="text-slate-600 dark:text-slate-400">~3 МБ</span>
+						<span class="text-slate-600 dark:text-slate-400">{t('app.record_size')}</span>
 					</div>
 					<div class="inline-flex items-center space-x-2 px-8 py-4 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 font-semibold rounded-lg cursor-not-allowed transition-colors bg-white/50 dark:bg-transparent backdrop-blur-sm">
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -58,8 +59,8 @@ const schema = {
 				</div>
 
 				<!-- Features -->
-				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">{t('record.features_title')}</h2>
+				<div class="liquid-panel p-8 mb-8">
+					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('record.features_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureCard 
               title={t('record.feature1_title')} 
@@ -100,19 +101,19 @@ const schema = {
 					</div>
 				</div>
 
-				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white text-center font-display transition-colors">{t('record.screenshots_title')}</h2>
+				<div class="liquid-panel p-8 mb-8">
+					<h2 class="font-display text-2xl font-extrabold mb-3 text-slate-950 dark:text-white text-center text-balance">{t('record.screenshots_title')}</h2>
 					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
 						{t('record.screenshots_desc')}
 					</p>
 				</div>
 
 				<!-- Technical Details -->
-				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
-					<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center font-display transition-colors">{t('record.tech_title')}</h2>
+				<div class="liquid-panel p-8 mb-8">
+					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('record.tech_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div>
-							<h3 class="text-lg font-semibold text-slate-800 dark:text-white mb-3 font-display transition-colors">{t('record.sys_requirements')}</h3>
+							<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-3">{t('record.sys_requirements')}</h3>
 							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 24 24">
@@ -135,7 +136,7 @@ const schema = {
 							</ul>
 						</div>
 						<div>
-							<h3 class="text-lg font-semibold text-slate-800 dark:text-white mb-3 font-display transition-colors">{t('record.tech_stack')}</h3>
+							<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-3">{t('record.tech_stack')}</h3>
 							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-orange-500 dark:text-orange-400" fill="currentColor" viewBox="0 0 24 24">
@@ -161,12 +162,12 @@ const schema = {
 				</div>
 
 				<!-- Status -->
-				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
+				<div class="liquid-panel p-8 mb-8">
 					<div class="text-center">
-						<svg class="w-16 h-16 text-blue-500 dark:text-blue-400 mx-auto mb-4 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+						<svg class="w-16 h-16 text-emerald-500 dark:text-emerald-400 mx-auto mb-4 transition-colors" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
 						</svg>
-						<h3 class="text-xl font-semibold text-slate-900 dark:text-white mb-2 font-display transition-colors">{t('record.status_title')}</h3>
+						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white mb-2">{t('record.status_title')}</h3>
 						<p class="text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto font-light transition-colors">
 							{t('record.status_desc')}
 						</p>
@@ -180,13 +181,13 @@ const schema = {
 
 				<!-- Navigation -->
 				<div class="text-center">
-          <Button href="/" variant="outline" class="mr-4">
+          <Button href={translate('/')} variant="outline" class="mr-4">
 						<svg class="w-5 h-5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
 						</svg>
 						<span>{t('nav.home')}</span>
           </Button>
-          <Button href="/privacy" variant="outline">
+          <Button href={translate('/privacy')} variant="outline">
 						<svg class="w-5 h-5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
 						</svg>

@@ -20,13 +20,13 @@ const userRightsItems = t('privacy.section9_items').split('\n');
 ---
 
 <Layout title={title} description={description} image={image}>
-	<section class="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 transition-colors duration-300">
+	<section class="relative overflow-hidden">
 		<div class="container mx-auto px-4 py-16 md:py-24">
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<!-- Header -->
 				<div class="text-center mb-12">
 					<img src="/favicon.svg" alt="bit Tecnologies" class="w-20 h-20 mx-auto mb-6 drop-shadow-md" />
-					<h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-emerald-500 bg-clip-text text-transparent font-display drop-shadow-sm">
+					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance">
 						{t('privacy.heading')}
 					</h1>
 					<p class="text-lg text-slate-600 dark:text-slate-300 font-light transition-colors">
@@ -35,28 +35,28 @@ const userRightsItems = t('privacy.section9_items').split('\n');
 				</div>
 
 				<!-- Content -->
-				<div class="glass-effect rounded-xl p-8 mb-8 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 backdrop-blur-md shadow-xl transition-colors">
+				<div class="liquid-panel p-8 mb-8">
 					<div class="max-w-none">
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 font-display transition-colors">{t('privacy.section1_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 text-balance">{t('privacy.section1_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section1_body')}
 						</p>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section2_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section2_title')}</h2>
 
-						<h3 class="text-xl font-semibold text-slate-800 dark:text-white mb-3 mt-6 font-display transition-colors">{t('privacy.section3_title_hub')}</h3>
+						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white mb-3 mt-6">{t('privacy.section3_title_hub')}</h3>
 						<p class="text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">{t('privacy.section3_hub_intro')}</p>
 						<ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-2 mb-6 font-light transition-colors">
 							{hubItems.map(item => <li>{item}</li>)}
 						</ul>
 
-						<h3 class="text-xl font-semibold text-slate-800 dark:text-white mb-3 mt-6 font-display transition-colors">{t('privacy.section3_title_delta')}</h3>
+						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white mb-3 mt-6">{t('privacy.section3_title_delta')}</h3>
 						<p class="text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">{t('privacy.section3_delta_intro')}</p>
 						<ul class="list-disc list-inside text-slate-600 dark:text-slate-300 space-y-2 mb-6 font-light transition-colors">
 							{deltaItems.map(item => <li>{item}</li>)}
 						</ul>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section4_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section4_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section4_intro')}
 						</p>
@@ -67,17 +67,17 @@ const userRightsItems = t('privacy.section9_items').split('\n');
 							{t('privacy.section4_note')}
 						</p>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section5_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section5_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section5_body')}
 						</p>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section6_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section6_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section6_body')}
 						</p>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section7_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section7_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section7_intro')}
 						</p>
@@ -85,7 +85,7 @@ const userRightsItems = t('privacy.section9_items').split('\n');
 							{securityItems.map(item => <li>{item}</li>)}
 						</ul>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section8_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section8_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section8_intro')}
 						</p>
@@ -93,7 +93,7 @@ const userRightsItems = t('privacy.section9_items').split('\n');
 							{policyHighlightsItems.map(item => <li>{item}</li>)}
 						</ul>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section9_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section9_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section9_intro')}
 						</p>
@@ -101,24 +101,24 @@ const userRightsItems = t('privacy.section9_items').split('\n');
 							{userRightsItems.map(item => <li>{item}</li>)}
 						</ul>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section10_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section10_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section10_body')}
 						</p>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section11_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section11_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section11_body')}
 						</p>
 
-						<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4 mt-8 font-display transition-colors">{t('privacy.section12_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold text-slate-950 dark:text-white mb-4 mt-8 text-balance">{t('privacy.section12_title')}</h2>
 						<p class="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed font-light transition-colors">
 							{t('privacy.section12_intro')}
 						</p>
-						<div class="bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg p-4 mb-6 transition-colors">
+						<div class="bg-white/55 ring-1 ring-white/70 backdrop-blur-2xl rounded-lg p-4 mb-6 dark:bg-slate-950/55 dark:ring-white/10">
 							<ul class="space-y-2 text-slate-600 dark:text-slate-300">
 								<li class="flex items-center space-x-2">
-									<svg class="w-4 h-4 text-blue-500 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+									<svg class="w-4 h-4 text-emerald-500 dark:text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
 									</svg>
 									<span>{t('privacy.contact_github').replace('{url}', 'github.com/cybernattor')}</span>
@@ -126,8 +126,8 @@ const userRightsItems = t('privacy.section9_items').split('\n');
 							</ul>
 						</div>
 
-						<div class="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-500/20 rounded-lg p-4 mt-8 transition-colors">
-							<p class="text-blue-700 dark:text-blue-400 text-sm">
+						<div class="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-500/20 rounded-lg p-4 mt-8 transition-colors">
+							<p class="text-emerald-700 dark:text-emerald-400 text-sm">
 								<strong>{t('privacy.important_title')}</strong> {t('privacy.important_body')}
 							</p>
 						</div>
