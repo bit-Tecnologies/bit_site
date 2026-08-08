@@ -19,8 +19,10 @@ export default defineConfig({
   },
 
   integrations: [
+    sitemap(),
     VitePWA({
       registerType: 'autoUpdate',
+      manifest: false,
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,avif}'],
         runtimeCaching: [
