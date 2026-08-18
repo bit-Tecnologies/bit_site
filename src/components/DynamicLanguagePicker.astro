@@ -4,19 +4,23 @@ import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<div class="dynamic-lang-picker-container relative inline-block text-left dropdown-mobile-fix" style="z-index: 9999;">
+<div class="dynamic-lang-picker-container relative inline-block text-left dropdown-mobile-fix" style="z-index: 9999;" data-initial-lang={lang}>
   <button
     type="button"
-    class="dynamic-lang-menu-button quiet-control inline-flex items-center justify-center no-select focus-visible"
+    class="dynamic-lang-menu-button language-control quiet-control inline-flex items-center justify-center gap-2 no-select focus-visible"
     aria-expanded="false"
     aria-haspopup="true"
   >
     <span class="sr-only">Select Language / Choose Language</span>
-    <span class="flex items-center space-x-1 font-medium text-sm">
+    <span class="flex items-center gap-2 font-medium text-sm">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
       </svg>
-      <span class="current-lang-display uppercase">{lang}</span>
+      <span class="language-options" aria-hidden="true">
+        <span class="language-option-label" data-language-label="ru">RU</span>
+        <span class="language-divider">|</span>
+        <span class="language-option-label" data-language-label="en">EN</span>
+      </span>
     </span>
   </button>
 
@@ -66,9 +70,11 @@ const lang = getLangFromUrl(Astro.url);
     });
     
     // Update current lang display
-    const displays = document.querySelectorAll('.current-lang-display');
-    displays.forEach(display => {
-      display.textContent = window.currentLang;
+    const labels = document.querySelectorAll<HTMLElement>('[data-language-label]');
+    const activeLang = window.currentLang || document.querySelector<HTMLElement>('.dynamic-lang-picker-container')?.dataset.initialLang;
+    labels.forEach(label => {
+      const isCurrent = label.dataset.languageLabel === activeLang;
+      label.classList.toggle('language-option-active', isCurrent);
     });
   }
 
