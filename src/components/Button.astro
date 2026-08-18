@@ -14,13 +14,13 @@ export interface Props {
 
 const { href, variant = 'primary', class: className = '', download = false, target, rel, title, ariaLabel, ...rest } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center space-x-2 px-4 sm:px-6 lg:px-7 py-2.5 sm:py-3 font-bold rounded-[1.15rem] transition-[transform,background-color,box-shadow,color] duration-300 min-h-[44px] touch-manipulation";
+const baseStyles = "inline-flex items-center justify-center space-x-2 px-4 sm:px-6 lg:px-7 py-2.5 sm:py-3 font-bold rounded-[0.8rem] transition-[transform,background-color,border-color,color] duration-200 min-h-[44px] touch-manipulation";
 
 const variants = {
-  primary: "liquid-button border border-white/75 bg-white/80 text-slate-950 shadow-[0_18px_50px_rgba(15,23,42,0.12)] backdrop-blur-2xl hover:-translate-y-0.5 hover:bg-white/90 active:translate-y-0 dark:border-white/10 dark:bg-slate-950 dark:text-white dark:shadow-[0_18px_55px_rgba(0,0,0,0.35)] dark:hover:bg-slate-900",
-  secondary: "liquid-surface text-slate-950 dark:text-white hover:-translate-y-0.5 active:translate-y-0",
-  outline: "liquid-surface text-slate-800 dark:text-slate-100 hover:-translate-y-0.5 active:translate-y-0",
-  ghost: "text-slate-700 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-white/10 hover:text-slate-950 dark:hover:text-white active:scale-[0.96]"
+  primary: "border border-emerald-600 bg-emerald-600 text-white shadow-sm hover:-translate-y-0.5 hover:bg-emerald-700 hover:border-emerald-700 active:translate-y-0 dark:border-emerald-400 dark:bg-emerald-400 dark:text-slate-950 dark:hover:bg-emerald-300",
+  secondary: "border border-slate-200 bg-white text-slate-950 shadow-sm hover:-translate-y-0.5 hover:border-emerald-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:border-emerald-400",
+  outline: "border border-slate-300 bg-transparent text-slate-800 hover:-translate-y-0.5 hover:border-emerald-600 hover:text-emerald-700 active:translate-y-0 dark:border-slate-700 dark:text-slate-100 dark:hover:border-emerald-400 dark:hover:text-emerald-300",
+  ghost: "text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300 active:scale-[0.98]"
 };
 ---
 

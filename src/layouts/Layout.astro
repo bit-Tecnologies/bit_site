@@ -6,6 +6,8 @@ import favicon from '../../public/favicon.svg';
 import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
 import '../styles/global.css';
 
+/* eslint-disable astro/no-set-html-directive */
+
 export interface Props {
 	title: string;
 	description: string;
@@ -97,16 +99,16 @@ const jsonLd = schema || defaultSchema;
 
     <!-- Inline script to prevent FOUC with dark mode -->
     <script is:inline>
-      (function(){try{var t=localStorage.getItem('color-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){if(matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark')}})()
+      (function(){try{var t=localStorage.getItem('color-theme');var d=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.classList.toggle('dark',d)}catch{document.documentElement.classList.toggle('dark',matchMedia('(prefers-color-scheme:dark)').matches)}})()
     </script>
     <!-- JS availability guard: reveal animations only run when JS is present -->
     <script is:inline>document.documentElement.classList.add('js');</script>
     <!-- Apply dark mode during View Transitions -->
     <script is:inline>
-      document.addEventListener('astro:before-swap',function(ev){try{var t=localStorage.getItem('color-theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);d?ev.newDocument.documentElement.classList.add('dark'):ev.newDocument.documentElement.classList.remove('dark')}catch(e){if(matchMedia('(prefers-color-scheme:dark)').matches)ev.newDocument.documentElement.classList.add('dark')}});
+      document.addEventListener('astro:before-swap',function(ev){try{var t=localStorage.getItem('color-theme');var d=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches);ev.newDocument.documentElement.classList.toggle('dark',d)}catch{ev.newDocument.documentElement.classList.toggle('dark',matchMedia('(prefers-color-scheme:dark)').matches)}});
     </script>
 	</head>
-	<body class="bg-[#f6f7f3] dark:bg-[#0b0d10] text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+		<body class="quiet-body text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
 		<!-- Skip link for keyboard navigation -->
 		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2 focus:ring-blue-500" data-i18n="layout.skip_link">
 			{t('layout.skip_link')}

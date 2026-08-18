@@ -12,6 +12,7 @@ export const ui = {
 
     // === Navigation ===
     'nav.about': 'О компании',
+    'nav.products': 'Приложения',
     'nav.compatibility': 'Совместимость',
     'nav.download': 'Скачать',
     'nav.home': 'Вернуться на главную',
@@ -26,7 +27,7 @@ export const ui = {
     'hero.download_hub': 'Скачать bit Hub (APK)',
     'hero.apps_catalog': 'Каталог приложений',
     'hero.hub_release_fallback': 'Beta',
-    'hero.hub_size_fallback': '~100 МБ',
+    'hero.hub_size_fallback': '~3 МБ',
     'hero.no_trackers': '0 трекеров',
     'hero.device_telemetry': 'Телеметрия',
     'hero.device_telemetry_value': 'Отключена',
@@ -55,6 +56,12 @@ export const ui = {
     'home.apps': 'Наши приложения',
     'home.apps_subtitle': 'Нативные Android приложения, созданные с акцентом на производительность и пользовательский опыт',
     'home.section_products': 'Продукты',
+    'home.proof_label': 'Что важно в bit Tecnologies',
+    'home.proof_desc': 'Проверяемые свойства экосистемы и bit Hub',
+    'home.proof_trackers': 'В bit Hub',
+    'home.proof_source': 'Исходный код',
+    'home.proof_license': 'Лицензия проекта',
+    'home.proof_size': 'Размер bit Hub',
 
     // === Compatibility ===
     'home.compatibility': 'Совместимость',
@@ -70,7 +77,7 @@ export const ui = {
     'home.cta_title': 'Готовы попробовать?',
     'home.cta_desc_full': 'Скачайте bit Hub и держите всю экосистему bit под рукой: без рекламы, без телеметрии, без лишнего шума.',
     'home.cta_github': 'GitHub',
-    'home.cta_file_info_full': 'Размер: {size} / Android 6.0+ / Open source',
+    'home.cta_file_info_full': 'Размер: {size} / Android 6.0+ / Открытый код',
 
     // === App Cards ===
     'app.bithub': 'bit Hub',
@@ -86,6 +93,7 @@ export const ui = {
     'app.in_development': 'В разработке',
     'app.planning': 'Планирование',
     'app.download': 'Скачать',
+    'app.view_product': 'Открыть приложение',
     'app.beta': 'Бета',
     'app.delta_size': '~5 МБ',
     'app.record_size': '~3 МБ',
@@ -123,7 +131,7 @@ export const ui = {
     'footer.all_rights_reserved': 'Все права защищены.',
 
     // === Stats ===
-    'stats.size': 'МБ размер',
+    'stats.size': 'Размер приложения',
     'stats.trackers': 'Трекеров',
     'stats.opensource': 'Открытый код',
     'stats.license': 'Лицензия',
@@ -289,6 +297,7 @@ export const ui = {
 
     // === Navigation ===
     'nav.about': 'About Us',
+    'nav.products': 'Products',
     'nav.compatibility': 'Compatibility',
     'nav.download': 'Download',
     'nav.home': 'Back to Home',
@@ -303,7 +312,7 @@ export const ui = {
     'hero.download_hub': 'Download bit Hub (APK)',
     'hero.apps_catalog': 'App Catalog',
     'hero.hub_release_fallback': 'Beta',
-    'hero.hub_size_fallback': '~100 MB',
+    'hero.hub_size_fallback': '~3 MB',
     'hero.no_trackers': '0 trackers',
     'hero.device_telemetry': 'Telemetry',
     'hero.device_telemetry_value': 'Disabled',
@@ -332,6 +341,12 @@ export const ui = {
     'home.apps': 'Our Applications',
     'home.apps_subtitle': 'Native Android apps created with a focus on performance and user experience',
     'home.section_products': 'Products',
+    'home.proof_label': 'What defines bit Tecnologies',
+    'home.proof_desc': 'Verifiable properties of the ecosystem and bit Hub',
+    'home.proof_trackers': 'In bit Hub',
+    'home.proof_source': 'Open source',
+    'home.proof_license': 'Project license',
+    'home.proof_size': 'bit Hub size',
 
     // === Compatibility ===
     'home.compatibility': 'Compatibility',
@@ -363,6 +378,7 @@ export const ui = {
     'app.in_development': 'In Development',
     'app.planning': 'Planning',
     'app.download': 'Download',
+    'app.view_product': 'View product',
     'app.beta': 'Beta',
     'app.delta_size': '~5 MB',
     'app.record_size': '~3 MB',

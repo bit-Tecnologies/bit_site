@@ -13,17 +13,18 @@ const translate = translatePath(Astro.url);
 
 <header class="fixed left-0 right-0 top-3 sm:top-4 z-50 transition-colors duration-300">
   <nav class="container mx-auto px-3 sm:px-4">
-    <div class="liquid-nav flex items-center justify-between px-3 py-2.5 sm:px-4">
+    <div class="quiet-nav flex items-center justify-between px-3 py-2.5 sm:px-4">
       <a href={translate('/')} class="flex flex-row items-center space-x-2">
         <Image src={favicon} alt="bit Tecnologies" class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl" />
         <span class="text-base sm:text-lg font-extrabold font-display text-slate-950 dark:text-white">
           bit Tecnologies
         </span>
       </a>
-      <div class="hidden md:flex items-center space-x-4 sm:space-x-6">
-        <a href={translate('/about')} class="text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors duration-200 text-sm font-bold" data-i18n="nav.about">{t('nav.about')}</a>
-        <a href={translate('/#compatibility')} class="text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors duration-200 text-sm font-bold" data-i18n="nav.compatibility">{t('nav.compatibility')}</a>
-        <a href={translate('/#download')} class="text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-colors duration-200 text-sm font-bold" data-i18n="nav.download">{t('nav.download')}</a>
+      <div class="hidden md:flex items-center gap-4 sm:gap-5">
+        <a href={translate('/#apps')} class="quiet-nav-link" data-i18n="nav.products">{t('nav.products')}</a>
+        <a href={translate('/about')} class="quiet-nav-link" data-i18n="nav.about">{t('nav.about')}</a>
+        <a href="https://github.com/bit-Tecnologies" target="_blank" rel="noopener noreferrer" class="quiet-nav-link">GitHub</a>
+        <a href={translate('/#download')} class="quiet-nav-cta" data-i18n="nav.download">{t('nav.download')}</a>
         <DynamicLanguagePicker />
         <ThemeToggle label={t('theme.toggle')} />
       </div>
@@ -43,11 +44,12 @@ const translate = translatePath(Astro.url);
       </div>
     </div>
     <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden liquid-card mt-3 px-4 py-3 transition-[opacity,transform,visibility] duration-300 origin-top mobile-menu-animate">
+    <div id="mobile-menu" class="md:hidden hidden quiet-mobile-menu mt-3 px-4 py-3 transition-[opacity,transform,visibility] duration-200 origin-top mobile-menu-animate">
       <div class="flex flex-col space-y-1 sm:space-y-2 pt-3 sm:pt-4">
-        <a href={translate('/about')} class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 sm:py-3 text-sm sm:text-base block" data-i18n="nav.about">{t('nav.about')}</a>
-        <a href={translate('/#compatibility')} class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 sm:py-3 text-sm sm:text-base block" data-i18n="nav.compatibility">{t('nav.compatibility')}</a>
-        <a href={translate('/#download')} class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 py-2 sm:py-3 text-sm sm:text-base block" data-i18n="nav.download">{t('nav.download')}</a>
+        <a href={translate('/#apps')} class="quiet-mobile-link" data-i18n="nav.products">{t('nav.products')}</a>
+        <a href={translate('/about')} class="quiet-mobile-link" data-i18n="nav.about">{t('nav.about')}</a>
+        <a href="https://github.com/bit-Tecnologies" target="_blank" rel="noopener noreferrer" class="quiet-mobile-link">GitHub</a>
+        <a href={translate('/#download')} class="quiet-mobile-link quiet-mobile-link-cta" data-i18n="nav.download">{t('nav.download')}</a>
       </div>
     </div>
   </nav>

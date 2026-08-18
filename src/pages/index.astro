@@ -15,8 +15,8 @@ const release = await fetchLatestRelease('bit-Tecnologies/bit_hub', lang).catch(
 const downloadUrl = release?.url || translate('/bit-hub');
 const hubReleaseVersion = release?.version || t('hero.hub_release_fallback');
 
-const title = lang === 'en' ? 'bit Tecnologies — Ecosystem of Intuitive Apps' : 'bit Tecnologies — Экосистема удобных приложений';
-const description = lang === 'en' ? 'bit Tecnologies develops native, fast, and private apps for Android. No telemetry, no ads.' : 'bit Tecnologies разрабатывает нативные, быстрые и приватные приложения для Android. Никакой телеметрии и рекламы.';
+const title = lang === 'en' ? 'bit Tecnologies — Private Android apps' : 'bit Tecnologies — Приватные Android-приложения';
+const description = lang === 'en' ? 'Native, fast, and private Android apps. No telemetry, no ads.' : 'Нативные, быстрые и приватные Android-приложения. Без телеметрии и рекламы.';
 
 const schema = {
 	"@context": "https://schema.org",
@@ -35,6 +35,7 @@ const productCards = [
 		requirements: 'Android 6.0+',
 		size: release?.size || t('hero.hub_size_fallback'),
 		iconImage: '/favicon.svg',
+		featured: true,
 	},
 	{
 		href: translate('/bit-delta'),
@@ -80,16 +81,15 @@ const productCards = [
 ---
 
 <Layout title={title} description={description} schema={schema}>
-	<section class="relative isolate overflow-hidden pt-32 sm:pt-36 lg:pt-40">
-		<div class="liquid-canvas absolute inset-0 -z-10"></div>
+	<section class="quiet-hero pt-32 sm:pt-40">
 		<div class="container mx-auto px-4 pb-16 md:pb-24">
 			<div class="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
 				<div class="reveal max-w-3xl">
-					<div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/55 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-600 shadow-sm backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/55 dark:text-slate-300">
-						<span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.8)]"></span>
+					<div class="eyebrow mb-6">
+						<span class="eyebrow-mark"></span>
 						{t('hero.badge')}
 					</div>
-					<h1 class="max-w-4xl font-display text-5xl font-extrabold leading-[0.96] text-slate-950 dark:text-white sm:text-6xl lg:text-7xl text-balance">
+					<h1 class="max-w-4xl font-display text-5xl font-extrabold leading-[0.98] tracking-[-0.055em] text-slate-950 dark:text-white sm:text-7xl lg:text-[6.7rem] text-balance">
 						{t('hero.title')}
 					</h1>
 					<p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300 sm:text-xl">
@@ -103,8 +103,7 @@ const productCards = [
 								</svg>
 								<span class="truncate">{t('hero.download_hub')}</span>
 							</span>
-							<span class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-950/10 bg-slate-950/[0.06] px-2.5 py-1 text-[0.68rem] font-extrabold leading-none text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] backdrop-blur-xl transition duration-200 group-hover:bg-slate-950/10 group-focus-visible:bg-slate-950/10 dark:border-white/15 dark:bg-white/12 dark:text-white/85 dark:group-hover:bg-white/18">
-								<span class="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.9)]"></span>
+							<span class="quiet-release-badge">
 								<span class="font-mono tabular-nums" data-release="version">{hubReleaseVersion}</span>
 							</span>
 						</Button>
@@ -113,14 +112,14 @@ const productCards = [
 						</Button>
 					</div>
 					<div class="mt-5 flex flex-wrap gap-3 text-sm font-bold text-slate-600 dark:text-slate-300">
-						<span class="liquid-chip">{t('hero.no_trackers')}</span>
-						<span class="liquid-chip">{t('hero.open_source')}</span>
-						<span class="liquid-chip">MIT</span>
+						<span class="quiet-inline-proof">{t('hero.no_trackers')}</span>
+						<span class="quiet-inline-proof">{t('hero.open_source')}</span>
+						<span class="quiet-inline-proof">MIT</span>
 					</div>
 				</div>
 
 				<div class="reveal-right relative">
-					<div class="liquid-device mx-auto max-w-[520px]">
+					<div class="quiet-snapshot mx-auto max-w-[520px]">
 						<div class="flex items-center justify-between border-b border-white/50 px-5 py-4 dark:border-white/10">
 							<div class="flex items-center gap-3">
 								<Image src={favicon} alt="bit Hub" class="h-11 w-11 rounded-2xl" />
@@ -183,22 +182,26 @@ const productCards = [
 
 	<section class="py-12 md:py-16">
 		<div class="container mx-auto px-4">
-			<div class="liquid-strip grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-4">
+			<div class="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+				<p class="eyebrow">{t('home.proof_label')}</p>
+				<p class="text-sm text-slate-500 dark:text-slate-400">{t('home.proof_desc')}</p>
+			</div>
+			<div class="quiet-proof-grid grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-4">
 				<div class="p-4">
 					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">0</p>
-					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.trackers')}</p>
+					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_trackers')}</p>
 				</div>
 				<div class="p-4">
 					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">100%</p>
-					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.opensource')}</p>
+					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_source')}</p>
 				</div>
 				<div class="p-4">
 					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">MIT</p>
-					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.license')}</p>
+					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_license')}</p>
 				</div>
 				<div class="p-4">
 					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white tabular-nums" data-release="size">{release?.size || t('hero.hub_size_fallback')}</p>
-					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('stats.size')}</p>
+					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_size')}</p>
 				</div>
 			</div>
 		</div>
@@ -217,28 +220,28 @@ const productCards = [
 					</p>
 				</div>
 				<div class="grid gap-4 sm:grid-cols-2">
-					<div class="liquid-card p-6 reveal stagger-1">
+					<div class="quiet-advantage p-6 reveal stagger-1">
 						<div class="liquid-icon bg-emerald-400/20 text-emerald-700 dark:text-emerald-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/></svg>
 						</div>
 						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('advantages.card1_title')}</h3>
 						<p class="mt-3 text-slate-600 dark:text-slate-300">{t('advantages.card1_desc')}</p>
 					</div>
-					<div class="liquid-card p-6 reveal stagger-2">
+					<div class="quiet-advantage p-6 reveal stagger-2">
 						<div class="liquid-icon bg-sky-400/20 text-sky-700 dark:text-sky-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13,2.03V4.05C17.39,4.59 20.5,8.58 19.96,12.97C19.5,16.61 16.64,19.5 13,19.93V21.93C18.5,21.38 22.5,16.5 21.95,11C21.5,6.25 17.73,2.5 13,2.03M11,2.06C9.05,2.25 7.19,3 5.67,4.26L7.1,5.74C8.22,4.84 9.57,4.26 11,4.06V2.06M4.26,5.67C3,7.19 2.25,9.04 2.05,11H4.05C4.24,9.58 4.8,8.23 5.69,7.1L4.26,5.67M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/></svg>
 						</div>
 						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('advantages.card2_title')}</h3>
 						<p class="mt-3 text-slate-600 dark:text-slate-300">{t('advantages.card2_desc')}</p>
 					</div>
-					<div class="liquid-card p-6 reveal stagger-3">
+					<div class="quiet-advantage p-6 reveal stagger-3">
 						<div class="liquid-icon bg-violet-400/20 text-violet-700 dark:text-violet-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/></svg>
 						</div>
 						<h3 class="mt-5 font-display text-xl font-extrabold text-slate-950 dark:text-white">{t('advantages.card3_title')}</h3>
 						<p class="mt-3 text-slate-600 dark:text-slate-300">{t('advantages.card3_desc')}</p>
 					</div>
-					<div class="liquid-card p-6 reveal stagger-4">
+					<div class="quiet-advantage hidden p-6 reveal stagger-4">
 						<div class="liquid-icon bg-amber-400/20 text-amber-700 dark:text-amber-200">
 							<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"/></svg>
 						</div>
@@ -269,9 +272,10 @@ const productCards = [
 							status={product.status}
 							description={product.description}
 							requirements={product.requirements}
-							size={product.size}
-							iconImage={product.iconImage}
-							iconBgColor={product.iconBgColor}
+								size={product.size}
+								iconImage={product.iconImage}
+								iconBgColor={product.iconBgColor}
+								featured={product.featured}
 						>
 							{product.icon === 'delta' && <svg slot="icon" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.19L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z"/></svg>}
 							{product.icon === 'record' && <svg slot="icon" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/></svg>}
@@ -286,7 +290,7 @@ const productCards = [
 
 	<section id="compatibility" class="py-16 md:py-24">
 		<div class="container mx-auto px-4">
-			<div class="liquid-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
+				<div class="quiet-spec-table grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
 				<div>
 					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-violet-300">{t('home.compatibility_label')}</p>
 					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">{t('home.compatibility')}</h2>
@@ -317,21 +321,17 @@ const productCards = [
 
 	<section id="download" class="pb-20 pt-12 md:pb-28">
 		<div class="container mx-auto px-4">
-			<div class="liquid-cta mx-auto max-w-5xl p-7 text-center sm:p-10 md:p-14">
-				<Image src={favicon} alt="bit Hub" class="mx-auto mb-6 h-16 w-16 rounded-3xl shadow-xl shadow-emerald-500/15" />
-				<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">{t('home.cta_title')}</h2>
-				<p class="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-					{t('home.cta_desc_full')}
-				</p>
-				<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-					<Button href={downloadUrl} variant="primary" download data-release="url">
-						<span>{t('hero.download_hub')}</span>
-					</Button>
-					<Button href="https://github.com/bit-Tecnologies/bit-site" variant="outline" target="_blank" rel="noopener noreferrer">
-						<span>{t('home.cta_github')}</span>
-					</Button>
-				</div>
-				<p class="mt-5 font-mono text-sm text-slate-500 dark:text-slate-400">{t('home.cta_file_info_full').replace('{size}', release?.size || t('hero.hub_size_fallback'))}</p>
+				<div class="quiet-cta mx-auto max-w-5xl p-7 sm:p-10 md:p-14">
+					<div>
+						<Image src={favicon} alt="bit Hub" class="mb-6 h-16 w-16 rounded-3xl shadow-xl shadow-emerald-500/15" />
+						<h2 class="font-display text-3xl font-extrabold text-white sm:text-5xl text-balance">{t('home.cta_title')}</h2>
+						<p class="mt-5 max-w-2xl text-lg leading-8 text-slate-300">{t('home.cta_desc_full')}</p>
+						<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+							<Button href={downloadUrl} variant="primary" download data-release="url"><span>{t('hero.download_hub')}</span></Button>
+							<Button href="https://github.com/bit-Tecnologies/bit-site" variant="outline" class="border-slate-500 text-white hover:border-emerald-300 hover:text-emerald-300" target="_blank" rel="noopener noreferrer"><span>{t('home.cta_github')}</span></Button>
+						</div>
+						<p class="mt-5 font-mono text-sm text-slate-400">{t('home.cta_file_info_full').replace('{size}', release?.size || t('hero.hub_size_fallback'))}</p>
+					</div>
 			</div>
 		</div>
 	</section>

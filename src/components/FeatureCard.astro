@@ -10,10 +10,10 @@ export interface Props {
 const { title, description, iconColor, iconBgColor } = Astro.props;
 ---
 
-<div class="liquid-card p-4 sm:p-5 md:p-6 transition-[transform,background-color,box-shadow,color] duration-300 group h-full">
+<div class="quiet-feature-card p-4 sm:p-5 md:p-6 transition-[transform,border-color,background-color] duration-200 group h-full">
   <div class="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
     {iconBgColor ? (
-      <div class={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br transition-transform duration-300 group-hover:scale-110 ${iconBgColor} rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4`}>
+      <div class="quiet-feature-icon w-12 h-12 sm:w-16 sm:h-16 transition-transform duration-200 group-hover:scale-105 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
         <slot name="icon" />
       </div>
     ) : (
