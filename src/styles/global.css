@@ -600,11 +600,12 @@
 .quiet-nav-cta:hover { background: var(--accent-strong); transform: translateY(-1px); }
 .dark .quiet-nav-cta { color: #0b100d; }
 .quiet-control { width: 2.75rem; height: 2.75rem; min-width: 2.75rem; border: 1px solid var(--line); border-radius: .7rem; background: transparent; color: var(--ink-muted); box-shadow: none; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
-.language-control { width: auto; min-width: 7.4rem; padding: 0 .8rem; }
-.language-options { display: inline-flex; align-items: center; gap: .35rem; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; }
-.language-divider { color: var(--line); }
-.language-option-label { color: var(--ink-muted); transition: color .2s ease, opacity .2s ease; }
-.language-option-active { color: var(--accent-strong); font-weight: 800; }
+.language-control { min-width: 2.75rem; padding: 0 .75rem; }
+.current-lang-display { font-family: var(--font-mono); font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+.theme-toggle { position: relative; }
+.theme-toggle > span { position: relative; display: block; width: 1.25rem; height: 1.25rem; }
+.theme-toggle .theme-toggle-dark-icon,
+.theme-toggle .theme-toggle-light-icon { position: absolute; inset: 0; display: block; width: 1.25rem; height: 1.25rem; }
 .quiet-control:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--accent-strong); }
 .quiet-control:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
 .quiet-control-menu { overflow: hidden; border: 1px solid var(--line); border-radius: .7rem; background: var(--surface); box-shadow: 0 14px 30px rgba(15, 23, 42, .1); }

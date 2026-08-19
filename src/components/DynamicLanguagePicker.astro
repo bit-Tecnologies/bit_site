@@ -4,147 +4,33 @@ import { getLangFromUrl } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 
-<div class="dynamic-lang-picker-container relative inline-block text-left dropdown-mobile-fix" style="z-index: 9999;" data-initial-lang={lang}>
+<div class="dynamic-lang-picker-container relative inline-block" data-initial-lang={lang}>
   <button
     type="button"
     class="dynamic-lang-menu-button language-control quiet-control inline-flex items-center justify-center gap-2 no-select focus-visible"
-    aria-expanded="false"
-    aria-haspopup="true"
+    aria-label="Change language"
   >
-    <span class="sr-only">Select Language / Choose Language</span>
-    <span class="flex items-center gap-2 font-medium text-sm">
+    <span class="sr-only">Change language</span>
+    <span class="flex items-center gap-2 font-medium text-sm" aria-hidden="true">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
       </svg>
-      <span class="language-options" aria-hidden="true">
-        <span class="language-option-label" data-language-label="ru">RU</span>
-        <span class="language-divider">|</span>
-        <span class="language-option-label" data-language-label="en">EN</span>
-      </span>
+      <span class="current-lang-display uppercase">{lang}</span>
     </span>
   </button>
-
-  <div
-    class="dynamic-lang-dropdown quiet-control-menu origin-top-right absolute right-0 mt-2 w-24 opacity-0 invisible transition-[opacity,transform,visibility] duration-200 z-[10000] transform scale-95 pointer-events-none"
-    role="menu"
-    aria-orientation="vertical"
-    tabindex="-1"
-  >
-    <div class="py-1" role="none">
-      <button
-        type="button"
-        class="lang-option block w-full px-4 py-2 text-left text-sm transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white"
-        role="menuitem"
-        tabindex="-1"
-        data-lang="ru"
-      >
-        RU
-      </button>
-      <button
-        type="button"
-        class="lang-option block w-full px-4 py-2 text-left text-sm transition-colors text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white"
-        role="menuitem"
-        tabindex="-1"
-        data-lang="en"
-      >
-        EN
-      </button>
-    </div>
-  </div>
 </div>
 
 <script>
-  // Dynamic language picker using centralized i18n client
-  function updateLanguageButtons() {
-    // Update active state in dropdown
-    const buttons = document.querySelectorAll('.lang-option');
-    buttons.forEach((button) => {
-      const buttonLang = button.getAttribute('data-lang');
-      if (buttonLang === window.currentLang) {
-        button.classList.add('bg-slate-100', 'dark:bg-slate-700', 'text-purple-600', 'dark:text-purple-400', 'font-semibold');
-        button.classList.remove('text-slate-700', 'dark:text-slate-300');
-      } else {
-        button.classList.remove('bg-slate-100', 'dark:bg-slate-700', 'text-purple-600', 'dark:text-purple-400', 'font-semibold');
-        button.classList.add('text-slate-700', 'dark:text-slate-300');
-      }
-    });
-    
-    // Update current lang display
-    const labels = document.querySelectorAll<HTMLElement>('[data-language-label]');
-    const activeLang = window.currentLang || document.querySelector<HTMLElement>('.dynamic-lang-picker-container')?.dataset.initialLang;
-    labels.forEach(label => {
-      const isCurrent = label.dataset.languageLabel === activeLang;
-      label.classList.toggle('language-option-active', isCurrent);
-    });
-  }
-
-  function handleOutsideClick(e: Event) {
-    document.querySelectorAll<HTMLElement>('.dynamic-lang-picker-container').forEach((container) => {
-      const dropdown = container.querySelector('.dynamic-lang-dropdown');
-      const btn = container.querySelector('.dynamic-lang-menu-button');
-      if (!dropdown || !btn || container.contains(e.target as Node)) return;
-
-      btn.setAttribute('aria-expanded', 'false');
-      dropdown.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
-      dropdown.classList.remove('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
-    });
-  }
-
-  function setupDynamicLangPicker() {
-    updateLanguageButtons();
-
-    document.querySelectorAll<HTMLElement>('.dynamic-lang-picker-container').forEach((container) => {
-      const btn = container.querySelector<HTMLButtonElement>('.dynamic-lang-menu-button');
-      const dropdown = container.querySelector<HTMLElement>('.dynamic-lang-dropdown');
-      if (!btn || !dropdown) return;
-      const menuButton = btn;
-      const dropdownMenu = dropdown;
-
-      function toggleMenu(show: boolean) {
-        menuButton.setAttribute('aria-expanded', String(show));
-        if (show) {
-          dropdownMenu.classList.remove('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
-          dropdownMenu.classList.add('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
-        } else {
-          dropdownMenu.classList.add('opacity-0', 'invisible', 'scale-95', 'pointer-events-none');
-          dropdownMenu.classList.remove('opacity-100', 'visible', 'scale-100', 'pointer-events-auto');
-        }
-      }
-
-      menuButton.onclick = (e: MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-        toggleMenu(!isExpanded);
+  function setupLanguageToggle() {
+    document.querySelectorAll<HTMLButtonElement>('.dynamic-lang-menu-button').forEach((button) => {
+      button.onclick = (event: MouseEvent) => {
+        event.preventDefault();
+        const current = document.documentElement.lang === 'en' ? 'en' : 'ru';
+        window.setLanguage?.(current === 'ru' ? 'en' : 'ru');
       };
-
-      container.querySelectorAll<HTMLElement>('.lang-option').forEach((button) => {
-        button.onclick = (e: MouseEvent) => {
-          const target = e.currentTarget as HTMLElement;
-          const targetLang = target.getAttribute('data-lang') as 'ru' | 'en' | null;
-          if (targetLang && window.setLanguage) {
-            window.setLanguage(targetLang);
-            updateLanguageButtons();
-            toggleMenu(false);
-          }
-        };
-      });
     });
-
-    document.removeEventListener('click', handleOutsideClick);
-    document.addEventListener('click', handleOutsideClick);
   }
 
-  (window as unknown as Window & { setupDynamicLangPicker: () => void }).setupDynamicLangPicker = setupDynamicLangPicker;
-
-  // Initialize on load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupDynamicLangPicker);
-  } else {
-    setupDynamicLangPicker();
-  }
-
-  // Re-setup after Astro view transitions
-  document.addEventListener('astro:after-swap', setupDynamicLangPicker);
-  window.addEventListener('languagechange', updateLanguageButtons);
+  setupLanguageToggle();
+  document.addEventListener('astro:after-swap', setupLanguageToggle);
 </script>
