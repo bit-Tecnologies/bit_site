@@ -328,7 +328,7 @@ const productCards = [
 						<p class="mt-5 max-w-2xl text-lg leading-8 text-slate-300">{t('home.cta_desc_full')}</p>
 						<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 							<Button href={downloadUrl} variant="primary" download data-release="url"><span>{t('hero.download_hub')}</span></Button>
-							<Button href="https://github.com/bit-Tecnologies/bit-site" variant="outline" class="border-slate-500 text-white hover:border-emerald-300 hover:text-emerald-300" target="_blank" rel="noopener noreferrer"><span>{t('home.cta_github')}</span></Button>
+							<Button href="https://github.com/bit-Tecnologies/bit-site" variant="outline" target="_blank" rel="noopener noreferrer"><span>{t('home.cta_github')}</span></Button>
 						</div>
 						<p class="mt-5 font-mono text-sm text-slate-400">{t('home.cta_file_info_full').replace('{size}', release?.size || t('hero.hub_size_fallback'))}</p>
 					</div>
