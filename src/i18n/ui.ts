@@ -23,7 +23,7 @@ export const ui = {
     // === Hero ===
     'hero.title': 'bit Tecnologies',
     'hero.badge': 'Экосистема Android-приложений',
-    'hero.subtitle': 'Создаем нативные Android приложения с высокой производительностью и заботой о пользователях. Минимум зависимостей, максимум оптимизации.',
+    'hero.subtitle': 'Развиваем собственную экосистему продуктов, которые работают вместе и дополняют друг друга.',
     'hero.download_hub': 'Скачать bit Hub (APK)',
     'hero.apps_catalog': 'Каталог приложений',
     'hero.hub_release_fallback': 'Beta',
@@ -81,7 +81,7 @@ export const ui = {
 
     // === App Cards ===
     'app.bithub': 'bit Hub',
-    'app.bithub_desc': 'Альтернатива F-Droid с нативной разработкой. Магазин приложений с фокусом на приватность и производительность.',
+    'app.bithub_desc': 'Центр экосистемы bit Tecnologies — единое место для наших продуктов и сервисов.',
     'app.bitdelta': 'bit Delta',
     'app.bitdelta_desc': 'Шагомер, отслеживание активности и здоровья.',
     'app.bitrecord': 'bit Record',
