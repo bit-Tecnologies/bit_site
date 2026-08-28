@@ -7,6 +7,12 @@ import sitemap from '@astrojs/sitemap';
 /** @type {any} Astro and @tailwindcss/vite currently resolve different Vite type copies here. */
 const tailwindPlugin = tailwindcss();
 
+/** @param {string} page */
+const isIndexablePage = (page) => {
+  const pathname = new URL(page).pathname;
+  return !['/404/', '/en/404/'].includes(pathname);
+};
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://bit-tecnologies.pages.dev',
@@ -19,7 +25,9 @@ export default defineConfig({
   },
 
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: isIndexablePage,
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: false,

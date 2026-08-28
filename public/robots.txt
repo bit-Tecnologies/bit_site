@@ -5,4 +5,4 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 
-Sitemap: https://bit-tecnologies.pages.dev/sitemap-index.xml
+Sitemap: https://bit-tecnologies.pages.dev/sitemap.xml
