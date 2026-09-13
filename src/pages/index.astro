@@ -22,7 +22,7 @@ const schema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
 	"name": "bit Tecnologies",
-	"url": "https://bit-tecnologies.pages.dev",
+	"url": (Astro.site || new URL('http://localhost:4321')).href.replace(/\/$/, ''),
 	"description": description
 };
 

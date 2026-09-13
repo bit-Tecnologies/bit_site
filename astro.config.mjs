@@ -15,7 +15,7 @@ const isIndexablePage = (page) => {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://bit-tecnologies.pages.dev',
+  site: 'https://bit-tecnologies.vercel.app',
   devToolbar: {
     enabled: false,
   },

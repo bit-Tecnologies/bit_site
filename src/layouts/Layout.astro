@@ -31,12 +31,13 @@ const translate = translatePath(Astro.url);
 const ruURL = new URL(`${translate(currentPath, 'ru')}${hash}`, Astro.site || 'http://localhost:4321');
 const enURL = new URL(`${translate(currentPath, 'en')}${hash}`, Astro.site || 'http://localhost:4321');
 
+const siteURL = (Astro.site || new URL('http://localhost:4321')).href.replace(/\/$/, '');
 const defaultSchema = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
 	"name": "bit Tecnologies",
-	"url": "https://bit-tecnologies.pages.dev",
-	"logo": "https://bit-tecnologies.pages.dev/favicon.svg",
+	"url": siteURL,
+	"logo": `${siteURL}/favicon.svg`,
 	"sameAs": [
 		"https://github.com/bit-Tecnologies"
 	]
