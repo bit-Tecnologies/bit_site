@@ -63,7 +63,7 @@ const translate = translatePath(Astro.url);
 
     if (btn && menu) {
       // Clean up old listeners (for ViewTransitions)
-      const newBtn = btn.cloneNode(true);
+      const newBtn = btn.cloneNode(true) as HTMLElement;
       btn.parentNode?.replaceChild(newBtn, btn);
 
       const setMenuState = (open: boolean, returnFocus = false) => {
