@@ -719,7 +719,7 @@
 .quiet-nav-cta { border-radius: .65rem; background: var(--accent); color: var(--on-accent); padding: .55rem .8rem; font-size: .8rem; font-weight: 800; transition: transform .2s ease, background .2s ease; }
 .quiet-nav-cta:hover { background: var(--accent-strong); transform: translateY(-1px); }
 .dark .quiet-nav-cta { color: var(--on-accent); }
-.quiet-control { width: 2.75rem; height: 2.75rem; min-width: 2.75rem; border: 1px solid var(--line); border-radius: .7rem; background: transparent; color: var(--ink-muted); box-shadow: none; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
+.quiet-control { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; min-width: 2.75rem; border: 1px solid var(--line); border-radius: .7rem; background: transparent; color: var(--ink-muted); box-shadow: none; transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
 .language-control { min-width: 2.75rem; padding: 0 .75rem; }
 .current-lang-display { font-family: var(--font-mono); font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
 .theme-toggle { position: relative; }
