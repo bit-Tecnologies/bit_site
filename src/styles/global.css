@@ -737,6 +737,8 @@
 .quiet-mobile-link { display: block; padding: .75rem .25rem; color: var(--ink-muted); font-size: .95rem; font-weight: 700; border-bottom: 1px solid var(--line); }
 .quiet-mobile-link-cta { color: var(--accent-strong); border-bottom: 0; }
 .quiet-hero { position: relative; overflow: hidden; }
+.quiet-hero::before { content: ''; position: absolute; z-index: 0; left: var(--glow-x, 50%); top: var(--glow-y, 45%); width: 40rem; height: 40rem; border-radius: 50%; pointer-events: none; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%); opacity: .8; transform: translate(-50%, -50%); transition: left .18s ease-out, top .18s ease-out; }
+.quiet-hero > div { position: relative; z-index: 1; }
 .quiet-hero::after { content: ''; position: absolute; width: 28rem; height: 28rem; right: -12rem; top: 8rem; border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent); border-radius: 50%; pointer-events: none; }
 .eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: var(--accent-strong); font-family: var(--font-mono); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .eyebrow-mark { width: .45rem; height: .45rem; border-radius: 999px; background: var(--accent); }

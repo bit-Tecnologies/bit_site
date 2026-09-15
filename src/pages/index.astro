@@ -186,7 +186,7 @@ const productCards = [
 				<p class="eyebrow">{t('home.proof_label')}</p>
 				<p class="text-sm text-slate-500 dark:text-slate-400">{t('home.proof_desc')}</p>
 			</div>
-			<div class="quiet-proof-grid grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-4">
+			<div class="quiet-proof-grid reveal grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-4">
 				<div class="p-4">
 					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">0</p>
 					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_trackers')}</p>
@@ -290,7 +290,7 @@ const productCards = [
 
 	<section id="compatibility" class="py-16 md:py-24">
 		<div class="container mx-auto px-4">
-				<div class="quiet-spec-table grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
+				<div class="quiet-spec-table reveal grid gap-8 p-6 sm:p-8 lg:grid-cols-2 lg:p-10">
 				<div>
 					<p class="mb-4 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-violet-700 dark:text-violet-300">{t('home.compatibility_label')}</p>
 					<h2 class="font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">{t('home.compatibility')}</h2>
@@ -321,7 +321,7 @@ const productCards = [
 
 	<section id="download" class="pb-20 pt-12 md:pb-28">
 		<div class="container mx-auto px-4">
-				<div class="quiet-cta mx-auto max-w-5xl p-7 sm:p-10 md:p-14">
+				<div class="quiet-cta reveal mx-auto max-w-5xl p-7 sm:p-10 md:p-14">
 					<div>
 						<Image src={favicon} alt="bit Hub" class="mb-6 h-16 w-16 rounded-3xl shadow-xl shadow-emerald-500/15" />
 						<h2 class="font-display text-3xl font-extrabold text-white sm:text-5xl text-balance">{t('home.cta_title')}</h2>
@@ -336,3 +336,20 @@ const productCards = [
 		</div>
 	</section>
 </Layout>
+
+<script>
+	function setupHeroGlow() {
+		const hero = document.querySelector<HTMLElement>('.quiet-hero');
+		if (!hero || hero.dataset.glowReady || matchMedia('(pointer: coarse), (prefers-reduced-motion: reduce)').matches) return;
+		hero.dataset.glowReady = 'true';
+
+		hero.addEventListener('pointermove', (event) => {
+			const bounds = hero.getBoundingClientRect();
+			hero.style.setProperty('--glow-x', `${event.clientX - bounds.left}px`);
+			hero.style.setProperty('--glow-y', `${event.clientY - bounds.top}px`);
+		});
+	}
+
+	document.addEventListener('astro:page-load', setupHeroGlow);
+	setupHeroGlow();
+</script>
