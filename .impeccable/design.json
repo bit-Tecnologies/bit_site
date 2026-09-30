@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T12:42:13Z",
+  "title": "Design System: bit Tecnologies",
+  "extensions": {
+    "colorMeta": {
+      "forest-signal": {
+        "role": "primary",
+        "displayName": "Forest Signal",
+        "canonical": "#138a56",
+        "tonalRamp": [
+          "#062615",
+          "#0b3d22",
+          "#0e7046",
+          "#138a56",
+          "#1ba869",
+          "#4ecb8d",
+          "#8aefb6",
+          "#d5f7e4"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "#f6f7f2",
+        "tonalRamp": [
+          "#0b100d",
+          "#151e18",
+          "#1f2b24",
+          "#3a453e",
+          "#647067",
+          "#9aa59c",
+          "#dce3dc",
+          "#f6f7f2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#101713",
+        "tonalRamp": [
+          "#0b100d",
+          "#101713",
+          "#2a332d",
+          "#4a544d",
+          "#647067",
+          "#7d897f",
+          "#9aa59c",
+          "#f4f7f3"
+        ]
+      },
+      "info": {
+        "role": "semantic",
+        "displayName": "Info",
+        "canonical": "#2563eb",
+        "darkCanonical": "#7db0ff"
+      },
+      "warning": {
+        "role": "semantic",
+        "displayName": "Warning",
+        "canonical": "#d97706",
+        "darkCanonical": "#f5b65f"
+      },
+      "danger": {
+        "role": "semantic",
+        "displayName": "Danger",
+        "canonical": "#dc2626",
+        "darkCanonical": "#ff8f8f"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Sora)",
+        "purpose": "Headings, including the homepage hero and section titles."
+      },
+      "body": {
+        "displayName": "Body (Manrope)",
+        "purpose": "Paragraph copy and descriptions."
+      },
+      "label": {
+        "displayName": "Label (IBM Plex Mono)",
+        "purpose": "Compact product facts and metadata such as release versions, file sizes, API levels, and status labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-glass",
+        "value": "0 18px 60px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85)",
+        "purpose": "Liquid-tier showcase surfaces (hero snapshot, glass panels) only."
+      },
+      {
+        "name": "quiet-utility",
+        "value": "0 8px 24px var(--shadow-color)",
+        "purpose": "Floating nav pill and other grounded quiet surfaces; a hint of lift, not a spotlight."
+      },
+      {
+        "name": "glow-accent",
+        "value": "0 0 40px rgba(19, 138, 86, 0.15), 0 0 80px rgba(19, 138, 86, 0.05)",
+        "purpose": "Sparing decorative glow around interactive accent states."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-reveal",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Scroll-reveal entrance for sections (0.8s duration)."
+      },
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Default hover/interaction transitions (0.2s duration): background, border, transform."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xs-guard",
+        "value": "380px"
+      },
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call-to-action (download, primary confirm).",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Download bit Hub</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.75rem; font-weight: 700; border-radius: 0.8rem; min-height: 44px; transition: transform 0.2s, background-color 0.2s, border-color 0.2s, color 0.2s; } .ds-btn-primary { border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); } .ds-btn-primary:hover { border-color: var(--accent-strong); background: var(--accent-strong); transform: translateY(-2px); } .ds-btn-primary:active { transform: translateY(0); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action alongside a primary CTA.",
+      "html": "<a class=\"ds-btn ds-btn-outline\" href=\"#\">View catalog</a>",
+      "css": ".ds-btn-outline { border: 1px solid var(--line); background: transparent; color: var(--ink); padding: 0.75rem 1.75rem; border-radius: 0.8rem; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; transition: transform 0.2s, border-color 0.2s, color 0.2s; } .ds-btn-outline:hover { border-color: var(--accent); color: var(--accent-strong); transform: translateY(-2px); }"
+    },
+    {
+      "name": "App Card",
+      "kind": "card",
+      "refersTo": "card-quiet",
+      "description": "Flat product card with icon, status chip, description, and spec footer.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-head\"><div class=\"ds-card-icon\">B</div><div><h3 class=\"ds-card-title\">bit Hub</h3><span class=\"ds-chip ds-chip-live\">Beta</span></div></div><p class=\"ds-card-desc\">Privacy-first app hub for the bit Tecnologies ecosystem.</p><div class=\"ds-card-foot\"><span>Android 6.0+</span><span>Release size</span></div></a>",
+      "css": ".ds-card { display: block; border: 1px solid var(--line); border-radius: 0.9rem; background: var(--surface); padding: 1.5rem; transition: transform 0.2s, border-color 0.2s; text-decoration: none; } .ds-card:hover { border-color: var(--accent); transform: translateY(-3px); } .ds-card-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; } .ds-card-icon { width: 3rem; height: 3rem; border-radius: 0.75rem; background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center; font-weight: 800; } .ds-card-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.125rem; color: var(--ink); } .ds-card-desc { color: var(--ink-muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1rem; } .ds-card-foot { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--ink-muted); border-top: 1px solid var(--line); padding-top: 1rem; } .ds-chip { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 0.375rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; } .ds-chip-live { background: var(--accent-soft); color: var(--accent-strong); }"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "status-chip",
+      "description": "Mono-labeled status badge (Beta / In development / Planning).",
+      "html": "<span class=\"ds-chip ds-chip-live\">Beta</span>",
+      "css": ".ds-chip { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 0.375rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; } .ds-chip-live { background: var(--accent-soft); color: var(--accent-strong); }"
+    },
+    {
+      "name": "Navigation Pill",
+      "kind": "nav",
+      "refersTo": "quiet-nav",
+      "description": "Floating, blurred pill nav bar fixed to the top of the viewport.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\">bit Tecnologies</span><div class=\"ds-nav-links\"><a class=\"ds-nav-link\" href=\"#\">Products</a><a class=\"ds-nav-link\" href=\"#\">About</a><a class=\"ds-nav-cta\" href=\"#\">Download</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--line); border-radius: 0.85rem; background: color-mix(in srgb, var(--canvas) 90%, transparent); box-shadow: 0 8px 24px var(--shadow-color); backdrop-filter: blur(16px); padding: 0.65rem 1rem; } .ds-nav-brand { font-family: 'Sora', sans-serif; font-weight: 800; color: var(--ink); } .ds-nav-links { display: flex; align-items: center; gap: 1.25rem; } .ds-nav-link { color: var(--ink-muted); font-size: 0.875rem; font-weight: 700; text-decoration: none; transition: color 0.2s; } .ds-nav-link:hover { color: var(--accent-strong); } .ds-nav-cta { border-radius: 0.65rem; background: var(--accent); color: var(--on-accent); padding: 0.55rem 0.8rem; font-size: 0.8rem; font-weight: 800; text-decoration: none; transition: transform 0.2s, background 0.2s; } .ds-nav-cta:hover { background: var(--accent-strong); transform: translateY(-1px); }"
+    },
+    {
+      "name": "Liquid Showcase Panel",
+      "kind": "custom",
+      "refersTo": "liquid-panel",
+      "description": "Glass showcase surface reserved for hero/CTA moments — translucent, blurred, ambient-shadowed.",
+      "html": "<div class=\"ds-liquid\"><p class=\"ds-liquid-label\">Device ready</p><h3 class=\"ds-liquid-title\">bit Hub</h3></div>",
+      "css": ".ds-liquid { position: relative; border: 1px solid rgba(255,255,255,0.72); border-radius: 2rem; background: linear-gradient(145deg, rgba(255,255,255,0.72), rgba(255,255,255,0.38)); box-shadow: 0 22px 70px rgba(15,23,42,0.11), inset 0 1px 0 rgba(255,255,255,0.85); backdrop-filter: blur(30px); padding: 1.5rem; overflow: hidden; } .ds-liquid-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.12em; } .ds-liquid-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--ink); margin-top: 0.25rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Ledger",
+    "overview": "The site presents an Android app ecosystem through calm typography, readable product cards, and concrete product facts. Forest green is the primary action and trust accent. Status colors, product illustrations, and selected feature icons also use blue, violet, cyan, amber, and other hues. Sora gives headings a geometric voice, Manrope carries body text, and IBM Plex Mono highlights compact technical details.\n\nDepth combines translucent, blurred panels with flatter bordered cards. Glass styling appears in the navigation, homepage device snapshot, and panels across product pages; quiet cards and tables carry much of the catalog and supporting content. Both light and dark palettes are implemented, with the initial theme following the user's saved choice or system preference.\n\nMotion includes scroll reveals, small hover changes, and a pointer-following hero glow on supported devices. Reduced-motion preferences disable relevant motion. The visual language stays quiet overall while allowing product-specific color and illustration where the interface already uses them.",
+    "keyCharacteristics": [
+      "Forest green is the primary action accent; semantic and product-specific colors also appear.",
+      "Translucent glass panels and quiet bordered cards are both part of the current interface.",
+      "IBM Plex Mono is used for compact product facts and metadata; use it sparingly in new content.",
+      "Light and dark colors are defined in CSS custom properties alongside existing Tailwind light/dark utilities.",
+      "Motion is restrained, supports reduced-motion preferences, and includes a pointer-following hero effect on supported devices."
+    ],
+    "rules": [
+      {
+        "name": "The Primary Signal Rule",
+        "body": "Forest green carries the main action and trust role; semantic and product colors may support it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Selective Glass Rule",
+        "body": "Use translucent glass panels selectively, and quieter bordered cards for most catalog and reference content.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Technical Mono Rule",
+        "body": "Use IBM Plex Mono mainly for compact values, technical facts, and metadata; keep longer copy in the sans/display families.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Ordinary content surfaces use tonal backgrounds and borders; reserve stronger blur and ambient shadow for showcase moments.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Use Forest Signal (--accent) for primary actions while preserving semantic colors and existing product-specific accents.",
+      "Use IBM Plex Mono for compact technical values; keep longer copy in the body font.",
+      "Use glass panels selectively and quiet bordered cards for most catalog and information content.",
+      "Use CSS theme tokens where available, while recognizing that existing components also use Tailwind color utilities.",
+      "Keep hover feedback small and respect prefers-reduced-motion.",
+      "Mark unreleased or in-progress apps honestly (Beta / In development / Planning / TBA)."
+    ],
+    "donts": [
+      "Do not add busy dashboard decoration or motion that competes with product information.",
+      "Do not let additional accents displace forest green as the primary action color.",
+      "Do not use heavy motion; keep movement purposeful and respect prefers-reduced-motion.",
+      "Do not fabricate sizes or requirements for apps still marked TBA or Planning."
+    ]
+  }
+}
