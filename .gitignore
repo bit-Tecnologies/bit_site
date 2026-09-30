@@ -79,3 +79,8 @@ junit.xml
 opencode.jsonc
 skills-lock.json
 .playwright-mcp/
+
+# Generated brag output
+brag-output-*/
+.mimocode/
+hf-blank/

@@ -32,7 +32,7 @@ const statusColors = {
   <div class={`quiet-card p-5 sm:p-6 transition-[transform,border-color,background-color] duration-200 group h-full flex flex-col ${featured ? 'quiet-card-featured' : ''}`}>
     <div class="flex items-center space-x-3 sm:space-x-4 mb-3 sm:mb-4">
       {iconImage ? (
-        <Image src={favicon} alt={name} class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl transition-transform duration-200 group-hover:scale-105" />
+        <img src={iconImage} alt={name} class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl transition-transform duration-200 group-hover:scale-105" loading="lazy" />
       ) : (
         <div class="app-card-icon w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-105">
           <slot name="icon" />
