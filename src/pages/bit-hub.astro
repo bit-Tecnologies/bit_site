@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import { Image } from 'astro:assets';
-import favicon from '../../public/favicon.svg';
+import hubLogo from '../../public/bit-hub.png';
 import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
 import { fetchLatestRelease } from '../utils/github';
 
@@ -27,7 +27,7 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<!-- App Header -->
 				<div class="text-center mb-12">
-					<Image src={favicon} alt="bit Hub" class="w-24 h-24 mx-auto mb-6 drop-shadow-lg" style="view-transition-name: hub-icon;" />
+					<Image src={hubLogo} alt="bit Hub" class="w-24 h-24 mx-auto mb-6 drop-shadow-lg" style="view-transition-name: hub-icon;" />
 					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance" style="view-transition-name: hub-title;">
 						{t('hub.title')}
 					</h1>

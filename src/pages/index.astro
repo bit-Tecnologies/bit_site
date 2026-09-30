@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import AppCard from '../components/AppCard.astro';
 import Button from '../components/Button.astro';
 import { Image } from 'astro:assets';
-import favicon from '../../public/favicon.svg';
+import hubLogo from '../../public/bit-hub.png';
 import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
 import { fetchLatestRelease } from '../utils/github';
 
@@ -34,7 +34,7 @@ const productCards = [
 		description: t('app.bithub_desc'),
 		requirements: 'Android 6.0+',
 		size: release?.size || t('hero.hub_size_fallback'),
-		iconImage: '/favicon.svg',
+		iconImage: '/bit-hub.png',
 		featured: true,
 	},
 	{
@@ -122,7 +122,7 @@ const productCards = [
 					<div class="quiet-snapshot mx-auto max-w-[520px]">
 						<div class="flex items-center justify-between border-b border-white/50 px-4 py-3 sm:px-5 sm:py-4 dark:border-white/10">
 							<div class="flex items-center gap-3">
-								<Image src={favicon} alt="bit Hub" class="h-11 w-11 rounded-2xl" />
+								<Image src={hubLogo} alt="bit Hub" class="h-11 w-11 rounded-2xl" />
 								<div>
 									<p class="font-display text-lg font-extrabold text-slate-950 dark:text-white">bit Hub</p>
 									<p class="font-mono text-xs text-slate-500 dark:text-slate-400">{t('hero.device_ready')}</p>
@@ -323,7 +323,7 @@ const productCards = [
 		<div class="container mx-auto px-4">
 				<div class="quiet-cta reveal mx-auto max-w-5xl p-7 sm:p-10 md:p-14">
 					<div>
-						<Image src={favicon} alt="bit Hub" class="mb-6 h-16 w-16 rounded-3xl shadow-xl shadow-emerald-500/15" />
+						<Image src={hubLogo} alt="bit Hub" class="mb-6 h-16 w-16 rounded-3xl shadow-xl shadow-emerald-500/15" />
 						<h2 class="font-display text-3xl font-extrabold text-white sm:text-5xl text-balance">{t('home.cta_title')}</h2>
 						<p class="mt-5 max-w-2xl text-lg leading-8 text-slate-300">{t('home.cta_desc_full')}</p>
 						<div class="mt-8 flex flex-col gap-3 sm:flex-row">
