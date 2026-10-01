@@ -1,20 +1,23 @@
 ---
 name: bit Tecnologies
-description: Quiet, fact-led Android app ecosystem site with a forest-green primary accent, light/dark themes, and selective glass surfaces
+description: Quiet, fact-led Android app ecosystem site with a signal-blue primary accent, light/dark themes, and selective glass surfaces
 colors:
-  canvas: "#f6f7f2"
+  canvas: "#f5f7fb"
   surface: "#ffffff"
-  surface-muted: "#edf1eb"
+  surface-muted: "#edf1f8"
   surface-elevated: "#ffffff"
-  ink: "#101713"
-  ink-strong: "#0b100d"
-  ink-muted: "#647067"
-  ink-soft: "#7d897f"
-  ink-faint: "#9aa59c"
-  line: "#dce3dc"
-  forest-signal: "#138a56"
-  forest-signal-strong: "#0e7046"
-  forest-signal-soft: "#e4f5eb"
+  ink: "#0f172a"
+  ink-strong: "#0b1020"
+  ink-muted: "#5b6475"
+  ink-soft: "#626c80"
+  ink-faint: "#5f697c"
+  line: "#dde3ee"
+  signal-blue: "#1d4fd8"
+  signal-blue-strong: "#1640b0"
+  signal-blue-soft: "#e8f0ff"
+  brand: "#2c6cff"
+  success: "#138a56"
+  success-soft: "#e4f5eb"
   on-accent: "#ffffff"
   info: "#2563eb"
   info-soft: "#e8f0ff"
@@ -23,13 +26,13 @@ colors:
   danger: "#dc2626"
   danger-soft: "#ffebeb"
   focus: "#2563eb"
-  canvas-dark: "#0b100d"
-  surface-dark: "#111814"
-  surface-muted-dark: "#151e18"
-  ink-dark: "#f4f7f3"
-  ink-muted-dark: "#aab7ad"
-  line-dark: "#27352b"
-  forest-signal-dark: "#65d99d"
+  canvas-dark: "#0a0f1a"
+  surface-dark: "#101726"
+  surface-muted-dark: "#151d2f"
+  ink-dark: "#f1f5fb"
+  ink-muted-dark: "#aab5c8"
+  line-dark: "#27324a"
+  signal-blue-dark: "#7db0ff"
   info-dark: "#7db0ff"
   warning-dark: "#f5b65f"
   danger-dark: "#ff8f8f"
@@ -66,12 +69,12 @@ spacing:
   xl: "4rem"
 components:
   button-primary:
-    backgroundColor: "{colors.forest-signal}"
+    backgroundColor: "{colors.signal-blue}"
     textColor: "{colors.on-accent}"
     rounded: "{rounded.md}"
     padding: "0.75rem 1.75rem"
   button-primary-hover:
-    backgroundColor: "{colors.forest-signal-strong}"
+    backgroundColor: "{colors.signal-blue-strong}"
   button-secondary:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
@@ -94,16 +97,14 @@ components:
 
 **Creative North Star: "The Quiet Ledger"**
 
-**Creative North Star: "The Quiet Ledger"**
-
-The site presents an Android app ecosystem through calm typography, readable product cards, and concrete product facts. Forest green is the primary action and trust accent. Status colors, product illustrations, and selected feature icons also use blue, violet, cyan, amber, and other semantic hues, so green is not the only saturated color in the implementation. Sora gives headings a geometric voice, Manrope carries body text, and IBM Plex Mono highlights compact technical details.
+The site presents an Android app ecosystem through calm typography, readable product cards, and concrete product facts. Signal blue is the primary action and trust accent; green is reserved for the "live / working" status only. Status colors, product illustrations, and selected feature icons also use blue, violet, cyan, amber, and other semantic hues, so green is not the only saturated color in the implementation. Sora gives headings a geometric voice, Manrope carries body text, and IBM Plex Mono highlights compact technical details.
 
 Depth combines translucent, blurred panels with flatter bordered cards. Glass styling appears in the navigation, homepage device snapshot, and panels across the product pages; quiet cards and tables carry much of the catalog and supporting content. Both light and dark palettes are implemented, with the initial theme following the user's saved choice or system preference.
 
 Motion includes scroll reveals, small hover changes, and a pointer-following hero glow on supported devices. Reduced-motion preferences disable the relevant motion. The visual language stays quiet overall while allowing product-specific color and illustration where the interface already uses them.
 
 **Key Characteristics:**
-- Forest green is the primary action accent; semantic and product-specific colors also appear.
+- Signal blue is the primary action accent; green appears only as the success/live status; semantic and product-specific colors also appear.
 - Translucent glass panels and quiet bordered cards are both part of the current interface.
 - IBM Plex Mono is used for compact product facts and metadata; use it sparingly in new content.
 - Light/dark colors are defined in CSS custom properties, alongside existing Tailwind light/dark utilities.
@@ -111,27 +112,28 @@ Motion includes scroll reveals, small hover changes, and a pointer-following her
 
 ## Colors
 
-The core surfaces use ink, surface, and line neutrals with forest green as the primary action accent. Semantic blue, amber, and red colors support status and feedback; individual app and feature illustrations also introduce other hues.
+The core surfaces use ink, surface, and line neutrals with signal blue as the primary action accent. Semantic green (success/live), amber, and red colors support status and feedback; individual app and feature illustrations also introduce other hues.
 
 ### Primary
-- **Forest Signal** (light `#138a56`, dark `#65d99d`): primary buttons, selected live/beta states, link hover, and other key actions. Other hues remain available for semantic status and product-specific illustrations.
+- **Signal Blue** (light `#1d4fd8`, dark `#7db0ff`; strong `#1640b0` / `#a8caff`; soft `#e8f0ff` / `#172944`; brand-fill `--brand` `#2c6cff` for text-free fills only): primary buttons, Beta chips, link hover, and other key actions. Other hues remain available for semantic status and product-specific illustrations.
 
 ### Neutral
-- **Canvas** (`#f6f7f2` light / `#0b100d` dark): page background.
-- **Surface** (`#ffffff` light / `#111814` dark): card and panel background.
-- **Surface Muted** (`#edf1eb` light / `#151e18` dark): recessed backgrounds (footer, secondary panels).
-- **Ink** (`#101713` light / `#f4f7f3` dark): primary text.
-- **Ink Muted** (`#647067` light / `#aab7ad` dark): secondary text, descriptions, metadata.
-- **Ink Faint** (`#9aa59c` light / `#718075` dark): tertiary text, disabled/least-important labels.
-- **Line** (`#dce3dc` light / `#27352b` dark): all borders and dividers.
+- **Canvas** (`#f5f7fb` light / `#0a0f1a` dark): page background.
+- **Surface** (`#ffffff` light / `#101726` dark): card and panel background.
+- **Surface Muted** (`#edf1eb` light / `#151d2f` dark): recessed backgrounds (footer, secondary panels).
+- **Ink** (`#0f172a` light / `#f1f5fb` dark): primary text.
+- **Ink Muted** (`#5b6475` light / `#aab5c8` dark): secondary text, descriptions, metadata.
+- **Ink Faint** (`#5f697c` light / `#8591a8` dark): tertiary text, disabled/least-important labels.
+- **Line** (`#dde3ee` light / `#27324a` dark): all borders and dividers.
 
 ### Semantic
 - **Info** (light `#2563eb`, dark `#7db0ff`): informational states and selected feature artwork.
+- **Success** (light `#138a56`, dark `#65d99d`): only the live/working status (badge, status dots). Never a brand or decorative color.
 - **Warning** (light `#d97706`, dark `#f5b65f`): caution and amber highlights.
 - **Danger** (light `#dc2626`, dark `#ff8f8f`): error states.
 
 ### Named Rules
-**The Primary Signal Rule.** Forest green carries the main action and trust role; semantic and product colors may support it. Keep glass surfaces selective, and use flatter cards for most catalog and reference content.
+**The Primary Signal Rule.** Signal blue carries the main action and trust role. Green means only working/live; it is never a brand color. Semantic and product colors may support it. Keep glass surfaces selective, and use flatter cards for most catalog and reference content.
 
 ## Typography
 
@@ -217,7 +219,7 @@ No form inputs exist in the current implementation — omit until a real field i
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use Forest Signal (`--accent`) for primary actions while preserving semantic colors and existing product-specific accents.
+- **Do** use Signal Blue (`--accent`) for primary actions while preserving semantic colors and existing product-specific accents.
 - **Do** use IBM Plex Mono for compact technical values; keep longer copy in the body font.
 - **Do** use glass panels selectively and quiet bordered cards for most catalog and information content.
 - **Do** use the CSS theme tokens where available, while recognizing that existing components also use Tailwind color utilities.
@@ -227,6 +229,6 @@ No form inputs exist in the current implementation — omit until a real field i
 ### Don't:
 - **Don't** add busy dashboard decoration or motion that competes with product information.
 - **Don't** mix glass and flat treatment on the same element (no blurred card with a hard flat border, no flat card with backdrop blur).
-- **Don't** let additional accents displace forest green as the primary action color.
+- **Don't** let additional accents displace signal blue as the primary action color; never place text on `--brand` (#2c6cff, 4.47:1 with white); never use green outside the success/live status.
 - **Don't** use heavy motion; keep movement purposeful and respect `prefers-reduced-motion`.
 - **Don't** fabricate specifics (size, requirements) for apps still marked TBA/Planning.

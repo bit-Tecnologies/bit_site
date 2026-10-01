@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-30T12:42:13Z",
+  "generatedAt": "2026-10-01T10:00:00Z",
   "title": "Design System: bit Tecnologies",
   "extensions": {
     "colorMeta": {
-      "forest-signal": {
+      "signal-blue": {
         "role": "primary",
-        "displayName": "Forest Signal",
-        "canonical": "#138a56",
+        "displayName": "Signal Blue",
+        "canonical": "#1d4fd8",
         "tonalRamp": [
-          "#062615",
-          "#0b3d22",
-          "#0e7046",
-          "#138a56",
-          "#1ba869",
-          "#4ecb8d",
-          "#8aefb6",
-          "#d5f7e4"
+          "#0b1b4d",
+          "#102f8a",
+          "#1640b0",
+          "#1d4fd8",
+          "#2c6cff",
+          "#7db0ff",
+          "#a8caff",
+          "#e8f0ff"
         ]
       },
       "canvas": {
         "role": "neutral",
         "displayName": "Canvas",
-        "canonical": "#f6f7f2",
+        "canonical": "#f5f7fb",
         "tonalRamp": [
           "#0b100d",
           "#151e18",
@@ -31,7 +31,7 @@
           "#647067",
           "#9aa59c",
           "#dce3dc",
-          "#f6f7f2"
+          "#f5f7fb"
         ]
       },
       "ink": {
@@ -186,9 +186,9 @@
   ],
   "narrative": {
     "northStar": "The Quiet Ledger",
-    "overview": "The site presents an Android app ecosystem through calm typography, readable product cards, and concrete product facts. Forest green is the primary action and trust accent. Status colors, product illustrations, and selected feature icons also use blue, violet, cyan, amber, and other hues. Sora gives headings a geometric voice, Manrope carries body text, and IBM Plex Mono highlights compact technical details.\n\nDepth combines translucent, blurred panels with flatter bordered cards. Glass styling appears in the navigation, homepage device snapshot, and panels across product pages; quiet cards and tables carry much of the catalog and supporting content. Both light and dark palettes are implemented, with the initial theme following the user's saved choice or system preference.\n\nMotion includes scroll reveals, small hover changes, and a pointer-following hero glow on supported devices. Reduced-motion preferences disable relevant motion. The visual language stays quiet overall while allowing product-specific color and illustration where the interface already uses them.",
+    "overview": "The site presents an Android app ecosystem through calm typography, readable product cards, and concrete product facts. Signal blue is the primary action and trust accent; green is reserved for the live/working status only. Status colors, product illustrations, and selected feature icons also use blue, violet, cyan, amber, and other hues. Sora gives headings a geometric voice, Manrope carries body text, and IBM Plex Mono highlights compact technical details.\n\nDepth combines translucent, blurred panels with flatter bordered cards. Glass styling appears in the navigation, homepage device snapshot, and panels across product pages; quiet cards and tables carry much of the catalog and supporting content. Both light and dark palettes are implemented, with the initial theme following the user's saved choice or system preference.\n\nMotion includes scroll reveals, small hover changes, and a pointer-following hero glow on supported devices. Reduced-motion preferences disable relevant motion. The visual language stays quiet overall while allowing product-specific color and illustration where the interface already uses them.",
     "keyCharacteristics": [
-      "Forest green is the primary action accent; semantic and product-specific colors also appear.",
+      "Signal blue is the primary action accent; green appears only as the success/live status; semantic and product-specific colors also appear.",
       "Translucent glass panels and quiet bordered cards are both part of the current interface.",
       "IBM Plex Mono is used for compact product facts and metadata; use it sparingly in new content.",
       "Light and dark colors are defined in CSS custom properties alongside existing Tailwind light/dark utilities.",
@@ -197,7 +197,7 @@
     "rules": [
       {
         "name": "The Primary Signal Rule",
-        "body": "Forest green carries the main action and trust role; semantic and product colors may support it.",
+        "body": "Signal blue carries the main action and trust role. Green means only working/live; it is never a brand color. Semantic and product colors may support it.",
         "section": "colors"
       },
       {
@@ -217,7 +217,7 @@
       }
     ],
     "dos": [
-      "Use Forest Signal (--accent) for primary actions while preserving semantic colors and existing product-specific accents.",
+      "Use Signal Blue (--accent) for primary actions, and --brand (#2c6cff) only for fills that carry no text (icons, logo, dots, glow) while preserving semantic colors and existing product-specific accents.",
       "Use IBM Plex Mono for compact technical values; keep longer copy in the body font.",
       "Use glass panels selectively and quiet bordered cards for most catalog and information content.",
       "Use CSS theme tokens where available, while recognizing that existing components also use Tailwind color utilities.",
@@ -226,7 +226,7 @@
     ],
     "donts": [
       "Do not add busy dashboard decoration or motion that competes with product information.",
-      "Do not let additional accents displace forest green as the primary action color.",
+      "Do not let additional accents displace signal blue as the primary action color, and do not put --brand (#2c6cff) behind text (white on it is 4.47:1, below AA); do not use green as a brand or decorative color.",
       "Do not use heavy motion; keep movement purposeful and respect prefers-reduced-motion.",
       "Do not fabricate sizes or requirements for apps still marked TBA or Planning."
     ]
