@@ -8,7 +8,7 @@
 - Тема следует сохранённому выбору пользователя, иначе системной настройке светлой/тёмной темы.
 - Витрина продуктов: bit Hub, bit Delta, bit Record, bit Together и bit Launcher.
 - Версия, размер и ссылка на APK bit Hub запрашиваются из GitHub Releases во время сборки. При ошибке запроса сайт использует текстовые значения по умолчанию.
-- Канонический origin в `astro.config.mjs`: `https://bit-tecnologies.vercel.app`. В репозитории также есть `wrangler.toml` с настройкой Cloudflare Pages; фактическую платформу деплоя следует сверять с CI/панелью хостинга.
+- Канонический origin в `astro.config.mjs`: `https://bit-tecnologies.vercel.app`. Деплой выполняет сам Vercel через свою Git-интеграцию; GitHub Actions (`.github/workflows/ci.yml`) только проверяет типы, ESLint и сборку.
 
 ## Структура
 

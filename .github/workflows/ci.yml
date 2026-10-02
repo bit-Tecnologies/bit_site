@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: CI
 
 on:
   push:
@@ -47,24 +47,3 @@ jobs:
 
       - name: Build
         run: npm run build:prod
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    name: Deploy to Cloudflare Pages
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
-    steps:
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=bit-tecnologies --branch=${{ github.ref_name }}

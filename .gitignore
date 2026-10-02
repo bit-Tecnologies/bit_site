@@ -30,9 +30,7 @@ coverage/
 # deployment platforms
 .vercel/
 .netlify/
-.cloudflare/
 .firebase/
-.wrangler/
 .dev.vars
 
 # PWA related
