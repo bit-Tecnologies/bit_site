@@ -1,20 +1,20 @@
 # bit Tecnologies
 
-> Native, fast, and private open-source apps for Android. No telemetry, no ads, no trackers. Everything is MIT-licensed.
+> An ecosystem of apps distributed through bit Hub. Android builds are available now; Windows is in development and Linux is planned.
 
 ## Products
 
-- [bit Hub](https://bit-tecnologies.vercel.app/bit-hub/): An open-source Android app store with a focus on privacy and performance — an alternative to F-Droid built natively.
+- [bit Hub](https://bit-tecnologies.vercel.app/bit-hub/): The entry point of the ecosystem: an Android app that installs and updates bit apps from GitHub Releases. A Windows version is in development.
 - [bit Delta](https://bit-tecnologies.vercel.app/bit-delta/): Pedometer, activity, and health tracking app.
 - [bit Record](https://bit-tecnologies.vercel.app/bit-record/): A simple, minimalist screen recorder.
-- [bit Together](https://bit-tecnologies.vercel.app/bit-together/): A private messenger for communication inside the bit ecosystem, currently in development.
-- [bit Launcher](https://bit-tecnologies.vercel.app/bit-launcher/): A fast, private Android launcher with a clean interface and native speed.
+- [bit Together](https://bit-tecnologies.vercel.app/bit-together/): A messenger with end-to-end encryption (Flutter), currently in development.
+- [bit Launcher](https://bit-tecnologies.vercel.app/bit-launcher/): An Android launcher with a clean interface, currently in development.
 
 ## Company
 
 - [About bit Tecnologies](https://bit-tecnologies.vercel.app/about/): Mission, principles, and the team behind the ecosystem.
-- [Privacy Policy](https://bit-tecnologies.vercel.app/privacy/): Privacy commitment — no telemetry, no analytics, no tracking.
+- [Privacy Policy](https://bit-tecnologies.vercel.app/privacy/): What data the website, bit Hub and bit Delta process.
 
 ## Source
 
-- [GitHub — bit Tecnologies](https://github.com/bit-Tecnologies): All repositories are open source under the MIT license.
+- [GitHub — bit Tecnologies](https://github.com/bit-Tecnologies): Public repositories for bit Hub, bit Delta and this site. Other repositories are private.

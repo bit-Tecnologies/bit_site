@@ -5,18 +5,19 @@ import Button from '../components/Button.astro';
 import { Image } from 'astro:assets';
 import hubLogo from '../../public/bit-hub.png';
 import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
-import { fetchLatestRelease } from '../utils/github';
+import { fetchLatestRelease, DELTA_APK_PATTERN } from '../utils/github';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 
 const release = await fetchLatestRelease('bit-Tecnologies/bit_hub', lang).catch(() => null);
+const deltaRelease = await fetchLatestRelease('bit-Tecnologies/bit_delta', lang, DELTA_APK_PATTERN).catch(() => null);
 const downloadUrl = release?.url || translate('/bit-hub');
 const hubReleaseVersion = release?.version || t('hero.hub_release_fallback');
 
-const title = lang === 'en' ? 'bit Tecnologies — Private Android apps' : 'bit Tecnologies — Приватные Android-приложения';
-const description = lang === 'en' ? 'Native, fast, and private Android apps. No telemetry, no ads.' : 'Нативные, быстрые и приватные Android-приложения. Без телеметрии и рекламы.';
+const title = lang === 'en' ? 'bit Tecnologies — App ecosystem' : 'bit Tecnologies — Экосистема приложений';
+const description = lang === 'en' ? 'An ecosystem of apps that work together, distributed through bit Hub. Android now, Windows in development.' : 'Экосистема приложений, которые работают вместе, с распространением через bit Hub. Android сейчас, Windows в разработке.';
 
 const schema = {
 	"@context": "https://schema.org",
@@ -43,7 +44,7 @@ const productCards = [
 		status: { label: t('app.beta'), color: 'blue' as const },
 		description: t('app.bitdelta_desc'),
 		requirements: 'Android 7.0+',
-		size: t('app.delta_size'),
+		size: deltaRelease?.size || t('app.delta_size'),
 		iconImage: '/bit-delta.png',
 		icon: 'delta',
 	},
@@ -53,7 +54,7 @@ const productCards = [
 		status: { label: t('app.in_development'), color: 'neutral' as const },
 		description: t('app.bitrecord_desc'),
 		requirements: 'Android 7.0+',
-		size: t('app.record_size'),
+		size: 'TBA',
 		iconImage: '/bit-record.png',
 		icon: 'record',
 	},
@@ -110,9 +111,8 @@ const productCards = [
 						</Button>
 					</div>
 					<div class="mt-5 flex flex-wrap gap-3 text-sm font-bold text-slate-600 dark:text-slate-300">
-						<span class="quiet-inline-proof">{t('hero.no_trackers')}</span>
+						<span class="quiet-inline-proof">{t('hero.platforms')}</span>
 						<span class="quiet-inline-proof">{t('hero.open_source')}</span>
-						<span class="quiet-inline-proof">MIT</span>
 					</div>
 				</div>
 
@@ -130,12 +130,12 @@ const productCards = [
 						</div>
 						<div class="grid gap-3 p-3 sm:p-5">
 							<div class="liquid-row">
-								<span>{t('hero.device_telemetry')}</span>
-								<strong>{t('hero.device_telemetry_value')}</strong>
+								<span>{t('hero.device_platform')}</span>
+								<strong>{t('hero.device_platform_value')}</strong>
 							</div>
 							<div class="liquid-row">
-								<span>{t('hero.device_ads')}</span>
-								<strong>{t('hero.device_ads_value')}</strong>
+								<span>{t('hero.device_source')}</span>
+								<strong>{t('hero.device_source_value')}</strong>
 							</div>
 							<div class="liquid-row">
 								<span>{t('hero.device_release_size')}</span>
@@ -166,7 +166,7 @@ const productCards = [
 												)}
 											</span>
 											<span class="w-full truncate text-[10px] font-extrabold leading-none text-slate-700 dark:text-slate-200">{product.name.replace('bit ', '')}</span>
-											<span class={`h-1.5 w-1.5 rounded-full ${product.status.color === 'blue' ? 'bg-[var(--brand)]' : product.status.color === 'yellow' ? 'bg-amber-400' : 'bg-[var(--ink-soft)]'}`}></span>
+											<span class={`h-1.5 w-1.5 rounded-full ${product.status.color === 'blue' ? 'bg-[var(--brand)]' : 'bg-[var(--ink-soft)]'}`}></span>
 										</a>
 									))}
 								</div>
@@ -186,15 +186,15 @@ const productCards = [
 			</div>
 			<div class="quiet-proof-grid reveal grid gap-5 p-4 sm:grid-cols-2 lg:grid-cols-4">
 				<div class="p-4">
-					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">0</p>
-					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_trackers')}</p>
+					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">Android</p>
+					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_platform')}</p>
 				</div>
 				<div class="p-4">
-					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">100%</p>
+					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">{productCards.length}</p>
 					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_source')}</p>
 				</div>
 				<div class="p-4">
-					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">MIT</p>
+					<p class="font-display text-4xl font-extrabold text-slate-950 dark:text-white">2</p>
 					<p class="mt-1 text-sm font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">{t('home.proof_license')}</p>
 				</div>
 				<div class="p-4">
@@ -308,7 +308,7 @@ const productCards = [
 						<ul class="mt-4 space-y-3 text-sm font-semibold text-slate-600 dark:text-slate-300">
 							<li>{t('home.req_arch')}</li>
 							<li>{t('home.req_ram')}</li>
-							<li>{t('home.req_no_trackers')}</li>
+							<li>{t('home.req_install')}</li>
 						</ul>
 					</div>
 				</div>

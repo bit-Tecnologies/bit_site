@@ -3,8 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
+import { fetchLatestRelease, DELTA_APK_PATTERN } from '../utils/github';
 
 const lang = getLangFromUrl(Astro.url);
+const deltaRelease = await fetchLatestRelease('bit-Tecnologies/bit_delta', lang, DELTA_APK_PATTERN).catch(() => null);
 const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 
@@ -45,7 +47,7 @@ const schema = {
 						<span class="text-slate-400 dark:text-slate-500 transition-colors">•</span>
 						<span class="text-slate-600 dark:text-slate-400 transition-colors">Android 7.0+</span>
 						<span class="text-slate-400 dark:text-slate-500 transition-colors">•</span>
-						<span class="text-slate-600 dark:text-slate-400 transition-colors">{t('app.delta_size')}</span>
+						<span class="text-slate-600 dark:text-slate-400 transition-colors">{deltaRelease?.size || t('app.delta_size')}</span>
 					</div>
 					<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button href="https://github.com/bit-Tecnologies/bit_delta" variant="primary" target="_blank" rel="noopener noreferrer">

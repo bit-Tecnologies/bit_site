@@ -10,8 +10,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 
-const title = lang === 'en' ? 'bit Hub — Native App Store for Android' : 'bit Hub — Нативный клиент для GitHub релизов';
-const description = lang === 'en' ? 'bit Hub gives you access to open Android apps without restrictions. A native app built with Jetpack Compose.' : 'bit Hub дает вам доступ к открытым Android-приложениям без ограничений. Нативное приложение на Jetpack Compose.';
+const title = lang === 'en' ? 'bit Hub — App Store for the bit Ecosystem' : 'bit Hub — магазин приложений экосистемы bit';
+const description = lang === 'en' ? 'bit Hub installs and updates bit apps on Android from GitHub Releases. Built with Kotlin and Jetpack Compose.' : 'bit Hub устанавливает и обновляет приложения bit на Android из GitHub Releases. Написан на Kotlin и Jetpack Compose.';
 const image = '/og-bit-hub.png';
 
 // Fetch release info at build time
