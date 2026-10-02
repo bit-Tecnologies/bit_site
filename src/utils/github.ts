@@ -8,7 +8,14 @@ export interface GitHubRelease {
   changelog: string;
 }
 
-export async function fetchLatestRelease(repo: string, lang: string = 'ru'): Promise<GitHubRelease | null> {
+const HUB_APK_PATTERN = /^bithub-\d+-v\d+\.\d+\.\d+\.\d+-release\.apk$/;
+export const DELTA_APK_PATTERN = /^bitdelta-\d+-v\d+(\.\d+)+-release\.apk$/;
+
+export async function fetchLatestRelease(
+  repo: string,
+  lang: string = 'ru',
+  apkPattern: RegExp = HUB_APK_PATTERN
+): Promise<GitHubRelease | null> {
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
@@ -43,7 +50,7 @@ export async function fetchLatestRelease(repo: string, lang: string = 'ru'): Pro
     for (const release of data) {
       const foundAsset = release.assets?.find((asset: Record<string, unknown>) =>
         asset && typeof asset === 'object' && asset.name && typeof asset.name === 'string' &&
-        (asset.name as string).match(/^bithub-\d+-v\d+\.\d+\.\d+\.\d+-release\.apk$/)
+        apkPattern.test(asset.name as string)
       );
 
       if (foundAsset) {

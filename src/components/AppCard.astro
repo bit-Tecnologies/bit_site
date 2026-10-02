@@ -1,14 +1,12 @@
 ---
 // src/components/AppCard.astro
-import { Image } from 'astro:assets';
-import favicon from '../../public/favicon.svg';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 export interface Props {
   href: string;
   name: string;
   status: {
     label: string;
-    color: 'emerald' | 'blue' | 'yellow';
+    color: 'blue' | 'neutral' | 'yellow';
   };
   description: string;
   requirements: string;
@@ -22,8 +20,8 @@ const { href, name, status, description, requirements, size, iconImage, featured
 const t = useTranslations(getLangFromUrl(Astro.url));
 
 const statusColors = {
-  emerald: 'bg-emerald-50 text-emerald-800 dark:bg-emerald-400/10 dark:text-emerald-300',
-  blue: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
+  blue: 'bg-[var(--accent-soft)] text-[var(--accent-strong)]',
+  neutral: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
   yellow: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
 };
 ---
