@@ -9,7 +9,6 @@ const translate = translatePath(Astro.url);
 
 const title = t('privacy.meta_title');
 const description = t('privacy.meta_desc');
-const image = '/og-bit-hub.png';
 
 const hubItems = t('privacy.section3_hub_items').split('\n');
 const deltaItems = t('privacy.section3_delta_items').split('\n');
@@ -20,7 +19,7 @@ const policyHighlightsItems = t('privacy.section8_items').split('\n');
 const userRightsItems = t('privacy.section9_items').split('\n');
 ---
 
-<Layout title={title} description={description} image={image}>
+<Layout title={title} description={description}>
 	<section class="quiet-inner-page quiet-inner-hero relative overflow-hidden">
 		<div class="container mx-auto px-4 py-16 md:py-24">
 			<div class="max-w-4xl mx-auto z-10 relative">

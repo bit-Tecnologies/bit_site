@@ -10,7 +10,6 @@ const translate = translatePath(Astro.url);
 
 const title = t('about.meta_title');
 const description = t('about.meta_desc');
-const image = '/og-bit-hub.png';
 
 const schema = {
 	"@context": "https://schema.org",
@@ -20,7 +19,7 @@ const schema = {
 };
 ---
 
-<Layout title={title} description={description} schema={schema} image={image}>
+<Layout title={title} description={description} schema={schema}>
 	<section class="quiet-inner-page quiet-inner-hero relative overflow-hidden">
 		<div class="container mx-auto px-4 py-16 md:py-24">
 			<div class="max-w-4xl mx-auto z-10 relative">

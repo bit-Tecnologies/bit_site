@@ -1,0 +1,110 @@
+<!doctype html>
+<!--
+  Source of public/og-ru.png and public/og-en.png (1200x630 social preview).
+  Render with headless Chrome, e.g.:
+    chrome --headless --hide-scrollbars --window-size=1200,630 --virtual-time-budget=10000 \
+      --screenshot=public/og-en.png "file:///<abs path>/scripts/og-image.html?lang=en"
+  Use ?lang=ru for the Russian version. Fonts load from Google Fonts at render time.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Sora:wght@700;800&display=swap" />
+<style>
+  :root {
+    --canvas: #0a0f1a;
+    --surface: #101726;
+    --line: #27324a;
+    --ink: #f1f5fb;
+    --ink-muted: #aab5c8;
+    --blue: #2c6cff;
+    --blue-soft: #7db0ff;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background:
+      radial-gradient(900px 500px at 100% 0%, rgba(44, 108, 255, 0.22), transparent 60%),
+      var(--canvas);
+    font-family: Manrope, system-ui, sans-serif;
+    color: var(--ink);
+  }
+  .card {
+    position: absolute;
+    inset: 36px;
+    border: 1px solid var(--line);
+    border-radius: 56px;
+    background: var(--surface);
+    padding: 44px 64px;
+  }
+  .brand { display: flex; align-items: center; gap: 22px; }
+  .brand svg { width: 64px; height: 64px; }
+  .brand b { display: block; font: 800 30px/1.1 Sora, sans-serif; letter-spacing: -0.02em; }
+  .brand span { display: block; margin-top: 6px; font-size: 20px; font-weight: 500; color: var(--ink-muted); }
+  .eyebrow {
+    margin-top: 28px;
+    display: flex; align-items: center; gap: 12px;
+    font: 700 16px/1 Manrope, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-soft);
+  }
+  .eyebrow i { width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
+  h1 {
+    margin-top: 20px;
+    max-width: 1020px;
+    font: 800 60px/1.06 Sora, sans-serif; letter-spacing: -0.04em;
+  }
+  h1 em { font-style: normal; color: var(--blue-soft); }
+  p.lead { margin-top: 20px; max-width: 860px; font-size: 24px; line-height: 1.4; color: var(--ink-muted); }
+  .chips { position: absolute; left: 64px; bottom: 40px; display: flex; gap: 14px; }
+  .chips span {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 22px; border: 1px solid var(--line); border-radius: 999px;
+    background: #121b2d; font: 700 20px/1 Manrope, sans-serif;
+  }
+  .chips span::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M30 10H70L90 30V70L70 90H30L10 70V30L30 10Z" fill="#2c6cff"/>
+      <rect x="35" y="35" width="30" height="30" rx="4" fill="white"/>
+      <rect x="45" y="45" width="10" height="10" fill="#2c6cff"/>
+    </svg>
+    <div><b>bit Tecnologies</b><span id="tag"></span></div>
+  </div>
+  <div class="eyebrow"><i></i><span id="eyebrow"></span></div>
+  <h1 id="title"></h1>
+  <p class="lead" id="lead"></p>
+  <div class="chips" id="chips"></div>
+</div>
+<script>
+  const copy = {
+    en: {
+      tag: 'Apps for a more comfortable work and home life',
+      eyebrow: 'App ecosystem',
+      title: 'Apps that work <em>together</em>',
+      lead: 'bit Hub installs and updates the whole ecosystem. Android now, Windows in development.',
+      chips: ['bit Hub', 'Android', 'Windows — in development'],
+    },
+    ru: {
+      tag: 'Приложения для более комфортной работы и жизни',
+      eyebrow: 'Экосистема приложений',
+      title: 'Приложения, которые работают <em>вместе</em>',
+      lead: 'bit Hub устанавливает и обновляет всю экосистему. Android сейчас, Windows в разработке.',
+      chips: ['bit Hub', 'Android', 'Windows — в разработке'],
+    },
+  };
+  const lang = new URLSearchParams(location.search).get('lang') === 'ru' ? 'ru' : 'en';
+  const c = copy[lang];
+  document.documentElement.lang = lang;
+  document.getElementById('tag').textContent = c.tag;
+  document.getElementById('eyebrow').textContent = c.eyebrow;
+  document.getElementById('title').innerHTML = c.title;
+  document.getElementById('lead').textContent = c.lead;
+  document.getElementById('chips').innerHTML = c.chips.map((x) => '<span>' + x + '</span>').join('');
+</script>
+</body>
+</html>
