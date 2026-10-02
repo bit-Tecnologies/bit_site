@@ -15,11 +15,14 @@ export interface Props {
 	schema?: Record<string, any>;
 }
 
-const { title, description, image = "/og-bit-hub.png", schema } = Astro.props;
-const ogImage = image.startsWith('http') ? image : new URL(image, Astro.site || 'http://localhost:4321').href;
+const { title, description, image, schema } = Astro.props;
 // Get language from localized path or query parameter
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+// Social preview: one image per language unless a page passes its own
+const imagePath = image ?? `/og-${lang}.png`;
+const ogImage = imagePath.startsWith('http') ? imagePath : new URL(imagePath, Astro.site || 'http://localhost:4321').href;
+const ogImageAlt = lang === 'en' ? 'bit Tecnologies — app ecosystem' : 'bit Tecnologies — экосистема приложений';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'http://localhost:4321');
 
 // Build alternate language URLs with query parameters
@@ -71,7 +74,7 @@ const jsonLd = schema || defaultSchema;
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="bit Tecnologies Logo" />
+		<meta property="og:image:alt" content={ogImageAlt} />
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'ru_RU'} />
 		<meta property="og:url" content={canonicalURL.href} />
@@ -88,6 +91,7 @@ const jsonLd = schema || defaultSchema;
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
 
 		<!-- Preconnect to font origins -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />

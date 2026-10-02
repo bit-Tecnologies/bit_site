@@ -12,7 +12,6 @@ const translate = translatePath(Astro.url);
 
 const title = lang === 'en' ? 'bit Hub — App Store for the bit Ecosystem' : 'bit Hub — магазин приложений экосистемы bit';
 const description = lang === 'en' ? 'bit Hub installs and updates bit apps on Android from GitHub Releases. Built with Kotlin and Jetpack Compose.' : 'bit Hub устанавливает и обновляет приложения bit на Android из GitHub Releases. Написан на Kotlin и Jetpack Compose.';
-const image = '/og-bit-hub.png';
 
 // Fetch release info at build time
 const release = await fetchLatestRelease('bit-Tecnologies/bit_hub', lang).catch(() => null);
@@ -21,7 +20,7 @@ const size = release?.size || t('hub.size_fallback');
 const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub';
 ---
 
-<Layout title={title} description={description} image={image}>
+<Layout title={title} description={description}>
 	<section class="quiet-inner-page quiet-inner-hero relative overflow-hidden">
 		<div class="container mx-auto px-4 py-16 md:py-24">
 			<div class="max-w-4xl mx-auto z-10 relative">

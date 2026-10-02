@@ -9,10 +9,9 @@ const translate = translatePath(Astro.url);
 
 const title = lang === 'en' ? '404 — Page Not Found | bit Tecnologies' : '404 — Страница не найдена | bit Tecnologies';
 const description = lang === 'en' ? 'This page does not exist.' : 'Эта страница не существует.';
-const image = '/og-bit-hub.png';
 ---
 
-<Layout title={title} description={description} image={image}>
+<Layout title={title} description={description}>
 	<section class="quiet-inner-page quiet-inner-hero relative isolate overflow-hidden pb-24 pt-32 sm:pt-36 lg:pt-40">
 		<div class="container mx-auto px-4 text-center">
 			<p class="font-display text-8xl font-extrabold text-[var(--accent-strong)]/80">404</p>
