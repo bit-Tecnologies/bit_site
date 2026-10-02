@@ -87,7 +87,7 @@ export const ui = {
     'app.bitrecord': 'bit Record',
     'app.bitrecord_desc': 'Простой, минималистичный рекордер экрана.',
     'app.bittogether': 'bit Together',
-    'app.bittogether_desc': 'Планируемый приватный мессенджер для общения внутри bit-экосистемы.',
+    'app.bittogether_desc': 'Приватный мессенджер для общения внутри bit-экосистемы.',
     'app.bitlauncher': 'bit Launcher',
     'app.bitlauncher_desc': 'Быстрый и приватный Android-лаунчер с чистым интерфейсом и нативной скоростью.',
     'app.in_development': 'В разработке',
@@ -215,9 +215,9 @@ export const ui = {
 
     // === bit Together Page ===
     'together.meta_title': 'bit Together — Приватный мессенджер bit-экосистемы',
-    'together.meta_desc': 'bit Together — планируемый приватный мессенджер для общения внутри bit-экосистемы.',
+    'together.meta_desc': 'bit Together — приватный мессенджер для общения внутри bit-экосистемы, находится в разработке.',
     'together.subtitle': 'Приватный мессенджер для общения внутри bit-экосистемы',
-    'together.planning_badge': 'Планирование',
+    'together.in_dev_badge': 'В разработке',
     'together.coming_soon': 'Скоро будет доступно',
     'together.features_title': 'Что планируем',
     'together.feature1_title': 'Личные чаты',
@@ -229,7 +229,7 @@ export const ui = {
     'together.feature4_title': 'Нативный Android',
     'together.feature4_desc': 'Легкий интерфейс и быстрая работа на устройствах разных классов.',
     'together.screenshots_title': 'Скриншоты готовятся',
-    'together.screenshots_desc': 'bit Together пока на этапе планирования, поэтому не показываем условные макеты вместо реального интерфейса.',
+    'together.screenshots_desc': 'bit Together пока в разработке, поэтому не показываем условные макеты вместо реального интерфейса.',
 
     // === bit Launcher Page ===
     'launcher.meta_title': 'bit Launcher — Быстрый приватный Android-лаунчер',
@@ -372,7 +372,7 @@ export const ui = {
     'app.bitrecord': 'bit Record',
     'app.bitrecord_desc': 'A simple, minimalist screen recorder.',
     'app.bittogether': 'bit Together',
-    'app.bittogether_desc': 'A planned private messenger for communication inside the bit ecosystem.',
+    'app.bittogether_desc': 'A private messenger for communication inside the bit ecosystem.',
     'app.bitlauncher': 'bit Launcher',
     'app.bitlauncher_desc': 'A fast, private Android launcher with a clean interface and native speed.',
     'app.in_development': 'In Development',
@@ -500,9 +500,9 @@ export const ui = {
 
     // === bit Together Page ===
     'together.meta_title': 'bit Together — Private Messenger for the bit Ecosystem',
-    'together.meta_desc': 'bit Together — a planned private messenger for communication inside the bit ecosystem.',
+    'together.meta_desc': 'bit Together — a private messenger for communication inside the bit ecosystem, currently in development.',
     'together.subtitle': 'A private messenger for the bit ecosystem',
-    'together.planning_badge': 'Planning',
+    'together.in_dev_badge': 'In Development',
     'together.coming_soon': 'Coming Soon',
     'together.features_title': 'What We\'re Planning',
     'together.feature1_title': 'Private Chats',
@@ -514,7 +514,7 @@ export const ui = {
     'together.feature4_title': 'Native Android',
     'together.feature4_desc': 'Lightweight interface that runs smoothly across different device classes.',
     'together.screenshots_title': 'Screenshots Coming Soon',
-    'together.screenshots_desc': 'bit Together is still in the planning stage, so we are not showing mockups instead of a real interface.',
+    'together.screenshots_desc': 'bit Together is still in development, so we are not showing mockups instead of a real interface.',
 
     // === bit Launcher Page ===
     'launcher.meta_title': 'bit Launcher — Fast Private Android Launcher',

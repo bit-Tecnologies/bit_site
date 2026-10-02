@@ -7,7 +7,7 @@
 - [bit Hub](https://bit-tecnologies.vercel.app/bit-hub/): An open-source Android app store with a focus on privacy and performance — an alternative to F-Droid built natively.
 - [bit Delta](https://bit-tecnologies.vercel.app/bit-delta/): Pedometer, activity, and health tracking app.
 - [bit Record](https://bit-tecnologies.vercel.app/bit-record/): A simple, minimalist screen recorder.
-- [bit Together](https://bit-tecnologies.vercel.app/bit-together/): A planned private messenger for communication inside the bit ecosystem.
+- [bit Together](https://bit-tecnologies.vercel.app/bit-together/): A private messenger for communication inside the bit ecosystem, currently in development.
 - [bit Launcher](https://bit-tecnologies.vercel.app/bit-launcher/): A fast, private Android launcher with a clean interface and native speed.
 
 ## Company

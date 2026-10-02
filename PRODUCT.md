@@ -23,7 +23,7 @@ The company's stated differentiator is the ecosystem: bit Hub acts as the hub/la
 - Site is built with Astro (static output) and Tailwind CSS v4. `astro.config.mjs` sets `https://bit-tecnologies.vercel.app` as the canonical site origin. A `wrangler.toml` for Cloudflare Pages is also present, so the repository alone does not establish which provider currently deploys production; check the deployment configuration before changing hosting.
 - Bilingual: Russian (default, root paths) and English (`/en/*`), driven by `src/i18n`.
 - Release metadata (version, size, download URL) for bit Hub is fetched during the static build from the `bit-Tecnologies/bit_hub` GitHub Releases API (`src/utils/github.ts`) and falls back to static copy when the fetch fails. A deployed static page does not refresh this data until it is rebuilt.
-- App catalog entries carry a status per app: Beta (bit Hub, bit Delta), In development (bit Record, bit Launcher), Planning (bit Together).
+- App catalog entries carry a status per app: Beta (bit Hub, bit Delta), In development (bit Record, bit Together, bit Launcher).
 - Dev command: `npm run dev` (astro dev).
 
 ## Capabilities and Constraints
