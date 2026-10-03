@@ -26,22 +26,16 @@ coverage/
 .nyc_output/
 .temp/
 .tmp/
+*.tsbuildinfo
 
-# deployment platforms
+# Vercel CLI
 .vercel/
-.netlify/
-.firebase/
-.dev.vars
-
-# PWA related
-sw.js
-sw.js.map
-workbox-*.js
-manifest.json
 
 # editor settings
 .idea/
 .vscode/
+*.swp
+*~
 
 # OS files
 .DS_Store
@@ -51,16 +45,12 @@ manifest.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+desktop.ini
 
 # package managers (lockfiles SHOULD be committed for reproducible builds)
 # package-lock.json - committed intentionally
 yarn.lock
 pnpm-lock.yaml
-
-# testing
-coverage/
-.nyc_output/
-junit.xml
 
 # misc
 *.tgz
@@ -80,5 +70,8 @@ skills-lock.json
 
 # Generated brag output
 brag-output-*/
+
+# graphify output
+graphify-out/
 .mimocode/
 hf-blank/
