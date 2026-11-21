@@ -4,6 +4,11 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import favicon from '../../public/favicon.svg';
 import { getLangFromUrl, useTranslations, translatePath } from '../i18n/utils';
+import '@fontsource-variable/manrope';
+import '@fontsource-variable/sora';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/ibm-plex-mono/700.css';
 import '../styles/global.css';
 
 /* eslint-disable astro/no-set-html-directive */
@@ -22,7 +27,7 @@ const t = useTranslations(lang);
 // Social preview: one image per language unless a page passes its own
 const imagePath = image ?? `/og-${lang}.png`;
 const ogImage = imagePath.startsWith('http') ? imagePath : new URL(imagePath, Astro.site || 'http://localhost:4321').href;
-const ogImageAlt = lang === 'en' ? 'bit Tecnologies — app ecosystem' : 'bit Tecnologies — экосистема приложений';
+const ogImageAlt = t('layout.og_alt');
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'http://localhost:4321');
 
 // Build alternate language URLs with query parameters
@@ -93,13 +98,6 @@ const jsonLd = schema || defaultSchema;
 		<meta name="twitter:image" content={ogImage} />
 		<meta name="twitter:image:alt" content={ogImageAlt} />
 
-		<!-- Preconnect to font origins -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<!-- Non-blocking font loading -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" media="print" onload="this.setAttribute('media','all')" />
-		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" /></noscript>
-
 		<ClientRouter />
 
     <!-- Inline script to prevent FOUC with dark mode -->
@@ -113,7 +111,7 @@ const jsonLd = schema || defaultSchema;
       document.addEventListener('astro:before-swap',function(ev){try{var t=localStorage.getItem('color-theme');var d=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme:dark)').matches);ev.newDocument.documentElement.classList.toggle('dark',d)}catch{ev.newDocument.documentElement.classList.toggle('dark',matchMedia('(prefers-color-scheme:dark)').matches)}});
     </script>
 	</head>
-		<body class="quiet-body text-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+		<body class="quiet-body text-ink font-sans antialiased transition-colors duration-300">
 		<!-- Skip link for keyboard navigation -->
 		<a href="#main-content" class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 px-4 py-2 rounded-md z-50 focus:outline-none focus:ring-2" data-i18n="layout.skip_link">
 			{t('layout.skip_link')}

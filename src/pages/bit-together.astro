@@ -30,23 +30,23 @@ const schema = {
 		<div class="container mx-auto px-4 py-16 md:py-24">
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<div class="text-center mb-12">
-					<div class="w-24 h-24 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-6 drop-shadow-md">
-						<svg class="w-12 h-12 text-white drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+					<div class="w-24 h-24 bg-[var(--brand)] rounded-3xl flex items-center justify-center mx-auto mb-6">
+						<svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6V9M6,6H18V8H6V6M6,12H14V14H6V12Z"/>
 						</svg>
 					</div>
-					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance">
+					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-ink text-balance">
 						bit Together
 					</h1>
-					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">
+					<p class="text-lg md:text-xl text-ink-muted mb-4 font-light transition-colors">
 						{t('together.subtitle')}
 					</p>
 					<div class="flex items-center justify-center space-x-4 mb-6 transition-colors">
 						<span class="inline-block px-3 py-1 bg-[var(--accent-soft)] text-[var(--accent-strong)] text-sm rounded-full">{t('together.in_dev_badge')}</span>
-						<span class="text-slate-400 dark:text-slate-500">•</span>
-						<span class="text-slate-600 dark:text-slate-400">TBA</span>
+						<span class="text-ink-faint">•</span>
+						<span class="text-ink-muted">TBA</span>
 					</div>
-					<div class="inline-flex items-center space-x-2 px-8 py-4 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 font-semibold rounded-lg cursor-not-allowed transition-colors bg-white/50 dark:bg-transparent backdrop-blur-sm">
+					<div class="inline-flex items-center space-x-2 px-8 py-4 border border-line text-ink-muted font-semibold rounded-lg cursor-not-allowed transition-colors bg-surface/70 dark:bg-transparent backdrop-blur-sm">
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M18,16V12A6,6 0 0,0 12,6A6,6 0 0,0 6,12V16H4V18H20V16H18M12,22A2,2 0 0,0 14,20H10A2,2 0 0,0 12,22Z"/>
 						</svg>
@@ -55,26 +55,26 @@ const schema = {
 				</div>
 
 				<div class="liquid-panel p-8 mb-8">
-					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('together.features_title')}</h2>
+					<h2 class="font-display text-2xl font-extrabold mb-6 text-ink text-balance">{t('together.features_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<FeatureCard title={t('together.feature1_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature1_desc')}>
+						<FeatureCard title={t('together.feature1_title')} iconColor="text-info" description={t('together.feature1_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2Z"/></svg>
 						</FeatureCard>
-						<FeatureCard title={t('together.feature2_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature2_desc')}>
+						<FeatureCard title={t('together.feature2_title')} iconColor="text-info" description={t('together.feature2_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.86L8.91,12.71C8.96,12.48 9,12.24 9,12C9,11.76 8.96,11.52 8.91,11.29L15.96,7.18C16.5,7.68 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.48 15.09,5.71L8.04,9.82C7.5,9.32 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.68 8.04,14.18L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19A2.92,2.92 0 0,0 18,21.92A2.92,2.92 0 0,0 20.92,19A2.92,2.92 0 0,0 18,16.08Z"/></svg>
 						</FeatureCard>
-						<FeatureCard title={t('together.feature3_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature3_desc')}>
+						<FeatureCard title={t('together.feature3_title')} iconColor="text-info" description={t('together.feature3_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"/></svg>
 						</FeatureCard>
-						<FeatureCard title={t('together.feature4_title')} iconColor="text-cyan-600 dark:text-cyan-400" description={t('together.feature4_desc')}>
+						<FeatureCard title={t('together.feature4_title')} iconColor="text-info" description={t('together.feature4_desc')}>
 							<svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24"><path d="M17,1H7A2,2 0 0,0 5,3V21A2,2 0 0,0 7,23H17A2,2 0 0,0 19,21V3A2,2 0 0,0 17,1M12,22A1,1 0 0,1 11,21A1,1 0 0,1 12,20A1,1 0 0,1 13,21A1,1 0 0,1 12,22Z"/></svg>
 						</FeatureCard>
 					</div>
 				</div>
 
 				<div class="liquid-panel p-8 mb-8">
-					<h2 class="font-display text-2xl font-extrabold mb-3 text-slate-950 dark:text-white text-center text-balance">{t('together.screenshots_title')}</h2>
-					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
+					<h2 class="font-display text-2xl font-extrabold mb-3 text-ink text-balance">{t('together.screenshots_title')}</h2>
+					<p class="text-ink-muted max-w-2xl font-light transition-colors">
 						{t('together.screenshots_desc')}
 					</p>
 				</div>

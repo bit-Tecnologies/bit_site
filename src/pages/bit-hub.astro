@@ -10,8 +10,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 
-const title = lang === 'en' ? 'bit Hub — App Store for the bit Ecosystem' : 'bit Hub — магазин приложений экосистемы bit';
-const description = lang === 'en' ? 'bit Hub installs and updates bit apps on Android from GitHub Releases. Built with Kotlin and Jetpack Compose.' : 'bit Hub устанавливает и обновляет приложения bit на Android из GitHub Releases. Написан на Kotlin и Jetpack Compose.';
+const title = t('hub.meta_title');
+const description = t('hub.meta_desc');
 
 // Fetch release info at build time
 const release = await fetchLatestRelease('bit-Tecnologies/bit_hub', lang).catch(() => null);
@@ -26,40 +26,39 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<!-- App Header -->
 				<div class="text-center mb-12">
-					<Image src={hubLogo} alt="bit Hub" class="w-24 h-24 mx-auto mb-6 drop-shadow-lg" style="view-transition-name: hub-icon;" />
-					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance" style="view-transition-name: hub-title;">
+					<Image src={hubLogo} alt="bit Hub" class="w-24 h-24 mx-auto mb-6 rounded-3xl" style="view-transition-name: hub-icon;" />
+					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-ink text-balance" style="view-transition-name: hub-title;">
 						{t('hub.title')}
 					</h1>
-					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4 font-light">
+					<p class="text-lg md:text-xl text-ink-muted mb-4 font-light">
 						{t('hub.subtitle')}
 					</p>
 					<div class="flex items-center justify-center space-x-4 mb-6 transition-colors">
 						<span class="inline-block px-3 py-1 bg-[var(--accent-soft)] text-[var(--accent-strong)] text-sm rounded-full transition-colors font-medium" data-release="version">{version}</span>
-						<span class="text-slate-400 dark:text-slate-500 transition-colors">•</span>
-						<span class="text-slate-600 dark:text-slate-400 transition-colors">Android 6.0+</span>
-						<span class="text-slate-400 dark:text-slate-500 transition-colors">•</span>
-						<span class="text-slate-600 dark:text-slate-400 transition-colors" data-release="size">{size}</span>
+						<span class="text-ink-faint transition-colors">•</span>
+						<span class="text-ink-muted transition-colors">Android 6.0+</span>
+						<span class="text-ink-faint transition-colors">•</span>
+						<span class="text-ink-muted transition-colors" data-release="size">{size}</span>
 					</div>
           <Button href={downloadUrl} variant="primary" download data-release="url">
-						<svg class="w-6 h-6 drop-shadow" fill="currentColor" viewBox="0 0 24 24">
+						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M17 3H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14l-4-4h3V9h2v4h3l-4 4z"/>
 						</svg>
 						<span>{t('app.download')} {t('hub.title')}</span>
           </Button>
-					<p class="text-sm text-slate-500 dark:text-slate-400 mt-3" data-release="version">{version}</p>
 				</div>
 
 				<!-- Features -->
 				<div class="liquid-panel p-8 mb-8">
-					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('hub.features_title')}</h2>
+					<h2 class="font-display text-2xl font-extrabold mb-6 text-ink text-balance">{t('hub.features_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div class="flex items-start space-x-3">
 							<svg class="w-6 h-6 text-[var(--accent)] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
 								<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 							</svg>
 							<div>
-								<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-1">{t('hub.feature_performance')}</h3>
-								<p class="text-slate-600 dark:text-slate-400 text-sm font-light">{t('hub.feature_performance_desc')}</p>
+								<h3 class="font-display text-lg font-extrabold text-ink mb-1">{t('hub.feature_performance')}</h3>
+								<p class="text-ink-muted text-sm font-light">{t('hub.feature_performance_desc')}</p>
 							</div>
 						</div>
 						<div class="flex items-start space-x-3">
@@ -67,8 +66,8 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 								<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 							</svg>
 							<div>
-								<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-1">{t('hub.feature_privacy')}</h3>
-								<p class="text-slate-600 dark:text-slate-400 text-sm font-light">{t('hub.feature_privacy_desc')}</p>
+								<h3 class="font-display text-lg font-extrabold text-ink mb-1">{t('hub.feature_privacy')}</h3>
+								<p class="text-ink-muted text-sm font-light">{t('hub.feature_privacy_desc')}</p>
 							</div>
 						</div>
 						<div class="flex items-start space-x-3">
@@ -76,8 +75,8 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 								<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 							</svg>
 							<div>
-								<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-1">{t('hub.feature_updates')}</h3>
-								<p class="text-slate-600 dark:text-slate-400 text-sm font-light">{t('hub.feature_updates_desc')}</p>
+								<h3 class="font-display text-lg font-extrabold text-ink mb-1">{t('hub.feature_updates')}</h3>
+								<p class="text-ink-muted text-sm font-light">{t('hub.feature_updates_desc')}</p>
 							</div>
 						</div>
 						<div class="flex items-start space-x-3">
@@ -85,27 +84,27 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 								<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 							</svg>
 							<div>
-								<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-1">{t('hub.feature_fdroid')}</h3>
-								<p class="text-slate-600 dark:text-slate-400 text-sm font-light">{t('hub.feature_fdroid_desc')}</p>
+								<h3 class="font-display text-lg font-extrabold text-ink mb-1">{t('hub.feature_fdroid')}</h3>
+								<p class="text-ink-muted text-sm font-light">{t('hub.feature_fdroid_desc')}</p>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<div class="liquid-panel p-8 mb-8">
-					<h2 class="font-display text-2xl font-extrabold mb-3 text-slate-950 dark:text-white text-center text-balance">{t('hub.screenshots_title')}</h2>
-					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
+					<h2 class="font-display text-2xl font-extrabold mb-3 text-ink text-balance">{t('hub.screenshots_title')}</h2>
+					<p class="text-ink-muted max-w-2xl font-light transition-colors">
 						{t('hub.screenshots_desc')}
 					</p>
 				</div>
 
 				<!-- Technical Details -->
 				<div class="liquid-panel p-8 mb-8">
-						<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('hub.tech_title')}</h2>
+						<h2 class="font-display text-2xl font-extrabold mb-6 text-ink text-balance">{t('hub.tech_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 transition-colors">
 						<div>
-							<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-3">{t('hub.sys_requirements')}</h3>
-							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
+							<h3 class="font-display text-lg font-extrabold text-ink mb-3">{t('hub.sys_requirements')}</h3>
+							<ul class="space-y-2 text-ink-muted transition-colors">
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
@@ -127,8 +126,8 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 							</ul>
 						</div>
 						<div>
-							<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-3">{t('hub.tech_stack')}</h3>
-							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
+							<h3 class="font-display text-lg font-extrabold text-ink mb-3">{t('hub.tech_stack')}</h3>
+							<ul class="space-y-2 text-ink-muted transition-colors">
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
@@ -155,11 +154,11 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 				<!-- Open Source -->
 				<div class="liquid-panel p-8 mb-8">
 					<div class="text-center">
-						<svg class="w-16 h-16 text-slate-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+						<svg class="w-16 h-16 text-ink-faint mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
 						</svg>
-							<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white mb-2">{t('hub.opensource_title')}</h3>
-						<p class="text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto font-light transition-colors">
+							<h3 class="font-display text-xl font-extrabold text-ink mb-2">{t('hub.opensource_title')}</h3>
+						<p class="text-ink-muted mb-4 max-w-2xl font-light transition-colors">
 							{t('hub.opensource_desc')}
 						</p>
 						<a href="https://github.com/bit-Tecnologies/bit_hub" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-[var(--accent-strong)] hover:text-[var(--accent-strong)] transition-colors">
@@ -174,7 +173,7 @@ const downloadUrl = release?.url || 'https://github.com/bit-Tecnologies/bit_hub'
 				<!-- Navigation -->
 				<div class="text-center">
           <Button href={translate('/')} variant="outline" class="mr-4">
-						<svg class="w-5 h-5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
 						</svg>
 						<span>{t('nav.home')}</span>
