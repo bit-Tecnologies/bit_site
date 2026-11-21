@@ -34,7 +34,7 @@ const schema = {
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<!-- App Header -->
 				<div class="text-center mb-12">
-					<img src="/bit-delta.png" alt="bit Delta" class="w-24 h-24 mx-auto mb-6 drop-shadow-md" />
+					<img src="/bit-delta.png" alt="bit Delta" class="w-24 h-24 mx-auto mb-6 rounded-3xl" />
 					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance">
 						bit Delta
 					</h1>
@@ -64,7 +64,7 @@ const schema = {
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureCard 
               title={t('delta.feature1_title')} 
-              iconColor="text-purple-600 dark:text-purple-400"
+              iconColor="text-[var(--accent-strong)]"
               description={t('delta.feature1_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -73,7 +73,7 @@ const schema = {
             </FeatureCard>
             <FeatureCard 
               title={t('delta.feature2_title')} 
-              iconColor="text-purple-600 dark:text-purple-400"
+              iconColor="text-[var(--accent-strong)]"
               description={t('delta.feature2_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ const schema = {
             </FeatureCard>
             <FeatureCard 
               title={t('delta.feature3_title')} 
-              iconColor="text-purple-600 dark:text-purple-400"
+              iconColor="text-[var(--accent-strong)]"
               description={t('delta.feature3_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ const schema = {
             </FeatureCard>
             <FeatureCard 
               title={t('delta.feature4_title')} 
-              iconColor="text-purple-600 dark:text-purple-400"
+              iconColor="text-[var(--accent-strong)]"
               description={t('delta.feature4_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -106,20 +106,20 @@ const schema = {
 					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('delta.modules_title')}</h2>
 					<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 						<div class="bg-white/55 ring-1 ring-white/70 backdrop-blur-2xl rounded-lg p-4 text-center dark:bg-slate-950/55 dark:ring-white/10">
-							<svg class="w-8 h-8 text-purple-600 dark:text-purple-400 mx-auto mb-2 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M13.5,5.5C11,5.5 9,7.5 9,10C9,12.5 11,14.5 13.5,14.5C16,14.5 18,12.5 18,10C18,7.5 16,5.5 13.5,5.5M10.12,4.83C10.5,3.69 11.55,3 12.63,3C14.19,3 15.63,3.95 16.03,5.43C16.89,8.5 15.03,11.59 11.96,12.44C8.89,13.29 5.8,11.43 4.93,8.37C4.69,7.53 4.74,6.66 5.06,5.88L2.56,3.38L3.97,1.97L6.47,4.47L7.88,3.06L9.3,4.47L10.12,4.83M12.63,5C12,5 11.4,5.4 11.2,6C10.7,7.8 11.7,9.6 13.5,10.1C15.3,10.6 17.1,9.6 17.6,7.8C18.1,6 17.1,4.2 15.3,3.7C14.7,3.5 14,3.7 13.5,4L12.63,5Z"/>
+							<svg class="w-8 h-8 text-[var(--accent-strong)] mx-auto mb-2 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.19L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z"/>
 							</svg>
 							<p class="text-slate-700 dark:text-slate-300 text-sm font-light transition-colors">{t('delta.module_steps')}</p>
 						</div>
 						<div class="bg-white/55 ring-1 ring-white/70 backdrop-blur-2xl rounded-lg p-4 text-center dark:bg-slate-950/55 dark:ring-white/10">
-							<svg class="w-8 h-8 text-pink-600 dark:text-pink-400 mx-auto mb-2 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+							<svg class="w-8 h-8 text-[var(--accent-strong)] mx-auto mb-2 transition-colors" fill="currentColor" viewBox="0 0 24 24">
 								<path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"/>
 							</svg>
 							<p class="text-slate-700 dark:text-slate-300 text-sm font-light transition-colors">{t('delta.module_analytics')}</p>
 						</div>
 						<div class="bg-white/55 ring-1 ring-white/70 backdrop-blur-2xl rounded-lg p-4 text-center dark:bg-slate-950/55 dark:ring-white/10">
-							<svg class="w-8 h-8 text-sky-600 dark:text-sky-400 mx-auto mb-2 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+							<svg class="w-8 h-8 text-[var(--accent-strong)] mx-auto mb-2 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M17.75,4.09L15.22,6.03L16.13,9.09L13.5,7.28L10.87,9.09L11.78,6.03L9.25,4.09L12.44,4L13.5,1L14.56,4L17.75,4.09M21.25,11L19.61,12.25L20.2,14.23L18.5,13.06L16.8,14.23L17.39,12.25L15.75,11L17.81,10.95L18.5,9L19.19,10.95L21.25,11M18.97,15.95C19.8,15.87 20.69,17.05 20.16,17.8C19.84,18.25 19.5,18.67 19.08,19.07C15.17,23 8.84,23 4.94,19.07C1.03,15.17 1.03,8.83 4.94,4.93C5.34,4.53 5.76,4.17 6.21,3.85C6.96,3.32 8.14,4.21 8.06,5.04C7.79,7.9 8.75,10.87 10.95,13.06C13.14,15.26 16.1,16.22 18.97,15.95M17.33,17.97C14.5,17.81 11.7,16.64 9.53,14.5C7.36,12.31 6.2,9.5 6.04,6.68C3.23,9.82 3.34,14.64 6.35,17.66C9.37,20.67 14.19,20.78 17.33,17.97Z"/>
 							</svg>
 							<p class="text-slate-700 dark:text-slate-300 text-sm font-light transition-colors">{t('delta.module_sleep')}</p>
 						</div>
