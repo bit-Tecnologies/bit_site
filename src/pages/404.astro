@@ -7,19 +7,19 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const translate = translatePath(Astro.url);
 
-const title = lang === 'en' ? '404 — Page Not Found | bit Tecnologies' : '404 — Страница не найдена | bit Tecnologies';
-const description = lang === 'en' ? 'This page does not exist.' : 'Эта страница не существует.';
+const title = t('notfound.meta_title');
+const description = t('notfound.meta_desc');
 ---
 
 <Layout title={title} description={description}>
 	<section class="quiet-inner-page quiet-inner-hero relative isolate overflow-hidden pb-24 pt-32 sm:pt-36 lg:pt-40">
 		<div class="container mx-auto px-4 text-center">
 			<p class="font-display text-8xl font-extrabold text-[var(--accent-strong)]/80">404</p>
-			<h1 class="mt-6 font-display text-3xl font-extrabold text-slate-950 dark:text-white sm:text-5xl text-balance">
-				{lang === 'en' ? 'Page not found' : 'Страница не найдена'}
+			<h1 class="mt-6 font-display text-3xl font-extrabold text-ink sm:text-5xl text-balance">
+				{t('notfound.heading')}
 			</h1>
-			<p class="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-				{lang === 'en' ? 'The link may be broken, or the page may have been moved. Go back home or browse the app catalog.' : 'Ссылка могла быть повреждена, или страница переехала. Вернитесь на главную или откройте каталог приложений.'}
+			<p class="mx-auto mt-5 max-w-xl text-lg leading-8 text-ink-muted">
+				{t('notfound.text')}
 			</p>
 			<div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
 				<Button href={translate('/')} variant="primary">

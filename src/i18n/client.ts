@@ -43,6 +43,16 @@ class I18nClient {
   }
 
   getCurrentLang(): Language {
+    // The server renders each page in the language of its URL, so the document
+    // language is the source of truth (a stale stored preference must not
+    // re-translate an /en/ page into Russian or vice versa).
+    if (typeof document !== 'undefined') {
+      const docLang = document.documentElement.lang as Language;
+      if (docLang in ui) {
+        this.currentLang = docLang;
+        window.currentLang = docLang;
+      }
+    }
     return this.currentLang;
   }
 
@@ -66,7 +76,7 @@ class I18nClient {
   }
 
   translate(key: string): string {
-    const lang = this.currentLang;
+    const lang = this.getCurrentLang();
     // @ts-expect-error - dynamic key access
     return ui[lang]?.[key] || ui[defaultLang][key] || key;
   }

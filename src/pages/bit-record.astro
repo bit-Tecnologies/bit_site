@@ -31,19 +31,19 @@ const schema = {
 			<div class="max-w-4xl mx-auto z-10 relative">
 				<!-- App Header -->
 				<div class="text-center mb-12">
-					<img src="/bit-record.png" alt="bit Record" class="w-24 h-24 mx-auto mb-6 drop-shadow-md" />
-					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-slate-950 dark:text-white text-balance">
+					<img src="/bit-record.png" alt="bit Record" class="w-24 h-24 mx-auto mb-6 rounded-3xl" />
+					<h1 class="text-4xl md:text-5xl font-extrabold mb-4 font-display text-ink text-balance">
 						bit Record
 					</h1>
-					<p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-4 font-light transition-colors">
+					<p class="text-lg md:text-xl text-ink-muted mb-4 font-light transition-colors">
 						{t('record.subtitle')}
 					</p>
 					<div class="flex items-center justify-center space-x-4 mb-6 transition-colors">
 						<span class="inline-block px-3 py-1 bg-[var(--accent-soft)] text-[var(--accent-strong)] text-sm rounded-full">{t('record.coming_soon')}</span>
-						<span class="text-slate-400 dark:text-slate-500">•</span>
-						<span class="text-slate-600 dark:text-slate-400">Android 7.0+</span>
+						<span class="text-ink-faint">•</span>
+						<span class="text-ink-muted">Android 7.0+</span>
 					</div>
-					<div class="inline-flex items-center space-x-2 px-8 py-4 border border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 font-semibold rounded-lg cursor-not-allowed transition-colors bg-white/50 dark:bg-transparent backdrop-blur-sm">
+					<div class="inline-flex items-center space-x-2 px-8 py-4 border border-line text-ink-muted font-semibold rounded-lg cursor-not-allowed transition-colors bg-surface/70 dark:bg-transparent backdrop-blur-sm">
 						<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
 						</svg>
@@ -53,11 +53,11 @@ const schema = {
 
 				<!-- Features -->
 				<div class="liquid-panel p-8 mb-8">
-					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('record.features_title')}</h2>
+					<h2 class="font-display text-2xl font-extrabold mb-6 text-ink text-balance">{t('record.features_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FeatureCard 
               title={t('record.feature1_title')} 
-              iconColor="text-red-600 dark:text-red-400"
+              iconColor="text-danger"
               description={t('record.feature1_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@ const schema = {
             </FeatureCard>
             <FeatureCard 
               title={t('record.feature2_title')} 
-              iconColor="text-red-600 dark:text-red-400"
+              iconColor="text-danger"
               description={t('record.feature2_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -75,7 +75,7 @@ const schema = {
             </FeatureCard>
             <FeatureCard 
               title={t('record.feature3_title')} 
-              iconColor="text-red-600 dark:text-red-400"
+              iconColor="text-danger"
               description={t('record.feature3_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ const schema = {
             </FeatureCard>
             <FeatureCard 
               title={t('record.feature4_title')} 
-              iconColor="text-red-600 dark:text-red-400"
+              iconColor="text-danger"
               description={t('record.feature4_desc')}
             >
               <svg slot="icon" class="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
@@ -95,33 +95,33 @@ const schema = {
 				</div>
 
 				<div class="liquid-panel p-8 mb-8">
-					<h2 class="font-display text-2xl font-extrabold mb-3 text-slate-950 dark:text-white text-center text-balance">{t('record.screenshots_title')}</h2>
-					<p class="text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto font-light transition-colors">
+					<h2 class="font-display text-2xl font-extrabold mb-3 text-ink text-balance">{t('record.screenshots_title')}</h2>
+					<p class="text-ink-muted max-w-2xl font-light transition-colors">
 						{t('record.screenshots_desc')}
 					</p>
 				</div>
 
 				<!-- Technical Details -->
 				<div class="liquid-panel p-8 mb-8">
-					<h2 class="font-display text-2xl font-extrabold mb-6 text-slate-950 dark:text-white text-center text-balance">{t('record.tech_title')}</h2>
+					<h2 class="font-display text-2xl font-extrabold mb-6 text-ink text-balance">{t('record.tech_title')}</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div>
-							<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-3">{t('record.sys_requirements')}</h3>
-							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
+							<h3 class="font-display text-lg font-extrabold text-ink mb-3">{t('record.sys_requirements')}</h3>
+							<ul class="space-y-2 text-ink-muted transition-colors">
 								<li class="flex items-center space-x-2">
-									<svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 24 24">
+									<svg class="w-4 h-4 text-danger" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
 									<span>{t('record.req_android')}</span>
 								</li>
 								<li class="flex items-center space-x-2">
-									<svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 24 24">
+									<svg class="w-4 h-4 text-danger" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
 									<span>{t('record.req_arch')}</span>
 								</li>
 								<li class="flex items-center space-x-2">
-									<svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor" viewBox="0 0 24 24">
+									<svg class="w-4 h-4 text-danger" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
 									</svg>
 									<span>{t('record.req_ram')}</span>
@@ -129,8 +129,8 @@ const schema = {
 							</ul>
 						</div>
 						<div>
-							<h3 class="font-display text-lg font-extrabold text-slate-950 dark:text-white mb-3">{t('record.tech_stack')}</h3>
-							<ul class="space-y-2 text-slate-600 dark:text-slate-300 transition-colors">
+							<h3 class="font-display text-lg font-extrabold text-ink mb-3">{t('record.tech_stack')}</h3>
+							<ul class="space-y-2 text-ink-muted transition-colors">
 								<li class="flex items-center space-x-2">
 									<svg class="w-4 h-4 text-[var(--accent-strong)]" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
@@ -160,11 +160,11 @@ const schema = {
 						<svg class="w-16 h-16 text-[var(--accent-strong)] mx-auto mb-4 transition-colors" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
 						</svg>
-						<h3 class="font-display text-xl font-extrabold text-slate-950 dark:text-white mb-2">{t('record.status_title')}</h3>
-						<p class="text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto font-light transition-colors">
+						<h3 class="font-display text-xl font-extrabold text-ink mb-2">{t('record.status_title')}</h3>
+						<p class="text-ink-muted mb-4 max-w-2xl font-light transition-colors">
 							{t('record.status_desc')}
 						</p>
-						<div class="flex items-center justify-center space-x-4 text-sm text-slate-500 dark:text-slate-400 transition-colors">
+						<div class="flex items-center justify-center space-x-4 text-sm text-ink-muted transition-colors">
 							<span>{t('record.status_label')}</span>
 							<span>•</span>
 							<span>{t('record.status_release')}</span>
@@ -175,13 +175,13 @@ const schema = {
 				<!-- Navigation -->
 				<div class="text-center">
           <Button href={translate('/')} variant="outline" class="mr-4">
-						<svg class="w-5 h-5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
 						</svg>
 						<span>{t('nav.home')}</span>
           </Button>
           <Button href={translate('/privacy')} variant="outline">
-						<svg class="w-5 h-5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 							<path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11H16V16H8V11H9.2V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.4,8.7 10.4,10V11H13.6V10C13.6,8.7 12.8,8.2 12,8.2Z"/>
 						</svg>
 						<span>{t('nav.privacy')}</span>

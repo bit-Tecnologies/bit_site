@@ -3,7 +3,7 @@
 export interface Props {
   title: string;
   description?: string;
-  iconColor: string; // e.g., 'text-blue-500'
+  iconColor: string; // e.g., 'text-accent-strong'
   iconBgColor?: string; // used for the circle background fallback if passed
 }
 
@@ -21,11 +21,11 @@ const { title, description, iconColor, iconBgColor } = Astro.props;
         <slot name="icon" />
       </span>
     )}
-    {!iconBgColor && <h3 class="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white font-display group-hover:text-[var(--accent-strong)] transition-colors">{title}</h3>}
+    {!iconBgColor && <h3 class="text-lg sm:text-xl font-semibold text-ink font-display group-hover:text-[var(--accent-strong)] transition-colors">{title}</h3>}
   </div>
-  {iconBgColor && <h3 class="text-base sm:text-lg font-semibold text-slate-900 dark:text-white mb-2 font-display text-center">{title}</h3>}
+  {iconBgColor && <h3 class="text-base sm:text-lg font-semibold text-ink mb-2 font-display text-center">{title}</h3>}
 
   <slot>
-    {description && <p class={`text-sm sm:text-base text-slate-600 dark:text-slate-300 ${iconBgColor ? 'font-light text-center' : 'leading-relaxed font-light'}`}>{description}</p>}
+    {description && <p class={`text-sm sm:text-base text-ink-muted ${iconBgColor ? 'font-light text-center' : 'leading-relaxed font-light'}`}>{description}</p>}
   </slot>
 </div>
