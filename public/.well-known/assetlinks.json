@@ -9,5 +9,15 @@
         "88:AE:DF:FA:96:11:09:AE:EF:E0:A1:CF:44:92:B5:6C:46:9D:98:A3:FF:F1:9B:E7:0D:F4:97:1D:E1:3C:66:5F"
       ]
     }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dev.cybernattor.hub",
+      "sha256_cert_fingerprints": [
+        "A8:5B:E7:0C:4A:25:31:0A:74:D7:61:D0:B0:FC:FD:FC:63:8E:BD:EC:E8:3D:7C:EE:BD:F4:74:68:84:4D:A3:2A"
+      ]
+    }
   }
 ]
